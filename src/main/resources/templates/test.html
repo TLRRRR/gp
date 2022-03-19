@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="text" name="name" placeholder="name">
+
+<script src="/js/jquery/jquery-3.3.1.min.js"></script>
+<script>
+    function fun() {
+        $.ajax({
+            data: {name: $("#name").val()},
+            url: "/t",
+            success: function (data) {
+                console.log(data)
+                console.log(status)
+            }
+        });
+    }
+</script>
+</body>
+</html>
