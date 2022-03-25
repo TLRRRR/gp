@@ -1,16 +1,25 @@
 package com.wang.gp.dao;
 
+import com.wang.gp.pojo.FoodInfo;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+
+import java.util.ArrayList;
 
 @Mapper
 public interface FoodInfoDao {
-    //编辑消息
-    public int editInfo(@Param("id") int id, @Param("title") String title, @Param("date") String date, @Param("content") String content);
 
-    //删除消息
-    public int deleteInfo(int id);
+    //添加信息
+    public int addFoodInfo(FoodInfo foodInfo);
 
-    //添加消息
-    public int addInfo(@Param("title") String title, @Param("content") String content, @Param("date") String date);
+    //删除信息
+    public int deleteFoodInfoByTitle(String title);
+
+    //编辑信息
+    public int updateFoodInfo(FoodInfo foodInfo);
+
+    //根据title查询信息
+    public FoodInfo queryFoodInfoByTitle(String title);
+
+    //查询所有信息
+    public ArrayList<FoodInfo> queryFoodInfo();
 }

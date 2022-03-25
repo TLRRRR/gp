@@ -11,7 +11,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         Object loginUser = request.getSession().getAttribute("LoginUser");
         System.out.println("走这里了吗");
         if(loginUser==null){
-            System.out.println("loginuser为空，登录失败了!？");
+            System.out.println("loginuser为空，登录失败了？？？");
             response.sendRedirect("/tologin");
             return false;
         }else {

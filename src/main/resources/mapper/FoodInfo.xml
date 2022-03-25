@@ -1,46 +1,43 @@
-<!--<?xml version="1.0" encoding="UTF-8" ?>-->
-<!--<!DOCTYPE mapper-->
-<!--        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"-->
-<!--        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
-<!--<mapper namespace="com.wang.gp.dao.InfoDao">-->
-<!--    <resultMap type="Info" id="infoMap">-->
-<!--        <id property="id" column="id"/>-->
-<!--        <result property="title" column="title"/>-->
-<!--        <result property="content" column="content"/>-->
-<!--        <result property="date" column="date"/>-->
-<!--    </resultMap>-->
-<!--    &lt;!&ndash;查询info表所有信息，用于消息展示&ndash;&gt;-->
-<!--    <select id="queryInfo" resultMap="infoMap">-->
-<!--        SELECT *-->
-<!--        FROM foodinfo-->
-<!--    </select>-->
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wang.gp.dao.FoodInfoDao">
 
-<!--    &lt;!&ndash;查询一个消息，将该消息内容展示出到一个页面用于编辑&ndash;&gt;-->
-<!--    <select id="queryInfoById" resultType="Info">-->
-<!--        SELECT *-->
-<!--        FROM foodinfo-->
-<!--        WHERE id = #{temp_id}-->
-<!--    </select>-->
+    <!--根据title查询foodinfo-->
+    <select id="queryFoodInfoByTitle" resultType="FoodInfo">
+        SELECT *
+        FROM foodinfo
+        WHERE title = #{title}
+    </select>
 
-<!--    &lt;!&ndash;编辑消息&ndash;&gt;-->
-<!--    <update id="editInfo">-->
-<!--        update foodinfo-->
-<!--        SET title=#{title},-->
-<!--            date=#{date},-->
-<!--            content=#{content}-->
-<!--        where id = #{id}-->
-<!--    </update>-->
+    <!--查询所有foodinfo-->
+    <select id="queryFoodInfo" resultType="FoodInfo">
+        SELECT *
+        FROM foodinfo
+    </select>
 
-<!--    &lt;!&ndash;删除消息&ndash;&gt;-->
-<!--    <delete id="deleteInfo" parameterType="int">-->
-<!--        delete-->
-<!--        from foodinfo-->
-<!--        where id = #{id}-->
-<!--    </delete>-->
+    <!--添加食物信息-->
+    <insert id="addFoodInfo">
+        INSERT INTO foodinfo(userName, time, count)
+        VALUES (#{userName}, #{errorLoginTime}, #{count})
+    </insert>
 
-<!--    &lt;!&ndash;添加消息&ndash;&gt;-->
-<!--    <insert id="addInfo">-->
-<!--        INSERT INTO foodinfo(title, content, date)-->
-<!--        VALUES (#{title}, #{content}, #{date})-->
-<!--    </insert>-->
-<!--</mapper>-->
+    <!--删除食物信息-->
+    <delete id="deleteFoodInfoByTitle">
+        DELETE
+        *
+        FROM foodinfo
+        WHERE title =
+        #{title}
+    </delete>
+
+    <!--更新食物信息-->
+    <update id="updateFoodInfo">
+        UPDATE foodinfo
+        SET date   =#{date},
+            content=#{content},
+            where title = #{title}
+    </update>
+
+</mapper>

@@ -10,4 +10,5 @@ public class ttt {
         Date date = new Date();
         System.out.println(date);
     }
+
 }

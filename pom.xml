@@ -8,7 +8,6 @@
         <version>2.6.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <packaging>pom</packaging>
     <groupId>com.wang</groupId>
     <artifactId>gp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -68,28 +67,6 @@
                 </configuration>
             </plugin>
         </plugins>
-
-
-<!--        <resources>-->
-<!--            <resource>-->
-<!--                <directory>src/main/java</directory>-->
-<!--                <includes>-->
-<!--                    <include>**/*.properties</include>-->
-<!--                    <include>**/*.xml</include>-->
-<!--                </includes>-->
-<!--                <filtering>true</filtering>-->
-<!--            </resource>-->
-<!--            <resource>-->
-<!--                <directory>src/main/resources</directory>-->
-<!--                <includes>-->
-<!--                    <include>**/*.properties</include>-->
-<!--                    <include>**/*.xml</include>-->
-<!--                </includes>-->
-<!--                <filtering>true</filtering>-->
-<!--            </resource>-->
-<!--        </resources>-->
-
     </build>
-
 
 </project>

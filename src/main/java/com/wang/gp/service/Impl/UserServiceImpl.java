@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     LoginDao loginDao;
 
-//    @Autowired
-//    HttpServletRequest request;
+    @Autowired
+    HttpServletRequest request;
 
 
     public User selectUserById(int userId){
