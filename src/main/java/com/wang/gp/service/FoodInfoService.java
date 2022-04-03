@@ -3,11 +3,12 @@ package com.wang.gp.service;
 import com.wang.gp.pojo.FoodInfo;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public interface FoodInfoService {
 
     //添加信息
-    public int addFoodInfo(FoodInfo foodInfo);
+    public int addFoodInfo(String title, String content, Date date, String flag, Long typeId);
 
     //删除信息
     public int deleteFoodInfoByTitle(String title);

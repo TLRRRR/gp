@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 @Service
 public class FoodInfoServiceImpl implements FoodInfoService {
@@ -15,8 +16,8 @@ public class FoodInfoServiceImpl implements FoodInfoService {
     FoodInfoDao foodInfoDao;
 
     @Override
-    public int addFoodInfo(FoodInfo foodInfo) {
-        return foodInfoDao.addFoodInfo(foodInfo);
+    public int addFoodInfo(String title, String content, Date date, String flag, Long typeId) {
+        return foodInfoDao.addFoodInfo(title,content,date,flag,typeId);
     }
 
     @Override

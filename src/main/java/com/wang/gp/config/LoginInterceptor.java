@@ -9,7 +9,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Object loginUser = request.getSession().getAttribute("LoginUser");
-        System.out.println("走这里了吗");
+        System.out.println("拦截器到这里了吗");
         if(loginUser==null){
             System.out.println("loginuser为空，登录失败了？？？");
             response.sendRedirect("/tologin");

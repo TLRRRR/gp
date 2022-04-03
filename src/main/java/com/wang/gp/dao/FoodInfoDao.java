@@ -4,12 +4,14 @@ import com.wang.gp.pojo.FoodInfo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 @Mapper
 public interface FoodInfoDao {
 
+
     //添加信息
-    public int addFoodInfo(FoodInfo foodInfo);
+    public int addFoodInfo(String title, String content, Date date, String flag,Long typeId);
 
     //删除信息
     public int deleteFoodInfoByTitle(String title);

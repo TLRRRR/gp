@@ -23,38 +23,38 @@ public class UserController {
     private LoginService loginService;
 
     //注册页面
-    @GetMapping("/toregister")
+    @RequestMapping("/toregister")
     public String toRegist() {
         return "register";
     }
 
     //登录页面
-    @GetMapping("/tologin")
+    @RequestMapping("/tologin")
     public String toLogin() {
         return "index";
     }
 
     //密码找回
-    @GetMapping("/tofindback")
+    @RequestMapping("/tofindback")
     public String toFindBack() {
         return "findback";
     }
 
     //密码找回2
-    @GetMapping("/tofindback2")
+    @RequestMapping("/tofindback2")
     public String toFindBack2() {
         return "findback2";
     }
 
     //内容页面
-    @GetMapping("/content")
+    @RequestMapping("/content")
     public String toContent() {
         return "content";
     }
 
     //注册验证
     @ResponseBody
-    @PostMapping("/register")
+    @RequestMapping("/register")
     public String register(String userName, String pwd, String tel) {
         User user = new User();
         user.setUserName(userName);
@@ -77,7 +77,7 @@ public class UserController {
 
     //登录验证
     @ResponseBody
-    @PostMapping("/login")
+    @RequestMapping("/login")
     public String login(@RequestParam(value = "userName") String userName, @RequestParam(value = "pwd") String pwd,
                         HttpServletRequest request) {
         User user = new User();
@@ -93,10 +93,27 @@ public class UserController {
             return login;
         }
     }
+//    @ResponseBody
+//    @RequestMapping("/login")
+//    public String login(@RequestParam(value = "userName") String userName, @RequestParam(value = "pwd") String pwd,
+//                        HttpServletRequest request) {
+//        User user = new User();
+//        user.setUserName(userName);
+//        user.setPwd(MD5Utils.getMD5(pwd));
+//        String login = userService.login(user);
+//        if (login == "success") {
+//            request.getSession().setAttribute("LoginUser", user);
+//            System.out.println("用户的session是："+request.getSession());
+//            String jsonStr = "{\"errorCode\":\"00\",\"errorMessage\":\"登陆成功！\"}";
+//            return jsonStr;
+//        } else {
+//            return login;
+//        }
+//    }
 
     //找回密码
     @ResponseBody
-    @PostMapping("/findback")
+    @RequestMapping("/findback")
     public String findBack(String tel, String pwd, String pwd2) {
         User user = userService.queryUserByTel(tel);
         return userService.findback(user);
@@ -104,7 +121,7 @@ public class UserController {
 
     //找回密码2
     @ResponseBody
-    @PostMapping("/findback2")
+    @RequestMapping("/findback2")
     public String findBack2(String userName, String pwd, String pwd2) {
 
         if (pwd == pwd2) {

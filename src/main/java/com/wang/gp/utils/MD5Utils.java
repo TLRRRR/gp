@@ -45,9 +45,9 @@ public class MD5Utils {
     }
 
     public static void main(String[] args) {
-        String md5 = MD5Utils.MD5("wang");
+        String md5 = MD5Utils.MD5("iamtom");
         System.out.println(md5);
-        String md52 = MD5Utils.getMD5("123");
+        String md52 = MD5Utils.getMD5("iamtom");
         System.out.println(md52);
     }
 

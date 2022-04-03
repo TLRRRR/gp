@@ -19,8 +19,8 @@
 
     <!--添加食物信息-->
     <insert id="addFoodInfo">
-        INSERT INTO foodinfo(userName, time, count)
-        VALUES (#{userName}, #{errorLoginTime}, #{count})
+        INSERT INTO foodinfo(title, content, date, flag ,typeId)
+        VALUES (#{title}, #{content}, #{date}, #{flag}, #{typeId})
     </insert>
 
     <!--删除食物信息-->
@@ -35,7 +35,7 @@
     <!--更新食物信息-->
     <update id="updateFoodInfo">
         UPDATE foodinfo
-        SET date   =#{date},
+        SET date=#{date},
             content=#{content},
             where title = #{title}
     </update>

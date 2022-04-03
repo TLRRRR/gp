@@ -14,4 +14,6 @@ public class FoodInfo {
     private String title;
     private String content;
     private Date date;
+    private String flag;
+    private Long typeId;
 }
