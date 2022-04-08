@@ -1,0 +1,85 @@
+<!--
+	Author: W3layouts
+	Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<!-- Head -->
+
+<head>
+
+    <title>Universe Signin Form Flat Responsive Widget Template :</title>
+
+    <!-- Meta-Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<!-- //Head -->
+
+<!-- Body -->
+
+<body>
+<section class="main">
+    <div class="logo text-center">
+        <h1><a href="index.html"> 密码找回</a></h1>
+    </div>
+    <div class="content-w3ls text-center">
+        <img src="images/admin.png" alt="" class="img-responsive">
+        <!--            <form th:action="@{/login}" method="post">-->
+        <form>
+            <div class="wthree-field">
+                <input name="Telephone" id="Telephone" type="text" value="" placeholder="Telephone" required>
+            </div>
+            <div class="wthree-field">
+                <button type="button" id="submit" name="submit" class="btn">submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script src="/js/jquery/jquery-3.3.1.min.js"></script>
+<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+<script>
+    $("#submit").on("click", function () {
+        $.ajax({
+            type: "POST",
+            //待载入页面的url
+            url: "/findback",
+            data: {"tel":$("#Telephone").val()},
+            dataType: 'json',
+            success: function (msg) {
+                console.log("进success了");
+                if ("00" == msg.errorCode) {
+                    console.log("success");
+                    window.location.href = "tofindback2";
+                } else if ("11" == msg.errorCode) {
+                    alert("该用户不存在！");
+                    console.log("该用户不存在！");
+                    return false;
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log("进error了")
+                // 状态码
+                console.log(XMLHttpRequest.status);
+                // 状态
+                console.log(XMLHttpRequest.readyState);
+                // 错误信息
+                console.log(textStatus);
+            }
+        });
+    });
+</script>
+
+</body>
+<!-- //Body -->
+
+</html>

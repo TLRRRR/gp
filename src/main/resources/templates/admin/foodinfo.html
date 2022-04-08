@@ -7,6 +7,7 @@
     <link href="../../static/images/elf.png" th:href="@{/images/elf.png}" rel="icon" type="image/x-ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
     <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+    <link rel="stylesheet" href="../../static/js/layui/css/layui.css">
 </head>
 <body>
 
@@ -50,6 +51,7 @@
 <br>
 <br>
 
+<table class="layui-hide" id="test"></table>
 <!--中间内容-->
 <div class="">
     <div class="ui container">
@@ -131,7 +133,7 @@
                             </div>
                         </div>
                         <div align="center">
-                            <a href="/admin/toaddinfo">
+                            <a href="http://localhost:8080/admin/toaddinfo">
                                 <button type="button" class="ui teal button m-mobile-wide m-margin-top"><i
                                         class="pencil icon"></i>新增
                                 </button>
@@ -168,10 +170,31 @@
 
 <!--</footer>-->
 
+<script src="/static/js/layui/layui.js" charset="utf-8"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 
 <script>
+
+
+    layui.use('table', function () {
+        var table = layui.table;
+
+        table.render({
+            elem: '#test'
+            , url: '/admin/toinfo'
+            , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            , cols: [[
+                {field: 'id', width: 80, title: 'ID', sort: true}
+                , {field: 'title', width: 80, title: '题目'}
+                , {field: 'content', width: 80, title: '内容', sort: true}
+                , {field: 'date', width: 80, title: '日期'}
+                , {field: 'flag', title: '签名', minWidth: 10} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+            ]]
+            , page: true
+        });
+    });
+
 
     $('.menu.toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');

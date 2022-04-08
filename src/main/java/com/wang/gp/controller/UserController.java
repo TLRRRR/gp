@@ -87,8 +87,7 @@ public class UserController {
         if (login == "success") {
             request.getSession().setAttribute("LoginUser", user);
             System.out.println("用户的session是："+request.getSession());
-            String jsonStr = "{\"errorCode\":\"00\",\"errorMessage\":\"登陆成功！\"}";
-            return jsonStr;
+            return "{\"errorCode\":\"00\",\"errorMessage\":\"登陆成功！\"}";
         } else {
             return login;
         }

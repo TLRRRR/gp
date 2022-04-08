@@ -1,21 +1,21 @@
-<!--<?xml version="1.0" encoding="UTF-8" ?>-->
-<!--<!DOCTYPE mapper-->
-<!--        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"-->
-<!--        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
-<!--<mapper namespace="com.wang.gp.dao.FoodTypeDao">-->
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wang.gp.dao.FoodTypeDao">
 
-<!--    &lt;!&ndash;根据id查询foodtype&ndash;&gt;-->
-<!--    <select id="queryFoodTypeById" resultType="FoodType">-->
-<!--        SELECT *-->
-<!--        FROM foodinfo-->
-<!--        WHERE id = #{id}-->
-<!--    </select>-->
+    <!--根据id查询foodtype-->
+    <select id="queryFoodTypeById" resultType="FoodType">
+        SELECT *
+        FROM foodtype
+        WHERE id = #{id}
+    </select>
 
-<!--    &lt;!&ndash;分类页面查询&ndash;&gt;-->
-<!--    <select id="queryAllFoodTypeAndBlog" resultType="FoodType">-->
-<!--        SELECT *-->
-<!--        FROM foodtype-->
-<!--    </select>-->
+    <!--分类页面查询-->
+    <select id="queryAllFoodTypeAndBlog" resultType="FoodType">
+        SELECT *
+        FROM foodtype
+    </select>
 
 <!--    <resultMap id="foodtype" type="FoodType">-->
 <!--        <id property="id" column="tid"/>-->
@@ -27,39 +27,39 @@
 <!--        </collection>-->
 <!--    </resultMap>-->
 
-<!--    <select id="queryFoodTypeByName" resultType="FoodType">-->
-<!--        SELECT *-->
-<!--        FROM foodtype-->
-<!--        WHERE name = #{name}-->
-<!--    </select>-->
+    <select id="queryFoodTypeByName" resultType="FoodType">
+        SELECT *
+        FROM foodtype
+        WHERE name = #{name}
+    </select>
 
-<!--&lt;!&ndash;    查询所有事物分类&ndash;&gt;-->
-<!--    <select id="queryAllFoodType" resultType="FoodType">-->
-<!--        SELECT *-->
-<!--        FROM foodtype-->
-<!--    </select>-->
+<!--    查询所有事物分类-->
+    <select id="queryAllFoodType" resultType="FoodType">
+        SELECT *
+        FROM foodtype
+    </select>
 
-<!--    &lt;!&ndash;添加食物类型&ndash;&gt;-->
-<!--    <insert id="addFoodType">-->
-<!--        INSERT INTO foodinfo(id,name)-->
-<!--        VALUES (#{id}, #{name})-->
-<!--    </insert>-->
+    <!--添加食物类型-->
+    <insert id="addFoodType">
+        INSERT INTO foodtype(name)
+        VALUES (#{name})
+    </insert>
 
-<!--    &lt;!&ndash;删除食物类型&ndash;&gt;-->
-<!--    <delete id="deleteFoodInfoById">-->
-<!--        DELETE-->
-<!--        *-->
-<!--        FROM foodtype-->
-<!--        WHERE id =-->
-<!--        #{id}-->
-<!--    </delete>-->
+    <!--删除食物类型-->
+    <delete id="deleteFoodInfoById">
+        DELETE
+        *
+        FROM foodtype
+        WHERE id =
+        #{id}
+    </delete>
 
-<!--    &lt;!&ndash;更新食物类型&ndash;&gt;-->
-<!--    <update id="updateFoodType">-->
-<!--        UPDATE foodinfo-->
-<!--        SET id=#{id},-->
-<!--            name=#{name},-->
-<!--            where id = #{id}-->
-<!--    </update>-->
+    <!--更新食物类型-->
+    <update id="updateFoodType">
+        UPDATE foodtype
+        SET id=#{id},
+            name=#{name},
+            where id = #{id}
+    </update>
 
-<!--</mapper>-->
+</mapper>

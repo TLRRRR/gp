@@ -2,11 +2,13 @@ package com.wang.gp.controller.admin;
 
 import com.wang.gp.dao.FoodInfoDao;
 import com.wang.gp.pojo.FoodInfo;
+import com.wang.gp.pojo.base.baseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,12 +20,17 @@ public class FoodInfoController {
     @Autowired
     FoodInfoDao foodInfoDao;
 
+    @ResponseBody
     @RequestMapping("/toinfo")
-    public String allInfo(Model model) {
+//    public String allInfo(Model model) {
+    public baseEntity<ArrayList> allInfo() {
         ArrayList<FoodInfo> list = foodInfoDao.queryFoodInfo();
-        model.addAttribute("list", list);
+        System.out.println(list);
+//        model.addAttribute("list", list);
         System.out.println("重定向了吗麻蛋");
-        return "admin/foodinfo";
+        System.out.println(baseEntity.success1(list));
+//        return "admin/foodinfo";
+        return baseEntity.success(list);
     }
 
     //跳转到新增食物信息博客页面

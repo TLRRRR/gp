@@ -13,5 +13,5 @@ import java.util.List;
 public class FoodType {
     private long id;
     private String name;
-    private List<FoodInfo> foodInfoList = new ArrayList<>();
+//    private List<FoodInfo> foodInfoList = new ArrayList<>();
 }

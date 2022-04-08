@@ -9,7 +9,6 @@ import java.util.Date;
 @Mapper
 public interface FoodInfoDao {
 
-
     //添加信息
     public int addFoodInfo(String title, String content, Date date, String flag,Long typeId);
 

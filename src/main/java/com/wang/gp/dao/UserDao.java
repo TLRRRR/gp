@@ -3,7 +3,6 @@ package com.wang.gp.dao;
 import com.wang.gp.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
 @Mapper
 public interface UserDao {
     public User selectUserById(int userId);
