@@ -50,7 +50,7 @@ public class FoodTypeServiceImpl implements FoodTypeService {
     }
 
     @Override
-    public int updateFoodType(FoodType foodType) {
-        return foodTypeDao.updateFoodType(foodType);
+    public int updateFoodType(Long id, String name) {
+        return foodTypeDao.updateFoodType(id, name);
     }
 }

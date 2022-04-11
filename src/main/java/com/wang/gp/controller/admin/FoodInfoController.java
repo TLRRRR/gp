@@ -5,13 +5,13 @@ import com.wang.gp.pojo.FoodInfo;
 import com.wang.gp.pojo.base.baseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/admin")
@@ -20,52 +20,46 @@ public class FoodInfoController {
     @Autowired
     FoodInfoDao foodInfoDao;
 
+    //显示所有食物信息
     @ResponseBody
     @RequestMapping("/toinfo")
-//    public String allInfo(Model model) {
     public baseEntity<ArrayList> allInfo() {
         ArrayList<FoodInfo> list = foodInfoDao.queryFoodInfo();
         System.out.println(list);
-//        model.addAttribute("list", list);
-        System.out.println("重定向了吗麻蛋");
-        System.out.println(baseEntity.success1(list));
+        System.out.println("success1: " + baseEntity.success1(list));
+        System.out.println("success: " + baseEntity.success(list));
 //        return "admin/foodinfo";
-        return baseEntity.success(list);
+        return baseEntity.success1(list);
     }
 
-    //跳转到新增食物信息博客页面
-    @RequestMapping("/toaddinfo")
-    public String toAddInfo() {
-        return "admin/addinfo";
-    }
-
-    //    @RequestMapping("/addinfo")
-//    public String addInfo(String title,String content,String date){
-//        foodInfoDao.addFoodInfo(title,content,date);
-//    }
     //添加食物信息后跳转到食物信息博客页面
+    @ResponseBody
     @RequestMapping("/addinfo")
-    public String addInfo(String title, String content, Date date, String flag, Long typeId) {
-        System.out.println("anything here in controller???");
-        System.out.println("foodinfo :" + title +"  "+ content);
-        System.out.println("dame long   "+typeId);
-        int i = foodInfoDao.addFoodInfo(title, content, new Date(), flag, typeId);
-        return "redirect:/admin/toinfo";
+    public Map<String, String> addInfo(String title, String content, Date date, String flag, Long typeId, String description) {
+        System.out.println("foodinfo :" + title + "  " + content);
+        System.out.println("dame long   " + typeId);
+        int i = foodInfoDao.addFoodInfo(title, content, new Date(), flag, typeId, description);
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("code", "11");
+        System.out.println(map);
+        return map;
     }
 
+    //删除食物信息
+    @ResponseBody
     @RequestMapping("/deleteinfo")
-    public String deleteInfo(String title) {
-        foodInfoDao.deleteFoodInfoByTitle(title);
-        return "redirect:/admin/toinfo";
+    public baseEntity deleteInfo(Long id) {
+        foodInfoDao.deleteFoodinfoById(id);
+        System.out.println("删除id为" + id + "的信息");
+        return baseEntity.success2();
     }
 
-    @RequestMapping("/toeditinfo")
-    public String toEditInfo() {
-        return "editinfo";
-    }
+    //更新食物信息
+    @ResponseBody
+    @RequestMapping("/updateinfo")
+    public void updateInfo(Long id, String title, String content, Long typeId, String flag) {
+        System.out.println(id + title + content + typeId + flag);
+//        foodInfoDao.updateFoodInfo(id, title, content, typeId, flag);
 
-    public String editInfo(FoodInfo foodInfo) {
-        foodInfoDao.updateFoodInfo(foodInfo);
-        return "redirect:/admin/toinfo";
     }
 }

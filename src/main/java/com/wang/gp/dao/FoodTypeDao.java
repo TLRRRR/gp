@@ -4,6 +4,7 @@ import com.wang.gp.pojo.FoodType;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+
 @Mapper
 public interface FoodTypeDao {
 
@@ -15,11 +16,11 @@ public interface FoodTypeDao {
 
     public FoodType queryFoodTypeByName(String name);
 
-//    public int addFoodType(FoodType foodType);
+    //    public int addFoodType(FoodType foodType);
 //    public int addFoodType(Long id,String name);
     public int addFoodType(String name);
 
     public int deleteFoodInfoById(Long id);
 
-    public int updateFoodType(FoodType foodType);
+    public int updateFoodType(Long id, String name);
 }

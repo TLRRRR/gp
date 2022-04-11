@@ -16,8 +16,8 @@ public class FoodInfoServiceImpl implements FoodInfoService {
     FoodInfoDao foodInfoDao;
 
     @Override
-    public int addFoodInfo(String title, String content, Date date, String flag, Long typeId) {
-        return foodInfoDao.addFoodInfo(title,content,date,flag,typeId);
+    public int addFoodInfo(String title, String content, Date date, String flag, Long typeId, String description) {
+        return foodInfoDao.addFoodInfo(title, content, date, flag, typeId, description);
     }
 
     @Override
@@ -26,13 +26,23 @@ public class FoodInfoServiceImpl implements FoodInfoService {
     }
 
     @Override
-    public int updateFoodInfo(FoodInfo foodInfo) {
-        return foodInfoDao.updateFoodInfo(foodInfo);
+    public int deleteFoodinfoById(Long id) {
+        return foodInfoDao.deleteFoodinfoById(id);
+    }
+
+    @Override
+    public int updateFoodInfo(Long id, String title, String content, Long typeId, String flag) {
+        return foodInfoDao.updateFoodInfo(id, title, content, typeId, flag);
     }
 
     @Override
     public FoodInfo queryFoodInfoByTitle(String title) {
         return foodInfoDao.queryFoodInfoByTitle(title);
+    }
+
+    @Override
+    public FoodInfo queryFoodInfoById(Long id) {
+        return foodInfoDao.queryFoodInfoById(id);
     }
 
     @Override

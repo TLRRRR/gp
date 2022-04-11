@@ -10,9 +10,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FoodInfo {
-    private int id;
+    private Long id;
     private String title;
     private String content;
+    private String description;
     private Date date;
     private String flag;
     private Long typeId;

@@ -11,6 +11,13 @@
         WHERE title = #{title}
     </select>
 
+    <!--根据id查询foodinfo-->
+    <select id="queryFoodInfoById" resultType="FoodInfo">
+        SELECT *
+        FROM foodinfo
+        WHERE id = #{id}
+    </select>
+
     <!--查询所有foodinfo-->
     <select id="queryFoodInfo" resultType="FoodInfo">
         SELECT *
@@ -19,25 +26,34 @@
 
     <!--添加食物信息-->
     <insert id="addFoodInfo">
-        INSERT INTO foodinfo(title, content, date, flag ,typeId)
-        VALUES (#{title}, #{content}, #{date}, #{flag}, #{typeId})
+        INSERT INTO foodinfo(title, content, date, flag ,typeId , description)
+        VALUES (#{title}, #{content}, #{date}, #{flag}, #{typeId}, #{description})
     </insert>
 
     <!--删除食物信息-->
     <delete id="deleteFoodInfoByTitle">
         DELETE
-        *
         FROM foodinfo
         WHERE title =
         #{title}
     </delete>
 
+    <!--删除食物信息-->
+    <delete id="deleteFoodinfoById">
+        DELETE
+        FROM foodinfo
+        WHERE id =
+        #{id}
+    </delete>
+
     <!--更新食物信息-->
     <update id="updateFoodInfo">
         UPDATE foodinfo
-        SET date=#{date},
+        SET title=#{title},
             content=#{content},
-            where title = #{title}
+            flag=#{flag},
+            typeid=#{typeid}
+            where id = #{id}
     </update>
 
 </mapper>

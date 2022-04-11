@@ -13,8 +13,8 @@ import java.io.Serializable;
 public class baseEntity<T> implements Serializable {
 
     private T data;
-    private boolean success;
     private int code;
+    private boolean success;
     private String error;
 
     /**
@@ -33,8 +33,13 @@ public class baseEntity<T> implements Serializable {
     public static <T> baseEntity<T> success1(T t) {
         baseEntity<T> base = new baseEntity<>();
         base.setData(t);
-//        base.setCode(200);
-//        base.setSuccess(true);
+        return base;
+    }
+
+    public static <T> baseEntity<T> success2() {
+        baseEntity<T> base = new baseEntity<>();
+        base.setSuccess(true);
+        base.setCode(200);
         return base;
     }
 
@@ -45,7 +50,7 @@ public class baseEntity<T> implements Serializable {
 
     public static <T> baseEntity<T> failed(int code,String error) {
         baseEntity<T> base = new baseEntity<>();
-        base.setCode(200);
+        base.setCode(500);
         base.setData(null);
         base.setSuccess(false);
         base.setError(error);

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -30,27 +31,52 @@ public class FoodTypeController {
         return "/admin/addtype";
     }
 
+    @ResponseBody
+    @RequestMapping("/totype")
+    public baseEntity allType() {
+        List<FoodType> foodTypes = foodTypeService.queryAllFoodType();
+        System.out.println(foodTypes);
+        System.out.println("successEntity: " + baseEntity.success(foodTypes));
+        return baseEntity.success1(foodTypes);
+    }
+
     @RequestMapping("/addtype")
     @ResponseBody
-    public Map<String,String> addType(@RequestBody Map<String,String> name) {
+    public Map<String, String> addType(@RequestBody Map<String, String> name) {
 //    public String addType(@RequestBody Map<String,String> name) {
-        System.out.println("this shit is my name: "+name);
+        System.out.println("this shit is my name: " + name);
         System.out.println(name.get("name"));
         FoodType foodType = foodTypeService.queryFoodTypeByName(name.get("name"));
         System.out.println(foodType);
-        Map<String,String> map=new HashMap<String,String>();
+        Map<String, String> map = new HashMap<String, String>();
         if (foodType == null) {
             System.out.println("u can add this type");
-            Integer num=foodTypeService.addFoodType(name.get("name"));
-            System.out.println("成功添加数据条数"+num);
-            map.put("code","200");
-            map.put("mas","登陆成功");
+            Integer num = foodTypeService.addFoodType(name.get("name"));
+            System.out.println("成功添加数据条数" + num);
+            map.put("code", "200");
+            map.put("mas", "登陆成功");
         } else {
             System.out.println("this type is already exist");
-            map.put("code","11");
-            map.put("mas","登陆成功");
+            map.put("code", "11");
+            map.put("mas", "类型存在");
         }
         return map;
+    }
+
+    @ResponseBody
+    @RequestMapping("/deletetype")
+    public void deleteType(Long id) {
+        foodTypeService.deleteFoodInfoById(id);
+        System.out.println("删除这个id：" + id);
+    }
+
+    @ResponseBody
+    @RequestMapping("/updatetype")
+    public void updateType(FoodType foodType, Long id, String name) {
+        System.out.println(foodType.getId());
+        System.out.println(name);
+        foodTypeService.updateFoodType(id, name);
+        System.out.println("删除这个id：" + name);
     }
 
     /**
@@ -93,15 +119,12 @@ public class FoodTypeController {
 //
 //    }
 
-    /**
-     * @param foodType
-     * @return
-     */
-    @RequestMapping("/toedittype")
-    public String toUpdateType(FoodType foodType) {
-        int i = foodTypeService.updateFoodType(foodType);
-        return "/admin/addtype";
-    }
+
+//    @RequestMapping("/toedittype")
+//    public String toUpdateType(FoodType foodType) {
+//        int i = foodTypeService.updateFoodType(foodType);
+//        return "/admin/addtype";
+//    }
 
     @RequestMapping("/todeletetype")
     public String toDeleteType(Long id) {

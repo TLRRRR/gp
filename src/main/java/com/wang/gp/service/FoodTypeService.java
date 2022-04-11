@@ -13,13 +13,13 @@ public interface FoodTypeService {
 
     public FoodType queryFoodTypeByName(String name);
 
-//    public int addFoodType(FoodType foodType);
+    //    public int addFoodType(FoodType foodType);
 //    public int addFoodType(Long id,String name);
     public int addFoodType(String name);
 
     public int deleteFoodInfoById(Long id);
 
-    public int updateFoodType(FoodType foodType);
+    public int updateFoodType(Long id, String name);
 
 //    void addFoodType(int i, String name);
 }
