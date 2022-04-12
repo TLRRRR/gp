@@ -18,6 +18,13 @@
         WHERE id = #{id}
     </select>
 
+    <!--根据id升序查询foodinfo-->
+    <select id="queryFoodInfoByIdAsc" resultType="FoodInfo">
+        SELECT *
+        FROM foodinfo
+        WHERE id = #{id}
+    </select>
+
     <!--查询所有foodinfo-->
     <select id="queryFoodInfo" resultType="FoodInfo">
         SELECT *

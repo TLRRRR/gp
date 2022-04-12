@@ -46,6 +46,11 @@ public class FoodInfoServiceImpl implements FoodInfoService {
     }
 
     @Override
+    public FoodInfo queryFoodInfoByIdAsc(Long id) {
+        return foodInfoDao.queryFoodInfoByIdAsc(id);
+    }
+
+    @Override
     public ArrayList<FoodInfo> queryFoodInfo() {
         return foodInfoDao.queryFoodInfo();
     }

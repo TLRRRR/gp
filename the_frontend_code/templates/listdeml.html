@@ -181,161 +181,34 @@
     </script>
 
     <script>
-        $(function () {
 
-            // var data = {}
-
-            // $("#last").on('click', function () {
-            //     data = {
-            //         "l": "last"
-            //     }
-            //     console.log("is last")
-            //     $.ajax({
-            //         url: "http://localhost:8080/allinfo",
-            //         dataType: "json",
-            //         type: "post",
-            //         data: data,
-            //         success: function (msg) {
-            //             let a = '';
-            //             console.log(msg.data.flag)
-            //             if (msg.code == 200) {
-            //                 for (let i = 0; i < msg.data.length; i++) {
-            //                     a += '<div class="ui padded segment m-padded-tb-large m-opacity">' +
-            //                         '<div class="ui large aligned mobile reversed stackable grid">' +
-            //                         '<div class="eleven wide column ">' +
-            //                         '<a href="infodemo.html?id=' + i + '" class="ui header" id=' + i + ' align="center">' +
-            //                         msg.data[i].title +
-            //                         '</a>' +
-            //                         '<p class="m-text m-margin-top-max">' +
-            //                         msg.data[i].content +
-            //                         '</p>' +
-            //                         '</div>' +
-            //                         '</div>' +
-            //                         '</div>';
-            //                 }
-            //                 $(".ui-vertical-segment").append(a);
-            //             }
-            //         }
-            //     })
-            //     console.log("this is last")
-            // })
-
-            // $("#next").on('click', function () {
-            //     data = {
-            //         "l": "next"
-            //     }
-            //     console.log("is next")
-            //     $.ajax({
-            //         url: "http://localhost:8080/allinfo",
-            //         dataType: "json",
-            //         type: "post",
-            //         data: data,
-            //         success: function (msg) {
-            //             let a = '';
-            //             console.log(msg.data.flag)
-            //             if (msg.code == 200) {
-            //                 for (let i = 0; i < msg.data.length; i++) {
-            //                     a += '<div class="ui padded segment m-padded-tb-large m-opacity">' +
-            //                         '<div class="ui large aligned mobile reversed stackable grid">' +
-            //                         '<div class="eleven wide column ">' +
-            //                         '<a href="infodemo.html?id=' + i + '" class="ui header" id=' + i + ' align="center">' +
-            //                         msg.data[i].title +
-            //                         '</a>' +
-            //                         '<p class="m-text m-margin-top-max">' +
-            //                         msg.data[i].content +
-            //                         '</p>' +
-            //                         '</div>' +
-            //                         '</div>' +
-            //                         '</div>';
-            //                 }
-            //                 $(".ui-vertical-segment").append(a);
-            //             }
-            //         }
-            //     })
-            //     console.log("this is next")
-            // })
-
-            $.ajax({
-                url: "http://localhost:8080/allinfo",
-                dataType: "json",
-                type: "post",
-                data: {},
-                success: function (msg) {
-                    let a = '';
-                    console.log(msg.data.flag)
-                    if (msg.code == 200) {
-                        for (let i = 0; i < msg.data.length; i++) {
-                            console.log("this is for");
-                            document.getElementById("title1").innerHTML = msg.data[1].title;
-                            document.getElementById("content1").innerHTML = msg.data[1].content;
-                            a += '<div class="ui padded segment m-padded-tb-large m-opacity">' +
-                                '<div class="ui large aligned mobile reversed stackable grid">' +
-                                '<div class="eleven wide column ">' +
-                                '<a href="infodemo.html?id=' + i + '" class="ui header" id=' + i + ' align="center">' +
-                                msg.data[i].title +
-                                '</a>' +
-                                // '<p class="m-text m-margin-top-max">戴上金箍，没法爱你；放下金箍，没法保护你。我知道上天不会给我第二次机会，曾经我们说好的永远，原来也仅仅只有，十二画，而已。“大圣，此去欲何?”“踏南天，碎凌霄。”“若一去不回……”“便一去不回”其实很多时候，我们都是有机会的，最后真正放弃的，是我们自己。......</p>' +
-                                '<p class="m-text m-margin-top-max">' +
-                                msg.data[i].content +
-                                '</p>' +
-                                '</div>' +
-                                '</div>' +
-                                '</div>';
-                            // $("#1").on('click', function () {
-                            //     console.log("nihao")
-                            //     window.location.href = 'content.html'
-                            // })
-                        }
-                        $(".ui-vertical-segment").append(a);
-                        // for (let i in msg.data.length) {
-                        for (let i = 0; i < msg.data.length; i++) {
-                            console.log(i);
-                            // $("#1").on('click', function () {
-                            //     window.location.href = 'content.html'
-                            // })
-                        }
-                        // $("#1").on('click', function () {
-                        //     window.location.href = 'content.html'
-                        // })
-                        // document.getElementById("title").innerHTML = msg.data.flag
-                        // document.getElementById("content").innerHTML = msg.data.descrption
+        $.ajax({
+            url: "http://localhost:8080/allinfo",
+            dataType: "json",
+            type: "post",
+            data: {},
+            success: function (msg) {
+                let a = '';
+                console.log(msg.data.flag)
+                if (msg.code == 200) {
+                    for (let i = 0; i < msg.data.length; i++) {
+                        a += '<div class="ui padded segment m-padded-tb-large m-opacity">' +
+                            '<div class="ui large aligned mobile reversed stackable grid">' +
+                            '<div class="eleven wide column ">' +
+                            '<a href="infodemo.html?id=' + i + '" class="ui header" id=' + i + ' align="center">' +
+                            msg.data[i].title +
+                            '</a>' +
+                            '<p class="m-text m-margin-top-max">' +
+                            msg.data[i].content +
+                            '</p>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
                     }
+                    $(".ui-vertical-segment").append(a);
                 }
-            })
+            }
         })
-
-
-        // layui.use('table', function () {
-        //     $("#ttt").on('click', function () {
-        //         console.log("ajax")
-        //         $.ajax({
-        //             url: "http://localhost:8080/foodinfo",
-        //             data: {
-        //                 id: 68
-        //             },
-        //             dataType: "json",
-        //             type: "post",
-        //             success: function (msg) {
-        //                 console.log(msg.data.flag)
-        //                 console.log(msg)
-
-        //                 if (msg.code == 200) {
-        //                    document.getElementById("title").innerHTML = msg.data.flag
-        //                     // window.location.href = "info.html?";
-
-        //                     // layer.open({
-        //                     //     //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-        //                     //     type: 1,
-        //                     //     title: "文章信息",
-        //                     //     area: ['1400px', '700px'],
-        //                     //     content: $("#info")//引用的弹出层的页面层的方式加载修改界面表单
-        //                     // });
-
-        //                 }
-        //             }
-        //         })
-        //     })
-        // });
 
         $('.menu.toggle').click(function () {
             $('.m-item').toggleClass('m-mobile-show');

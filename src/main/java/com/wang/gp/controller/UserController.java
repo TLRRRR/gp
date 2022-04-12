@@ -85,7 +85,7 @@ public class UserController {
         user.setPwd(MD5Utils.getMD5(pwd));
         String login = userService.login(user);
         if (login == "success") {
-            request.getSession().setAttribute("LoginUser", user);
+            request.getSession().setAttribute("LoginUser", user.getUserName());
             System.out.println("用户的session是："+request.getSession());
             return "{\"errorCode\":\"00\",\"errorMessage\":\"登陆成功！\"}";
         } else {

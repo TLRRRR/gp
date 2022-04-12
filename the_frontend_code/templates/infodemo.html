@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link href="../static/images/me.jpg" th:href="@{/images/me.jpg}" rel="icon" type="image/x-ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}">
+    <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
+    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+    <link rel="stylesheet" href="../static/css/timeline.css" th:href="@{/css/timeline.css}">
+
+</head>
+
+<body>
+
+    <!--导航-->
+
+    <!--顶部图片-->
+    <div class="m-bg-type_outer" style="width: 100%;height: 50%">
+        <img src="../static/images/bg.jpg" alt="" class="ui m-bg image" style="width: 100%;height: 100%">
+        <div class="m-bg-class_cover">
+            <div class="ui container" style="position: relative ;bottom: -540px;">
+
+                <h2 class="m-font-size-title-large" align="center" id="title">Markdown编辑</h2>
+                <div class="ui container" align="center">
+                    <div class="ui horizontal link list" align="center">
+                        <div class="item">
+                            <div class="ui orange basic label" style="font-size: 7px">原创</div>
+                        </div>
+                        <div class="item">
+                            <i class="user outline outline icon m-font-size-text-mini"></i>
+                            <a href="#" style="color: #ffffff;font-size: 18px">oneStar</a>
+                        </div>
+                        <div class="item">
+                            <i class="calendar icon m-font-size-text-mini"></i>
+                            <span class="m-font-size-text-mini">2020-01-01</span>
+                        </div>
+                        <div class="item">
+                            <i class="clone icon m-font-size-text-mini"></i>
+                            <a href="#" target="_blank" style="color: #ffffff;font-size: 16px">我的故事</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--中间内容-->
+    <div id="waypoint" class="m-margin- animated fadeIn">
+        <div class="ui container m-opacity box-shadow-max">
+            <!--内容-->
+            <div class="ui attached padded segment">
+                <!--中间主要内容部分-->
+                <div id="conten" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large">
+                    <br>
+                    <br>
+                    <span id="content"></span>
+                    <br>
+                    <br>
+                    Bukowski wanted to be a writer. But for decades his work was rejected by almost every magazine,
+                    newspaper,
+                    journal, agent, and publisher he submitted to. His work was horrible, they said. Crude. Disgusting.
+                    Depraved. And as
+                    the stacks of rejection slips piled up, the weight of his failures pushed him deep into an
+                    alcohol-fueled depression that
+                    would follow him for most of his life.
+                    Bukowski had a day job as a letter-filer at a post office. He got paid shit money and spent most of
+                    it on booze. He
+                    gambled away the rest at the racetrack. At night, he would drink alone and sometimes hammer out
+                    poetry on his beat-
+                    up old typewriter. Often, he’d wake up on the floor, having passed out the night before.
+                    Thirty years went by like this, most of it a meaningless blur of alcohol, drugs, gambling, and
+                    prostitutes. Then,
+                    when Bukowski was fifty, after a lifetime of failure and self-loathing, an editor at a small
+                    independent publishing
+                    house took a strange interest in him. The editor couldn’t offer Bukowski much money or much promise
+                    of sales. But
+                    he had a weird affection for the drunk loser, so he decided to take a chance on him. It was the
+                    first real shot Bukowski
+                    had ever gotten, and, he realized, probably the only one he would ever get. Bukowski wrote back to
+                    the editor: “I have
+                    one of two choices—stay in the post office and go crazy . . . or stay out here and play at writer
+                    and starve. I have
+                    decided to starve.”
+                    Upon signing the contract, Bukowski wrote his first novel in three weeks. It was called simply Post
+                    Office. In the
+                    dedication, he wrote, “Dedicated to nobody.”
+                    Bukowski would make it as a novelist and poet. He would go on and publish six novels and hundreds of
+                    poems,
+                    selling over two million copies of his books. His popularity defied everyone’s expectations,
+                    particularly his own.
+                    Stories like Bukowski’s are the bread and butter of our cultural narrative. Bukowski’s life embodies
+                    the American
+                    Dream: a man fights for what he wants, never gives up, and eventually achieves his wildest dreams.
+                    It’s practically a
+                    movie waiting to happen. We all look at stories like Bukowski’s and say, “See? He never gave up. He
+                    never stopped
+                    trying. He always believed in himself. He persisted against all the odds and made something of
+                    himself!”
+                    It is then strange that on Bukowski’s tombstone, the epitaph reads: “Don’t try.”
+                    See, despite the book sales and the fame, Bukowski was a loser. He knew it. And his success stemmed
+                    not from
+                    some determination to be a winner, but from the fact that he knew he was a loser, accepted it, and
+                    then wrote honestly
+                    about it. He never tried to be anything other than what he was. The genius in Bukowski’s work was
+                    not in overcoming
+                    unbelievable odds or developing himself into a shining literary light. It was the opposite. It was
+                    his simple ability to be
+                    completely, unflinchingly honest with himself—especially the worst parts of himself—and to share his
+                    failings without
+                    hesitation or doubt.
+                    <!-- </tbody> -->
+                    <!-- </table> -->
+                </div>
+                <div class="ui horizontal divider">end</div>
+            </div>
+            <div class="ui bottom attached segment">
+                <!--评论区域列表-->
+                <div id="comment-container" class="ui teal segment">
+                    <div>
+                        <div class="ui threaded comments" style="max-width: 100%;">
+                            <h3 class="ui dividing header">评论</h3>
+                            <div class="comment">
+                                <a class="avatar">
+                                    <img src="../static/images/avatar.png">
+                                </a>
+                                <div class="content">
+                                    <a class="author">
+                                        <span>Matt</span>
+                                        <div class="ui mini basic teal left pointing label m-padded-mini">栈主</div>
+                                    </a>
+                                    <div class="metadata">
+                                        <span class="date">Today at 5:42PM</span>
+                                    </div>
+                                    <div class="text">
+                                        How artistic!
+                                    </div>
+                                    <div class="actions">
+                                        <a class="reply" data-commentid="1" data-commentnickname="Matt"
+                                            onclick="reply(this)">回复</a>
+                                    </div>
+                                </div>
+                                <!--子集评论-->
+                                <div class="comments">
+                                    <div class="comment">
+                                        <a class="avatar">
+                                            <img src="../static/images/avatar.png">
+                                        </a>
+                                        <div class="content">
+                                            <a class="author">
+                                                <span>小红</span>
+                                                <div class="ui mini basic teal left pointing label m-padded-mini">栈主
+                                                </div>
+                                                &nbsp;<span class="m-teal">@ 小白</span>
+                                            </a>
+                                            <div class="metadata">
+                                                <span class="date">Today at 5:42PM</span>
+                                            </div>
+                                            <div class="text">
+                                                How artistic!
+                                            </div>
+                                            <div class="actions">
+                                                <a class="reply" data-commentid="1" data-commentnickname="Matt"
+                                                    onclick="reply(this)">回复</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="comment-form" class="ui form">
+                    <input type="hidden" name="blogId">
+                    <input type="hidden" name="parentComment.id" value="-1">
+                    <div class="field">
+                        <textarea name="content" placeholder="请输入评论信息..."></textarea>
+                    </div>
+                    <div class="fields">
+                        <div class="field m-mobile-wide m-margin-bottom-small">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="nickname" placeholder="姓名">
+                            </div>
+                        </div>
+                        <div class="field m-mobile-wide m-margin-bottom-small">
+                            <div class="ui left icon input">
+                                <i class="mail icon"></i>
+                                <input type="text" name="email" placeholder="邮箱">
+                            </div>
+                        </div>
+                        <div class="field  m-margin-bottom-small m-mobile-wide">
+                            <button id="commentpost-btn" type="button" class="ui teal button m-mobile-wide"><i
+                                    class="edit icon"></i>发布</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toolbar" class="m-padded m-fixed m-right-bottom" style="display: none">
+        <div class="ui vertical icon buttons ">
+            <button type="button" class="ui toc teal button">目录</button>
+            <a href="#comment-container" class="ui teal button">评论</a>
+            <div id="toTop-button" class="ui icon button"><i class="chevron up icon"></i></div>
+        </div>
+    </div>
+
+    <div class="ui toc-container flowing popup transition hidden" style="width: 250px!important;">
+        <ol class="js-toc">
+
+        </ol>
+    </div>
+
+    <div id="qrcode" class="ui wechat-qr flowing popup transition hidden " style="width: 130px !important;">
+        <!--<img src="./static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 120px !important;">-->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+    <script src="../static/lib/qrcode/qrcode.min.js" th:src="@{/lib/qrcode/qrcode.min.js}"></script>
+    <script src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>
+    <script src="../static/lib/tocbot/tocbot.min.js" th:src="@{/lib/tocbot/tocbot.min.js}"></script>
+    <script src="../static/lib/waypoints/jquery.waypoints.min.js"
+        th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
+    <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
+
+    <script>
+        //获取参数方法
+        function GetUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+        //使用获取参数方法
+        var id = GetUrlParam("id");
+        var name = GetUrlParam("name");
+        console.log("id:" + id + "  name:" + name);
+
+        $.ajax({
+            url: "http://localhost:8080/infodetail",
+            dataType: "json",
+            type: "post",
+            data: {
+                id: id
+            },
+            success: function (msg) {
+                console.log("that is my json code: " + msg.code);
+                console.log("that is my json data: " + msg.data.content);
+                if (msg.code == 200) {
+                    console.log("like success")
+                    document.getElementById("title").innerHTML = msg.data.title;
+                    document.getElementById("content").innerHTML = msg.data.content;
+                }
+            }
+        })
+    </script>
+
+
+
+    <script th:inline="javascript">
+
+        // $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+
+        tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.js-toc',
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.js-toc-content',
+            // Which headings to grab inside of the contentSelector element.
+            headingSelector: 'h1, h2, h3',
+        });
+
+        $('.toc.button').popup({
+            popup: $('.toc-container.popup'),
+            on: 'click',
+            position: 'left center'
+        });
+
+        $('#toTop-button').click(function () {
+            $(window).scrollTo(0, 500);
+        });
+
+
+        var waypoint = new Waypoint({
+            element: document.getElementById('waypoint'),
+            handler: function (direction) {
+                if (direction == 'down') {
+                    $('#toolbar').show(100);
+                } else {
+                    $('#toolbar').hide(500);
+                }
+                console.log('Scrolled to waypoint!  ' + direction);
+            }
+        })
+
+        //评论表单验证
+        $('.ui.form').form({
+            fields: {
+                title: {
+                    identifier: 'content',
+                    rules: [{
+                        type: 'empty',
+                        prompt: '请输入评论内容'
+                    }
+                    ]
+                },
+                content: {
+                    identifier: 'nickname',
+                    rules: [{
+                        type: 'empty',
+                        prompt: '请输入你的大名'
+                    }]
+                },
+                type: {
+                    identifier: 'email',
+                    rules: [{
+                        type: 'email',
+                        prompt: '请填写正确的邮箱地址'
+                    }]
+                }
+            }
+        });
+
+        // $(function () {
+        //     $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"comments/6");
+        // });
+
+        $('#commentpost-btn').click(function () {
+            var boo = $('.ui.form').form('validate form');
+            if (boo) {
+                console.log('校验成功');
+                postData();
+            } else {
+                console.log('校验失败');
+            }
+        });
+
+        // function postData() {
+        //     $("#comment-container").load(/*[[@{/comments}]]*/"",{
+        //         "parentComment.id" : $("[name='parentComment.id']").val(),
+        //         "blogId" : $("[name='blogId']").val(),
+        //         "nickname": $("[name='nickname']").val(),
+        //         "email"   : $("[name='email']").val(),
+        //         "content" : $("[name='content']").val()
+        //     },function (responseTxt, statusTxt, xhr) {
+        //         $(window).scrollTo($('#goto'),500);
+        //         clearContent();
+        //     });
+        // }
+
+        function clearContent() {
+            $("[name='nickname']").val('');
+            $("[name='email']").val('');
+            $("[name='content']").val('');
+            $("[name='parentComment.id']").val(-1);
+            $("[name='content']").attr("placeholder", "请输入评论信息...");
+        }
+
+    // function reply(obj) {
+    //     var commentId = $(obj).data('commentid');
+    //     var commentNickname = $(obj).data('commentnickname');
+    //     $("[name='content']").attr("placeholder", "@"+commentNickname).focus();
+    //     $("[name='parentComment.id']").val(commentId);
+    //     $(window).scrollTo($('#comment-form'),500);
+    // }
+
+    </script>
+</body>
+
+</html>

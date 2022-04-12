@@ -25,6 +25,9 @@ public interface FoodInfoService {
     //根据id查询信息
     public FoodInfo queryFoodInfoById(Long id);
 
+    //根据id升序查询信息
+    public FoodInfo queryFoodInfoByIdAsc(Long id);
+
     //查询所有信息
     public ArrayList<FoodInfo> queryFoodInfo();
 }
