@@ -3894,6 +3894,12 @@ textarea::selection {
     max-width: 100% !important
 }
 
+.wang.ui.container {
+    display: block;
+    max-width: 100% !important
+    /* top: 90px; */
+}
+
 @media only screen and (max-width:767px) {
     .ui.container {
         width: auto !important;

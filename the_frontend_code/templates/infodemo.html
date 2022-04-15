@@ -120,6 +120,8 @@
                 </div>
                 <div class="ui horizontal divider">end</div>
             </div>
+
+
             <div class="ui bottom attached segment">
                 <!--评论区域列表-->
                 <div id="comment-container" class="ui teal segment">
@@ -127,27 +129,27 @@
                         <div class="ui threaded comments" style="max-width: 100%;">
                             <h3 class="ui dividing header">评论</h3>
                             <div class="comment">
-                                <a class="avatar">
+                                <!-- <a class="avatar">
                                     <img src="../static/images/avatar.png">
-                                </a>
-                                <div class="content">
-                                    <a class="author">
-                                        <span>Matt</span>
+                                </a> -->
+                                <div class="content" id="txt">
+                                    <!-- <a class="author">
+                                        <span th:text="${comment.username}">Matt</span>
                                         <div class="ui mini basic teal left pointing label m-padded-mini">栈主</div>
-                                    </a>
-                                    <div class="metadata">
+                                    </a> -->
+                                    <!-- <div class="metadata">
                                         <span class="date">Today at 5:42PM</span>
-                                    </div>
+                                    </div> -->
                                     <div class="text">
                                         How artistic!
                                     </div>
-                                    <div class="actions">
+                                    <!-- <div class="actions">
                                         <a class="reply" data-commentid="1" data-commentnickname="Matt"
                                             onclick="reply(this)">回复</a>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!--子集评论-->
-                                <div class="comments">
+                                <!-- <div class="comments">
                                     <div class="comment">
                                         <a class="avatar">
                                             <img src="../static/images/avatar.png">
@@ -171,17 +173,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
-
                         </div>
                     </div>
                 </div>
+                <!-- 评论人信息页面 -->
                 <div id="comment-form" class="ui form">
                     <input type="hidden" name="blogId">
                     <input type="hidden" name="parentComment.id" value="-1">
                     <div class="field">
-                        <textarea name="content" placeholder="请输入评论信息..."></textarea>
+                        <textarea name="content" id="text" placeholder="请输入评论信息..."></textarea>
                     </div>
                     <div class="fields">
                         <div class="field m-mobile-wide m-margin-bottom-small">
@@ -201,8 +203,8 @@
                                     class="edit icon"></i>发布</button>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
     </div>
@@ -225,7 +227,6 @@
         <!--<img src="./static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 120px !important;">-->
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
     <script src="../static/lib/qrcode/qrcode.min.js" th:src="@{/lib/qrcode/qrcode.min.js}"></script>
@@ -235,6 +236,7 @@
         th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
     <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
 
+    <!-- 显示文章详情 -->
     <script>
         //获取参数方法
         function GetUrlParam(name) {
@@ -244,15 +246,21 @@
         }
         //使用获取参数方法
         var id = GetUrlParam("id");
-        var name = GetUrlParam("name");
+        var pageNum = GetUrlParam("pageNum");
+        var pageSize = GetUrlParam("pageSize");
         console.log("id:" + id + "  name:" + name);
+        console.log("pageNum:" + pageNum + "  name:" + name);
+        console.log("pageSize:" + pageSize + "  name:" + name);
 
+        //文章详情
         $.ajax({
             url: "http://localhost:8080/infodetail",
             dataType: "json",
             type: "post",
             data: {
-                id: id
+                id: id,
+                pageNum: pageNum,
+                pageSize: pageSize
             },
             success: function (msg) {
                 console.log("that is my json code: " + msg.code);
@@ -264,6 +272,212 @@
                 }
             }
         })
+
+        //展示评论
+        // function
+        $.ajax({
+            url: "http://localhost:8080/infocomment",
+            dataType: "json",
+            type: "post",
+            data: {
+                id: id,
+                pageNum: pageNum,
+                pageSize: pageSize
+            },
+            success: function (msg) {
+                console.log(msg.data.length)
+                if (msg.code == 200) {
+                    console.log("like success")
+                    let comment = ''
+                    for (let i = 0; i < msg.data.length; i++) {
+                        comment += '<div class="comment">' +
+                            '<div class="content" id="txt">' +
+                            '<div class="text">' +
+                            msg.data[i].content +
+                            '</div>' +
+                            '</div>' +
+                            '</div>'
+                    }
+                    $(".ui.threaded.comments").html(comment);
+                }
+            }
+        })
+
+        // console.log(commentContent)
+        $("#commentpost-btn").on("click", function () {
+            var commentContent = document.getElementById("text").value;
+            var commentArea = document.getElementById("text");
+            console.log("nihaonihao")
+            console.log("评论内容" + commentContent)
+            $.ajax({
+                url: "http://localhost:8080/comment/addcomment",
+                dataType: "json",
+                type: "post",
+                data: {
+                    id: id,
+                    pageNum: pageNum,
+                    pageSize: pageSize,
+                    commentContent: commentContent
+                },
+                success: function () {
+                    commentArea.value = "";
+                    $.ajax({
+                        url: "http://localhost:8080/infocomment",
+                        dataType: "json",
+                        type: "post",
+                        data: {
+                            id: id,
+                            pageNum: pageNum,
+                            pageSize: pageSize
+                        },
+                        success: function (msg) {
+                            console.log(msg.data.length)
+                            if (msg.code == 200) {
+                                console.log("like success")
+                                let comment = ''
+                                for (let i = 0; i < msg.data.length; i++) {
+                                    comment += '<div class="comment">' +
+                                        '<div class="content" id="txt">' +
+                                        '<div class="text">' +
+                                        msg.data[i].content +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>'
+                                }
+                                $(".ui.threaded.comments").html(comment);
+                            }
+                        }
+                    })
+                }
+            })
+        })
+
+
+
+        // <!-- 评论功能 -->
+
+
+        // /* 获取按钮 */
+        // var btn = document.getElementById('commentpost-btn');
+        // /* 获取文本域 */
+        // var text = document.getElementById('text');
+        // /* 获取评论区 */
+        // var txt = document.getElementById("txt")
+
+        // btn.onclick = function () {
+        //     /* 获取文本域里的内容 */
+        //     var value = text.value
+        //     /* 创键li */
+        //     var ul = document.createElement('ul');
+        //     /* 把li放到ul */
+        //     // var lis = `<li>${value}</li><a class="del">删除</a>`
+        //     var lis = ` <div class="text" >${value}</div >`
+        //     // <div div class="text" >
+        //     //     How artistic!
+        //     //                     </div >
+        //     ul.innerHTML = lis
+        //     /* 把lu插入到评论中 */
+        //     txt.appendChild(ul);
+        //     //清空文本域
+        //     text.value = "";
+        //     //自动获取焦点
+        //     text.focus();
+        //     var del = ul.querySelector('.del')
+        //     /* 绑定删除事件 */
+        //     del.onclick = function () {
+        //         /* 将自身删除 */
+        //         ul.remove();
+        //     }
+        // }
+
+
+        //评论表单验证
+        // $('.ui.form').form({
+        //     fields: {
+        //         title: {
+        //             identifier: 'content',
+        //             rules: [{
+        //                 type: 'empty',
+        //                 prompt: '请输入评论内容'
+        //             }
+        //             ]
+        //         },
+        //         content: {
+        //             identifier: 'nickname',
+        //             rules: [{
+        //                 type: 'empty',
+        //                 prompt: '请输入你的大名'
+        //             }]
+        //         },
+        //         type: {
+        //             identifier: 'email',
+        //             rules: [{
+        //                 type: 'email',
+        //                 prompt: '请填写正确的邮箱地址'
+        //             }]
+        //         }
+        //     }
+        // });
+
+        // $(function () {
+        //     $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"comments/6");
+        // });
+
+        // $("#commentpost-btn").on("click", function () {
+        //     console.log("lalala")
+        //     // var boo = $('.ui.form').form('validate form');
+        //     // if (boo) {
+        //     console.log('校验成功');
+        //     postdata();
+        //     // } else {
+        //     // console.log('校验失败');
+        //     // }
+        // });
+
+        //点击发送评论后，评论区重新加载
+        // function postData() {
+        //     console.log("评论区重新加载模块")
+        //     $("#comment-container").load(/*[[@{/comments}]]*/"", {
+        //         // "parentComment.id": $("[name='parentComment.id']").val(),
+        //         // "blogId": $("[name='blogId']").val(),
+        //         // "username": $("[name='nickname']").val(),
+        //         // "email": $("[name='email']").val(),
+        //         "content": $("[name='content']").val()
+        //     }
+        //         // ,
+        //         //  function (responseTxt, statusTxt, xhr) {
+        //         //     $(window).scrollTo($('#goto'), 500);
+        //         //     clearContent();
+        //         // }
+        //     );
+        // }
+
+        // function postdata() {
+        //     console.log("this is little postdata")
+        //     $("#comment-container").on("load", "",{
+        //         // "content": $("[name='content']").val()
+        //         "content": "fuck my ass"
+
+        //     })
+        // }
+
+        //评论完成后，发消息人区域清空重置
+        // function clearContent() {
+        //     $("[name='nickname']").val('');
+        //     $("[name='email']").val('');
+        //     $("[name='content']").val('');
+        //     $("[name='parentComment.id']").val(-1);
+        //     $("[name='content']").attr("placeholder", "请输入评论信息...");
+        // }
+
+        //子集评论
+        // function reply(obj) {
+        //     var commentId = $(obj).data('commentid');
+        //     var commentNickname = $(obj).data('commentnickname');
+        //     $("[name='content']").attr("placeholder", "@" + commentNickname).focus();
+        //     $("[name='parentComment.id']").val(commentId);
+        //     $(window).scrollTo($('#comment-form'), 500);
+        // }
     </script>
 
 
@@ -309,46 +523,46 @@
         })
 
         //评论表单验证
-        $('.ui.form').form({
-            fields: {
-                title: {
-                    identifier: 'content',
-                    rules: [{
-                        type: 'empty',
-                        prompt: '请输入评论内容'
-                    }
-                    ]
-                },
-                content: {
-                    identifier: 'nickname',
-                    rules: [{
-                        type: 'empty',
-                        prompt: '请输入你的大名'
-                    }]
-                },
-                type: {
-                    identifier: 'email',
-                    rules: [{
-                        type: 'email',
-                        prompt: '请填写正确的邮箱地址'
-                    }]
-                }
-            }
-        });
+        // $('.ui.form').form({
+        //     fields: {
+        //         title: {
+        //             identifier: 'content',
+        //             rules: [{
+        //                 type: 'empty',
+        //                 prompt: '请输入评论内容'
+        //             }
+        //             ]
+        //         },
+        //         content: {
+        //             identifier: 'nickname',
+        //             rules: [{
+        //                 type: 'empty',
+        //                 prompt: '请输入你的大名'
+        //             }]
+        //         },
+        //         type: {
+        //             identifier: 'email',
+        //             rules: [{
+        //                 type: 'email',
+        //                 prompt: '请填写正确的邮箱地址'
+        //             }]
+        //         }
+        //     }
+        // });
 
         // $(function () {
         //     $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"comments/6");
         // });
 
-        $('#commentpost-btn').click(function () {
-            var boo = $('.ui.form').form('validate form');
-            if (boo) {
-                console.log('校验成功');
-                postData();
-            } else {
-                console.log('校验失败');
-            }
-        });
+        // $('#commentpost-btn').click(function () {
+        //     var boo = $('.ui.form').form('validate form');
+        //     if (boo) {
+        //         console.log('校验成功');
+        //         postData();
+        //     } else {
+        //         console.log('校验失败');
+        //     }
+        // });
 
         // function postData() {
         //     $("#comment-container").load(/*[[@{/comments}]]*/"",{
@@ -363,13 +577,13 @@
         //     });
         // }
 
-        function clearContent() {
-            $("[name='nickname']").val('');
-            $("[name='email']").val('');
-            $("[name='content']").val('');
-            $("[name='parentComment.id']").val(-1);
-            $("[name='content']").attr("placeholder", "请输入评论信息...");
-        }
+        // function clearContent() {
+        //     $("[name='nickname']").val('');
+        //     $("[name='email']").val('');
+        //     $("[name='content']").val('');
+        //     $("[name='parentComment.id']").val(-1);
+        //     $("[name='content']").attr("placeholder", "请输入评论信息...");
+        // }
 
     // function reply(obj) {
     //     var commentId = $(obj).data('commentid');

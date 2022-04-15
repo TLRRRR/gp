@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>I, Portfolio - Personal Category Bootstrap Responsive Website Template | Home : W3layouts</title>
+
+  <!-- Google fonts -->
+  <link href="//fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="assets/css/style-starter.css">
+  <!-- 登录css -->
+  <link rel="stylesheet" href="../static/css/style.css" type="text/css" media="all">
+</head>
+
+<body>
+  <!--header-->
+  <header id="site-header" class="fixed-top">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light stroke">
+        <a class="navbar-brand" href="index.html">
+          <span> 食物</span>
+          <span> 与健康</span>
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="fa icon-expand fa-bars"></span>
+          <span class="fa icon-close fa-times"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="home.html">Home </a>
+            </li>
+            <li class="nav-item @@active">
+              <a class="nav-link" href="foodinfoList.html">食物说</a>
+            </li>
+            <li class="nav-item @@active">
+              <a class="nav-link" href="contact.html">饮食推荐</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <div class="popup ml-auto">
+            <a href="#menu" class="domain" data-toggle="modal" data-target="#DomainModal">
+              <div class="hamburger">
+                <span class="top-bar"></span>
+                <span class="middle-bar"></span>
+                <span class="bottom-bar"></span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- toggle switch for light and dark theme -->
+        <div class="mobile-position ml-lg-2">
+          <nav class="navigation">
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox">
+                <div class="mode-container">
+                  <i class="gg-sun"></i>
+                  <i class="gg-moon"></i>
+                </div>
+              </label>
+            </div>
+          </nav>
+        </div>
+        <!-- //toggle switch for light and dark theme -->
+      </nav>
+    </div>
+  </header>
+  <!--/header-->
+  <div class="header-gap">
+
+  </div>
+
+
+  <!-- 侧登录模块 -->
+  <div class="modal right fade" id="DomainModal" tabindex="-1" role="dialog" aria-labelledby="DomainModalLabel2">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+
+        <div class="modal-body">
+          <div class="modal__content">
+            <a class="navbar-brand"> <span>登录 </span></a>
+            <div class="widget-social-icons mt-sm-5 mt-4">
+              <ul class="icon-rounded address">
+                <div class="wthree-field">
+                  <input name="userName" id="userName" type="text" value="" placeholder="Username" required>
+                </div>
+                <div class="wthree-field">
+                  <input name="pwd" id="pwd" type="Password" placeholder="Password" required>
+                </div>
+                <div class="wthree-field">
+                  <button type="button" id="wangsubmit" name="submit" class="btn">登录</button>
+                </div>
+                <div class="wthree-field">
+                  <a href="#menu" class="domain" data-toggle="modal" data-target="#DomainModal2">注册</a>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 侧注册模块 -->
+  <div class="modal right fade" id="DomainModal2" tabindex="-1" role="dialog" aria-labelledby="DomainModalLabel2">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">&times;</span></button>
+
+        <div class="modal-body">
+          <div class="modal__content">
+            <a class="navbar-brand"> <span>注册 </span></a>
+            <div class="widget-social-icons mt-sm-5 mt-4">
+              <ul class="icon-rounded address">
+                <div class="wthree-field">
+                  <input name="userName" id="userNameRegister" type="text" value="" placeholder="Username" required>
+                </div>
+                <div class="wthree-field">
+                  <input name="pwd" id="pwdRegister" type="Password" placeholder="Password">
+                </div>
+                <div class="wthree-field">
+                  <input name="tel" id="telRegister" type="text" placeholder="Telephone">
+                </div>
+                <div class="wthree-field">
+                  <button type="button" name="submit" id="submitRegister" class="btn">注册</button>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- //Domain modal -->
+  <!-- home page about section -->
+  <section class="w3l-homeblock1" id="about">
+    <div class="midd-w3 py-5">
+      <div class="container py-lg-5 py-md-3">
+        <div class="row">
+          <div class="col-lg-6">
+            <span class="text">My Services</span>
+            <h3 class="title-big"><span>Build your brand</span> and grow your business</h3>
+            <p class="mt-4">I can give your business a new creative start right away! You can download my resume
+              in order to learn the details of my professional life as a designer and photographer. </p>
+            <ul class="service-list mt-md-5 mt-4">
+              <li class="service-link"><a href="#">UI/UX Design and Development</a></li>
+              <li class="service-link"><a href="#">Branding Design and Identity</a></li>
+              <li class="service-link"><a href="#">Mobile App Design</a></li>
+              <li class="service-link"><a href="#">Art, Logo, SVG & Illustration</a></li>
+              <li class="service-link"><a href="#">3D Modeling & Motion</a></li>
+              <li class="service-link"><a href="#">PSD Design, Photoshop</a></li>
+            </ul>
+            <a href="#url" class="btn btn-style btn-empty p-0">View my all services <span></span></a>
+          </div>
+          <div class="col-lg-6 mt-lg-0 mt-5">
+            <div class="position-relative">
+              <img src="assets/images/about.jpg" alt="" class="radius-image img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //home page about section -->
+
+  <!-- home page about section -->
+  <section class="w3l-homeblock2" id="skills">
+    <div class="midd-w3 py-5">
+      <div class="container py-lg-5 py-md-3">
+        <div class="row">
+          <div class="col-lg-6 align-self">
+            <div class="position-relative px-lg-5 mx-lg-0 mx-md-5 image-padding">
+              <img src="assets/images/skills.png" alt="" class="radius-image img-fluid">
+              <div class="position-absolute-images">
+                <img src="assets/images/file.png" class="img-fluid pos-img" alt="" />
+                <img src="assets/images/file1.png" class="img-fluid pos-img1" alt="" />
+                <img src="assets/images/file2.png" class="img-fluid pos-img2" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-lg-0 mt-md-5 mt-4">
+            <span class="text">My Featured Skills</span>
+            <h3 class="title-big">I’m using <span>top leading</span>
+              design methods.</h3>
+            <p class="mt-4">I Specialize in Branding and Strategy, and am passionate about creating Awesome
+              Portfolio work. And I always ready to impress the audience with my Creativity. </p>
+            <div class="skills-bars mt-5">
+              <div class="progress-info">
+                <h6 class="progress-tittle">UI/UX Design</h6>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 80%"
+                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+              <div class="progress-info">
+                <h6 class="progress-tittle">Ideas &amp; Technology
+                </h6>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 95%"
+                    aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+              <div class="progress-info">
+                <h6 class="progress-tittle">Branding Design</h6>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 55%"
+                    aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+              <div class="progress-info mb-0">
+                <h6 class="progress-tittle">Responsive Web Design</h6>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 80%"
+                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //home page about section -->
+
+  <!-- home page about section -->
+  <section class="w3l-homeblock3" id="awards">
+    <div class="midd-w3 py-5">
+      <div class="container py-lg-5 py-md-3">
+        <div class="row">
+          <div class="col-lg-6">
+            <span class="text">My Awards and Achievements </span>
+            <h3 class="title-big">Professional awards and
+              honors <span> I’ve reached.</span></h3>
+            <p class="mt-4">Personal awards. Having O7 Years of Experience that Motivated by the Desire to
+              achieve Success </p>
+            <div class="reward-list mt-5">
+              <div class="reward-item">
+                <div class="reward-item-photo"><img src="assets/images/banner.png" alt="" class="img-fluid"></div>
+                <div class="reward-item-detail">
+                  <span class="reward-item-title">Web design awards</span>
+                  <p class="reward-item-descr">For Best UX/UI Design App</p>
+                </div>
+              </div>
+              <div class="reward-item">
+                <div class="reward-item-photo"><img src="assets/images/skills.png" alt="" class="img-fluid"></div>
+                <div class="reward-item-detail">
+                  <span class="reward-item-title">Inovative ideas design Awards</span>
+                  <p class="reward-item-descr">For Most Loved Illustration </p>
+                </div>
+              </div>
+              <div class="reward-item">
+                <div class="reward-item-photo"><img src="assets/images/banner.png" alt="" class="img-fluid"></div>
+                <div class="reward-item-detail">
+                  <span class="reward-item-title">Creative Design awards</span>
+                  <p class="reward-item-descr">For Best UX/UI Project Design</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 align-self mt-lg-0 mt-md-5 mt-4">
+            <div class="position-relative px-lg-5 mx-lg-0 mx-md-5 image-padding">
+              <img src="assets/images/awards.png" alt="" class="radius-image img-fluid">
+              <div class="position-absolute-images">
+                <img src="assets/images/award.png" class="img-fluid pos-img" alt="" />
+                <img src="assets/images/award1.png" class="img-fluid pos-img1" alt="" />
+                <img src="assets/images/award2.png" class="img-fluid pos-img2" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //home page about section -->
+
+  <!-- home page about section -->
+  <section class="w3l-clients" id="skills">
+
+    <div class="midd-w3 py-5">
+      <div class="container py-lg-5 py-md-3">
+        <div class="row">
+          <div class="col-lg-6 align-self">
+            <div class="position-relative px-lg-5">
+              <img src="assets/images/clients.png" alt="" class="radius-image img-fluid">
+            </div>
+          </div>
+          <div class="col-lg-6 mt-lg-0 mt-5">
+            <span class="text">Testimonials</span>
+            <h3 class="title-big">What my <span>clients think</span> about Me</h3>
+            <div id="owl-demo1" class="owl-carousel owl-theme mt-4 py-2 mb-4">
+              <div class="item">
+                <div class="testimonial-content">
+                  <div class="testimonial">
+                    <blockquote>
+                      <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae
+                        laudantium
+                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
+                        Dolores molestias adipisci dolor sit amet! by the Desire to achieve Success .</q>
+                    </blockquote>
+                    <div class="testi-des">
+                      <div class="test-img"><img src="assets/images/team1.jpg" class="img-fluid" alt="client-img">
+                      </div>
+                      <div class="peopl align-self">
+                        <h3>John wilson</h3>
+                        <p class="indentity">Seattle, Washington</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimonial-content">
+                  <div class="testimonial">
+                    <blockquote>
+                      <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae
+                        laudantium
+                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
+                        Dolores molestias adipisci dolor sit amet! by the Desire to achieve Success.</q>
+                    </blockquote>
+                    <div class="testi-des">
+                      <div class="test-img"><img src="assets/images/team2.jpg" class="img-fluid" alt="client-img">
+                      </div>
+                      <div class="peopl align-self">
+                        <h3>Julia sakura</h3>
+                        <p class="indentity">Seattle, Washington</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimonial-content">
+                  <div class="testimonial">
+                    <blockquote>
+                      <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae
+                        laudantium
+                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
+                        Dolores molestias adipisci dolor sit amet! by the Desire to achieve Success.</q>
+                    </blockquote>
+                    <div class="testi-des">
+                      <div class="test-img"><img src="assets/images/team3.jpg" class="img-fluid" alt="client-img">
+                      </div>
+                      <div class="peopl align-self">
+                        <h3>Roy Linderson</h3>
+                        <p class="indentity">Seattle, Washington</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimonial-content">
+                  <div class="testimonial">
+                    <blockquote>
+                      <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae
+                        laudantium
+                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
+                        Dolores molestias adipisci dolor sit amet! by the Desire to achieve Success.</q>
+                    </blockquote>
+                    <div class="testi-des">
+                      <div class="test-img"><img src="assets/images/team4.jpg" class="img-fluid" alt="client-img">
+                      </div>
+                      <div class="peopl align-self">
+                        <h3>Mike Thyson</h3>
+                        <p class="indentity">Seattle, Washington</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimonial-content">
+                  <div class="testimonial">
+                    <blockquote>
+                      <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae
+                        laudantium
+                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
+                        Dolores molestias adipisci dolor sit amet! by the Desire to achieve Success.</q>
+                    </blockquote>
+                    <div class="testi-des">
+                      <div class="test-img"><img src="assets/images/team2.jpg" class="img-fluid" alt="client-img">
+                      </div>
+                      <div class="peopl align-self">
+                        <h3>Laura gill</h3>
+                        <p class="indentity">Seattle, Washington</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //home page about section -->
+  <div class="copyright py-sm-5 py-4 text-center">
+    <div class="container">
+    </div>
+  </div>
+  <!-- move top -->
+  <button onclick="topFunction()" id="movetop" title="Go to top">
+    <span class="fa fa-angle-up"></span>
+  </button>
+  <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+      scrollFunction()
+    };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("movetop").style.display = "block";
+      } else {
+        document.getElementById("movetop").style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+  <!-- /move top -->
+
+  <!-- jQuery and Bootstrap JS -->
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+
+  <script src="assets/js/theme-change.js"></script><!-- theme switch js (light and dark)-->
+
+  <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
+
+  <!-- 登录 -->
+  <script>
+    function func() {
+      //验证用户是否已经注册过
+      var userName = $("#userName").val();//获取表单元素值
+      var pwd = $("#pwd").val();
+      // var userName = document.getElementById('userName').value;
+      if (userName == "") {
+        alert("手机号不能为空！");
+        return false;
+      }
+      if (pwd == "") {
+        alert("密码不能为空！");
+        return false;
+      }
+      if (pwd.length < 4) {
+        alert("密码不能少于4位！");
+        return false;
+      }
+      return true;
+    }
+
+    $("#wangsubmit").on("click", function () {
+      console.log("ssssssss")
+      if (!func()) {
+        console.log("!!!!!!");
+        return false;
+      }
+      var userName = $("#userName").val();//获取表单元素值
+      var pwd = $("#pwd").val();
+      var data = {
+        userName: userName,
+        pwd: pwd
+      };
+      console.log(userName)
+      console.log(data)
+      $.ajax({
+        type: "POST",
+        //待载入页面的url
+        url: "http://localhost:8080/login",
+        data: data,
+        dataType: 'json',
+        success: function (msg) {
+          console.log("进success了");
+          if ("00" == msg.errorCode) {
+            console.log("success");
+            alert("handsome")
+            window.location.href = "userHome.html";
+          } else if ("11" == msg.errorCode) {
+            alert("该用户不存在！");
+            console.log("该用户不存在！");
+            return false;
+          } else if ("22" == msg.errorCode) {
+            alert("密码输入错误，错误输入三次后您的账户将会被锁定！why");
+            return false;
+          } else if ("33" == msg.errorCode) {
+            alert("您由于错误登陆次数太多，系统已将您的账户锁定，请在三分钟后重新登录！");
+            return false;
+          }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+          console.log("进error了")
+          // 状态码
+          console.log(XMLHttpRequest.status);
+          // 状态
+          console.log(XMLHttpRequest.readyState);
+          // 错误信息
+          console.log(textStatus);
+        }
+      });
+    });
+  </script>
+  <!-- /登录 -->
+
+  <!-- 注册 -->
+  <script>
+    function rfunc() {
+      console.log("现在在rfunc方法中")
+      var userName = $("#userNameRegister").val();
+      // let user = document.getElementById("userName").value;
+      var pwd = $("#pwdRegister").val();
+      var tel = $("#telRegister").val();
+      if (userName == "") {
+        alert("用户名不能为空！");
+        return false;
+      }
+      if (pwd == "") {
+        alert("密码不能为空！");
+        return false;
+      }
+      if (tel == "") {
+        alert("手机号不能为空！");
+        return false;
+      }
+      // if (!(/^1[34578]\d{9}$/.test(pwd))) {
+      //     alert("手机号输入错误");
+      //     return false;
+      // }
+      if (pwd.length < 4) {
+        alert("密码不能少于4位！");
+        return false;
+      }
+      return true;
+    }
+
+    $("#submitRegister").on("click", function () {
+      if (!rfunc()) {
+        console.log("!!!!!!");
+        return false;
+      }
+      var userName = $("#userNameRegister").val();//获取表单元素值
+      var pwd = $("#pwdRegister").val();
+      var tel = $("#telRegister").val();
+      var data = {
+        userName: userName,
+        pwd: pwd,
+        tel: tel
+      };
+      console.log(data);
+      $.ajax({
+        type: "POST",
+        //待载入页面的url,方法名
+        url: "http://localhost:8080/register",
+        data: data,    //后台传回的数据
+        dataType: 'json',
+        success: function (msg) {
+          if ("00" == msg.errorCode) {
+            console.log("success");
+            alert("注册成功！！！")
+            window.location.href = "userHome.html";
+          } else if ("11" == msg.errorCode) {
+            alert("该用户已经存在！");
+            console.log("该用户已经存在！");
+            return false;
+          } else if ("22" == msg.errorCode) {
+            alert("该手机号已经注册！");
+            console.log("该手机号已经注册！");
+            return false;
+          }
+        }
+      })
+    })
+  </script>
+  <!-- /注册 -->
+
+
+
+  <!-- owlcarousel -->
+  <script src="assets/js/owl.carousel.js"></script>
+
+  <!-- script for tesimonials carousel slider -->
+  <script>
+    $(document).ready(function () {
+      $("#owl-demo1").owlCarousel({
+        loop: true,
+        nav: false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          736: {
+            items: 1,
+            nav: false
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for tesimonials carousel slider -->
+
+  <!-- script for portfolio slider -->
+  <script>
+    $(document).ready(function () {
+      $("#owl-portfolio").owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          568: {
+            items: 2,
+            nav: false
+          },
+          1080: {
+            items: 3,
+            nav: false
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for portfolio slider -->
+
+  <!-- script for featured posts blog slider -->
+  <script>
+    $(document).ready(function () {
+      $('.owl-testimonial').owlCarousel({
+        loop: true,
+        margin: 0,
+        nav: true,
+        responsiveClass: true,
+        autoplay: false,
+        autoplayTimeout: 5000,
+        autoplaySpeed: 1000,
+        autoplayHoverPause: false,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          480: {
+            items: 1,
+            nav: false
+          },
+          667: {
+            items: 1,
+            nav: false
+          },
+          1000: {
+            items: 1,
+            nav: false
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for featured posts blog slider -->
+
+  <!-- script for banner typing text -->
+  <script>
+    function autoType(elementClass, typingSpeed) {
+      var thhis = $(elementClass);
+      thhis.css({
+        "position": "relative",
+        "display": "inline-block"
+      });
+      thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+      thhis = thhis.find(".text-js");
+      var text = thhis.text().trim().split('');
+      var amntOfChars = text.length;
+      var newString = "";
+      thhis.text("|");
+      setTimeout(function () {
+        thhis.css("opacity", 1);
+        thhis.prev().removeAttr("style");
+        thhis.text("");
+        for (var i = 0; i < amntOfChars; i++) {
+          (function (i, char) {
+            setTimeout(function () {
+              newString += char;
+              thhis.text(newString);
+            }, i * typingSpeed);
+          })(i + 1, text[i]);
+        }
+      }, 1500);
+    }
+
+    $(document).ready(function () {
+      // Now to start autoTyping just call the autoType function with the 
+      // class of outer div
+      // The second paramter is the speed between each letter is typed.   
+      autoType(".type-js", 200);
+    });
+  </script>
+  <!-- //script for banner typing text -->
+
+
+  <!-- disable body scroll which navbar is in active -->
+  <script>
+    $(function () {
+      $('.navbar-toggler').click(function () {
+        $('body').toggleClass('noscroll');
+      })
+    });
+  </script>
+  <!-- disable body scroll which navbar is in active -->
+
+  <!-- MENU-JS -->
+  <script>
+    $(window).on("scroll", function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 80) {
+        $("#site-header").addClass("nav-fixed");
+      } else {
+        $("#site-header").removeClass("nav-fixed");
+      }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+      $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+      $(window).on("resize", function () {
+        if ($(window).width() > 991) {
+          $("header").removeClass("active");
+        }
+      });
+    });
+  </script>
+  <!-- //MENU-JS -->
+
+  <!-- bootstrap -->
+  <script src="assets/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
