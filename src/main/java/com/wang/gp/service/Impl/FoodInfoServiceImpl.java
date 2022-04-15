@@ -54,4 +54,9 @@ public class FoodInfoServiceImpl implements FoodInfoService {
     public ArrayList<FoodInfo> queryFoodInfo() {
         return foodInfoDao.queryFoodInfo();
     }
+
+    @Override
+    public ArrayList<FoodInfo> queryFoodinfoByUsername(String userName) {
+        return foodInfoDao.queryFoodinfoByUsername(userName);
+    }
 }

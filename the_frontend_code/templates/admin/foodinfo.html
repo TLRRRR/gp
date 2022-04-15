@@ -8,7 +8,8 @@
     <link href="../../static/images/elf.png" th:href="@{/images/elf.png}" rel="icon" type="image/x-ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
     <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
-    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css"
+        th:href="@{/lib/editormd/css/editormd.min.css}">
     <link rel="stylesheet" href="../../static/js/layui/css/layui.css">
 </head>
 
@@ -21,11 +22,12 @@
                 <h2 class="ui olive header item" style="font-family: STSong">管理后台</h2>
                 <a href="foodinfo.html" class="active m-item item m-mobile-hide"><i class="home icon"></i>文章管理</a>
                 <a href="foodtype.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>分类管理</a>
+                <a href="../userHome.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>返回主页</a>
                 <div class="right m-item m-mobile-hide menu">
                     <div class="ui dropdown  item">
                         <div class="text">
-                            <img class="ui avatar image" src="/images/elf.png" th:src="@{/images/bg.jpg}">
-                            <span>oneStar</span>
+                            <!-- <img class="ui avatar image" src="/images/elf.png" th:src="@{/images/bg.jpg}"> -->
+                            <span id="dear_user">oneStar</span>
                         </div>
                         <i class="dropdown icon"></i>
                         <div class="menu">
@@ -93,7 +95,7 @@
         </div>
         <div id="table-container">
             <table class="ui compact teal table">
-                
+
                 <tfoot>
                     <tr>
                         <th colspan="7">
@@ -121,7 +123,16 @@
     <script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
     <script src="../../static/js/layui/layui.js" charset="utf-8"></script>
 
-    //markdown编辑器
+    <!-- 显示用户信息 -->
+    <script>
+        console.log(localStorage.getItem("user"))
+        var a = JSON.parse(localStorage.getItem("user"));
+        console.log(a.userName)
+        document.getElementById("dear_user").innerHTML = a.userName
+        // $("#user").val(localStorage.getItem)
+    </script>
+
+    <!-- //markdown编辑器 -->
     <script>
         var contentEditor;
         $(function () {
@@ -134,7 +145,7 @@
         });
     </script>
 
-    //弹出层update表单
+    <!-- //弹出层update表单 -->
     <div class="ui container" id="updateinfo" style="display:none;">
         <div class="ui form">
             <div class="two fields">
@@ -180,20 +191,22 @@
         </div>
     </div>
 
-    //编辑删除按钮
+    <!-- //编辑删除按钮 -->
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
     </script>
 
-    //layui工具
+    <!-- //layui工具 -->
     <script>
         layui.use('table', function () {
             var table = layui.table;
-
             table.render({
                 elem: '#test'
                 , url: 'http://localhost:8080/admin/toinfo'/*tpa=https://www.layuiweb.com/test/table/demo1.json*/
+                , where: {
+                    userName: a.userName
+                }
                 // , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板s
                 , height: 412
                 , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
@@ -204,10 +217,11 @@
                 , title: '用户数据表'
                 , cols: [[
                     { field: 'id', width: 90, title: 'ID', sort: true }
-                    , { field: 'title', width: 140, title: '标题' }
+                    , { field: 'title', width: 130, title: '标题' }
+                    , { field: 'author', width: 90, title: '作者' }
                     , { field: 'content', width: 250, title: '内容', sort: true }
                     , { field: 'date', width: 250, title: '日期' }
-                    , { field: 'typeid', width: 130, title: '类型' }
+                    , { field: 'typeId', width: 130, title: '类型' }
                     , { field: 'flag', title: '签名', minWidth: 10, width: 90 } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
                     , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
                 ]]
@@ -229,7 +243,6 @@
                     case 'isAll':
                         layer.msg(checkStatus.isAll ? '全选' : '未全选');
                         break;
-
                     //自定义头工具栏右侧图标 - 提示
                     case 'LAYTABLE_TIPS':
                         layer.alert('这是工具栏右侧自定义的一个图标按钮');
@@ -261,7 +274,7 @@
                         //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                         type: 1,
                         title: "修改文章信息",
-                        area: ['1200px','700px'],
+                        area: ['1200px', '700px'],
                         content: $("#updateinfo")//引用的弹出层的页面层的方式加载修改界面表单
                     });
                     console.log("hahahaha")

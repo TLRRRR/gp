@@ -497,7 +497,9 @@
         dataType: 'json',
         success: function (msg) {
           console.log("进success了");
-          if ("00" == msg.errorCode) {
+          console.log(msg)
+          if ("200" == msg.code) {
+            localStorage.setItem("user",JSON.stringify(msg.data))
             console.log("success");
             alert("handsome")
             window.location.href = "userHome.html";

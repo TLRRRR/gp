@@ -30,4 +30,7 @@ public interface FoodInfoService {
 
     //查询所有信息
     public ArrayList<FoodInfo> queryFoodInfo();
+
+    //根据用户名查询食物信息文章
+    public ArrayList<FoodInfo> queryFoodinfoByUsername(String userName);
 }

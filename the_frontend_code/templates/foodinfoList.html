@@ -18,35 +18,6 @@
 </head>
 
 <body>
-
-    <!--导航-->
-    <!-- <nav id="nav" class="gird-header" style="display: none">
-        <div class="ui container">
-            <div class="ui inverted secondary stackable menu">
-                <h2 class="ui olive header item" style="font-family: STSong">ONESTAR</h2>
-                <a href="#" class="active m-item item"><i class="home icon"></i>首页</a>
-                <a href="#" class="m-item item"><i class="clone outline icon"></i>分类</a>
-                <a href="#" class="m-item item"><i class="clock icon"></i>时间轴</a>
-                <a href="#" class="m-item item"><i class="music icon"></i>音乐盒</a>
-                <a href="#" class="m-item item"><i class="book icon"></i>留言板</a>
-                <a href="#" class="m-item item"><i class="pencil alternate icon"></i>友人帐</a>
-                <a href="#" class="olive m-item item"><i class="image icon"></i>照片墙</a>
-                <a href="#" class="m-item item"><i class="info icon"></i>关于我</a>
-                <div class="right m-item item">
-                    <form name="search" action="#" method="post" target="_blank">
-                        <div class="ui icon transparent input m-margin-tb-tiny" style="color: white">
-                            <input style="color: white" type="text" name="query" placeholder="Search....">
-                            <i onclick="document.forms['search'].submit()" class="search link icon"></i>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-hide" style="display: none">
-            <i class="sidebar icon"></i>
-        </a>
-    </nav> -->
-
     <!--header-->
     <header id="site-header" class="fixed-top">
         <div class="container">
@@ -136,11 +107,6 @@
     <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
     <script src="../static/js/layui/layui.js" charset="utf-8"></script>
     <script src="assets/js/theme-change.js"></script>
-
-    <script>
-        let session = sessionStorage.getItem('LoginUser')
-        document.getElementById("usersession").innerHTML = session
-    </script>
 
     <!-- MENU-JS -->
     <script>
@@ -238,18 +204,6 @@
 
         });
 
-        // 导航栏显示
-        // var waypoint = new Waypoint({
-        //     element: document.getElementById('waypoint'),
-        //     handler: function (direction) {
-        //         if (direction == 'down') {
-        //             $('#nav').show(500);
-        //         } else {
-        //             $('#nav').hide(500);
-        //         }
-        //         console.log('Scrolled to waypoint!  ' + direction);
-        //     }
-        // })
     </script>
 </body>
 

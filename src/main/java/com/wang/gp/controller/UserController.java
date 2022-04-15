@@ -2,6 +2,7 @@ package com.wang.gp.controller;
 
 import com.wang.gp.pojo.Login;
 import com.wang.gp.pojo.User;
+import com.wang.gp.pojo.base.baseEntity;
 import com.wang.gp.service.LoginService;
 import com.wang.gp.service.UserService;
 import com.wang.gp.utils.MD5Utils;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.UUID;
 
 @Controller
 public class UserController {
@@ -21,36 +23,6 @@ public class UserController {
 
     @Autowired
     private LoginService loginService;
-
-    //注册页面
-    @RequestMapping("/toregister")
-    public String toRegist() {
-        return "register";
-    }
-
-    //登录页面
-    @RequestMapping("/tologin")
-    public String toLogin() {
-        return "index";
-    }
-
-    //密码找回
-    @RequestMapping("/tofindback")
-    public String toFindBack() {
-        return "findback";
-    }
-
-    //密码找回2
-    @RequestMapping("/tofindback2")
-    public String toFindBack2() {
-        return "findback2";
-    }
-
-    //内容页面
-    @RequestMapping("/content")
-    public String toContent() {
-        return "content";
-    }
 
     //注册验证
     @ResponseBody
@@ -78,18 +50,19 @@ public class UserController {
     //登录验证
     @ResponseBody
     @RequestMapping("/login")
-    public String login(@RequestParam(value = "userName") String userName, @RequestParam(value = "pwd") String pwd,
-                        HttpServletRequest request) {
+    public baseEntity<User> login(@RequestParam(value = "userName") String userName, @RequestParam(value = "pwd") String pwd,
+                                  HttpServletRequest request) {
         User user = new User();
         user.setUserName(userName);
         user.setPwd(MD5Utils.getMD5(pwd));
         String login = userService.login(user);
         if (login == "success") {
+//            String ticket =
             request.getSession().setAttribute("LoginUser", user.getUserName());
             System.out.println("用户的session是："+request.getSession());
-            return "{\"errorCode\":\"00\",\"errorMessage\":\"登陆成功！\"}";
+            return baseEntity.success(user);
         } else {
-            return login;
+            return baseEntity.failed(500,"登录失败");
         }
     }
 //    @ResponseBody

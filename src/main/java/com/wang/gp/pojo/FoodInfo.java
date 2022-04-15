@@ -12,6 +12,7 @@ import java.util.Date;
 public class FoodInfo {
     private Long id;
     private String title;
+    private String author;
     private String content;
     private String description;
     private Date date;

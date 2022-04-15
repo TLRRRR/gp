@@ -23,13 +23,12 @@ public class FoodInfoController {
     //显示所有食物信息
     @ResponseBody
     @RequestMapping("/toinfo")
-    public baseEntity<ArrayList> allInfo() {
-        ArrayList<FoodInfo> list = foodInfoDao.queryFoodInfo();
-        System.out.println(list);
-        System.out.println("success1: " + baseEntity.success1(list));
-        System.out.println("success: " + baseEntity.success(list));
-//        return "admin/foodinfo";
-        return baseEntity.success1(list);
+    public baseEntity<ArrayList> allInfo(String userName) {
+        System.out.println("用户名" + userName);
+        ArrayList<FoodInfo> list1 = foodInfoDao.queryFoodinfoByUsername(userName);
+//        System.out.println(list);
+//        System.out.println("success: " + baseEntity.success(list));
+        return baseEntity.success1(list1);
     }
 
     //添加食物信息后跳转到食物信息博客页面

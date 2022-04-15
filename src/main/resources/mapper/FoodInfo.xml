@@ -31,9 +31,16 @@
         FROM foodinfo
     </select>
 
+    <!--查询所有foodinfo-->
+    <select id="queryFoodinfoByUsername" resultType="FoodInfo">
+        SELECT *
+        FROM foodinfo
+        where author = #{userName}
+    </select>
+
     <!--添加食物信息-->
     <insert id="addFoodInfo">
-        INSERT INTO foodinfo(title, content, date, flag ,typeId , description)
+        INSERT INTO foodinfo(title, content, date, flag, typeId, description)
         VALUES (#{title}, #{content}, #{date}, #{flag}, #{typeId}, #{description})
     </insert>
 
@@ -42,7 +49,7 @@
         DELETE
         FROM foodinfo
         WHERE title =
-        #{title}
+              #{title}
     </delete>
 
     <!--删除食物信息-->
@@ -50,7 +57,7 @@
         DELETE
         FROM foodinfo
         WHERE id =
-        #{id}
+              #{id}
     </delete>
 
     <!--更新食物信息-->
@@ -60,7 +67,7 @@
             content=#{content},
             flag=#{flag},
             typeid=#{typeid}
-            where id = #{id}
+        where id = #{id}
     </update>
 
 </mapper>
