@@ -81,7 +81,7 @@ public class IndexController {
         System.out.println("从前端获取的详情页id" + id);
         ArrayList<FoodInfo> list = foodInfoService.queryFoodInfo();
         PageInfo<FoodInfo> foodInfoPageInfo = new PageInfo<>(list);
-        System.out.println("this is all my info: " + list);
+        System.out.println("this is all my info: " + list.get(Math.toIntExact(id)));
         System.out.println("because : " + list.get(Math.toIntExact(id)).getId());
         return baseEntity.success(list.get(Math.toIntExact(id)));
     }

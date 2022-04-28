@@ -35,31 +35,31 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
+            <li class="nav-item @@active">
+              <a class="nav-link" href="userHome.html">Home </a>
+            </li>
+            <li class="nav-item @@active">
+              <a class="nav-link" href="userFoodinfoList.html">食物说</a>
+            </li>
             <li class="nav-item active">
-              <a class="nav-link" href="home.html">Home </a>
+              <a class="nav-link" href="userDietAndNutrition.html">食谱与营养</a>
             </li>
             <li class="nav-item @@active">
-              <a class="nav-link" href="foodinfoList.html">食物说</a>
-            </li>
-            <li class="nav-item @@active">
-              <a class="nav-link" href="DietAndNutrition.html">食谱与营养</a>
+              <a class="nav-link" href="admin/foodinfo.html">用户管理 </a>
             </li>
           </ul>
         </div>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <div class="popup ml-auto">
+          <!-- <div class="popup ml-auto">
             <a href="#menu" class="domain" data-toggle="modal" data-target="#DomainModal">
               <div class="hamburger">
-                <svg t="1650099328672" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                  xmlns="http://www.w3.org/2000/svg" p-id="2567" width="200" height="200">
-                  <path
-                    d="M500 128.8c-95.2 5.6-173.6 83.2-180 178.4-7.2 112 80.8 205.6 191.2 205.6 106.4 0 192-86.4 192-192 0.8-110.4-92-198.4-203.2-192zM512 575.2c-128 0-383.2 64-383.2 192v96c0 17.6 14.4 32 32 32h702.4c17.6 0 32-14.4 32-32V766.4c0-127.2-255.2-191.2-383.2-191.2z"
-                    p-id="2568"></path>
-                </svg>
+                <span class="top-bar"></span>
+                <span class="middle-bar"></span>
+                <span class="bottom-bar"></span>
               </div>
             </a>
-          </div>
+          </div> -->
         </div>
 
         <!-- toggle switch for light and dark theme -->
@@ -84,81 +84,14 @@
   <div class="header-gap">
 
   </div>
-
-
-  <!-- 侧登录模块 -->
-  <div class="modal right fade" id="DomainModal" tabindex="-1" role="dialog" aria-labelledby="DomainModalLabel2">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-            aria-hidden="true">&times;</span></button>
-
-        <div class="modal-body">
-          <div class="modal__content">
-            <a class="navbar-brand"> <span>登录 </span></a>
-            <div class="widget-social-icons mt-sm-5 mt-4">
-              <ul class="icon-rounded address">
-                <div class="wthree-field">
-                  <input name="userName" id="userName" type="text" value="" placeholder="Username" required>
-                </div>
-                <div class="wthree-field">
-                  <input name="pwd" id="pwd" type="Password" placeholder="Password" required>
-                </div>
-                <div class="wthree-field">
-                  <button type="button" id="wangsubmit" name="submit" class="btn">登录</button>
-                </div>
-                <div class="wthree-field">
-                  <a href="#menu" class="domain" data-toggle="modal" data-target="#DomainModal2">注册</a>
-                </div>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 侧注册模块 -->
-  <div class="modal right fade" id="DomainModal2" tabindex="-1" role="dialog" aria-labelledby="DomainModalLabel2">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-            aria-hidden="true">&times;</span></button>
-
-        <div class="modal-body">
-          <div class="modal__content">
-            <a class="navbar-brand"> <span>注册 </span></a>
-            <div class="widget-social-icons mt-sm-5 mt-4">
-              <ul class="icon-rounded address">
-                <div class="wthree-field">
-                  <input name="userName" id="userNameRegister" type="text" value="" placeholder="Username" required>
-                </div>
-                <div class="wthree-field">
-                  <input name="pwd" id="pwdRegister" type="Password" placeholder="Password">
-                </div>
-                <div class="wthree-field">
-                  <input name="tel" id="telRegister" type="text" placeholder="Telephone">
-                </div>
-                <div class="wthree-field">
-                  <button type="button" name="submit" id="submitRegister" class="btn">注册</button>
-                </div>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- //Domain modal -->
   <!-- home page about section -->
   <section class="w3l-homeblock1" id="about">
     <div class="midd-w3 py-5">
       <div class="container py-lg-5 py-md-3">
         <div class="row">
           <div class="col-lg-6">
-            <span class="text">高血压</span>
-            <!-- <h3 class="title-big"><span>Build your brand</span> and grow your business</h3>
+            <span class="text">My Services</span>
+            <h3 class="title-big"><span>Build your brand</span> and grow your business</h3>
             <p class="mt-4">I can give your business a new creative start right away! You can download my resume
               in order to learn the details of my professional life as a designer and photographer. </p>
             <ul class="service-list mt-md-5 mt-4">
@@ -170,7 +103,7 @@
               <li class="service-link"><a href="#">PSD Design, Photoshop</a></li>
             </ul>
             <a href="#url" class="btn btn-style btn-empty p-0">View my all services <span></span></a>
-          </div> -->
+          </div>
           <div class="col-lg-6 mt-lg-0 mt-5">
             <div class="position-relative">
               <img src="assets/images/about.jpg" alt="" class="radius-image img-fluid">
@@ -183,7 +116,7 @@
   <!-- //home page about section -->
 
   <!-- home page about section -->
-  <!-- <section class="w3l-homeblock2" id="skills">
+  <section class="w3l-homeblock2" id="skills">
     <div class="midd-w3 py-5">
       <div class="container py-lg-5 py-md-3">
         <div class="row">
@@ -242,11 +175,11 @@
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
   <!-- //home page about section -->
 
   <!-- home page about section -->
-  <!-- <section class="w3l-homeblock3" id="awards">
+  <section class="w3l-homeblock3" id="awards">
     <div class="midd-w3 py-5">
       <div class="container py-lg-5 py-md-3">
         <div class="row">
@@ -293,11 +226,12 @@
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
   <!-- //home page about section -->
 
   <!-- home page about section -->
-  <!-- <section class="w3l-clients" id="skills">
+  <section class="w3l-clients" id="skills">
+
     <div class="midd-w3 py-5">
       <div class="container py-lg-5 py-md-3">
         <div class="row">
@@ -415,7 +349,7 @@
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
   <!-- //home page about section -->
   <div class="copyright py-sm-5 py-4 text-center">
     <div class="container">
@@ -498,12 +432,10 @@
         dataType: 'json',
         success: function (msg) {
           console.log("进success了");
-          console.log(msg)
-          if ("200" == msg.code) {
-            localStorage.setItem("user", JSON.stringify(msg.data))
+          if ("00" == msg.errorCode) {
             console.log("success");
             alert("handsome")
-            window.location.href = "userHome.html";
+            window.location.href = "index.html";
           } else if ("11" == msg.errorCode) {
             alert("该用户不存在！");
             console.log("该用户不存在！");
@@ -528,81 +460,7 @@
       });
     });
   </script>
-  <!-- /登录 -->
-
-  <!-- 注册 -->
-  <script>
-    function rfunc() {
-      console.log("现在在rfunc方法中")
-      var userName = $("#userNameRegister").val();
-      // let user = document.getElementById("userName").value;
-      var pwd = $("#pwdRegister").val();
-      var tel = $("#telRegister").val();
-      if (userName == "") {
-        alert("用户名不能为空！");
-        return false;
-      }
-      if (pwd == "") {
-        alert("密码不能为空！");
-        return false;
-      }
-      if (tel == "") {
-        alert("手机号不能为空！");
-        return false;
-      }
-      // if (!(/^1[34578]\d{9}$/.test(pwd))) {
-      //     alert("手机号输入错误");
-      //     return false;
-      // }
-      if (pwd.length < 4) {
-        alert("密码不能少于4位！");
-        return false;
-      }
-      return true;
-    }
-
-    $("#submitRegister").on("click", function () {
-      if (!rfunc()) {
-        console.log("!!!!!!");
-        return false;
-      }
-      var userName = $("#userNameRegister").val();//获取表单元素值
-      var pwd = $("#pwdRegister").val();
-      var tel = $("#telRegister").val();
-      var data = {
-        userName: userName,
-        pwd: pwd,
-        tel: tel
-      };
-      console.log(data);
-      $.ajax({
-        type: "POST",
-        //待载入页面的url,方法名
-        url: "http://localhost:8080/register",
-        data: data,    //后台传回的数据
-        dataType: 'json',
-        success: function (msg) {
-          if ("00" == msg.errorCode) {
-            console.log("success");
-            alert("注册成功！！！")
-            window.location.href = "userHome.html";
-          } else if ("11" == msg.errorCode) {
-            alert("该用户已经存在！");
-            console.log("该用户已经存在！");
-            return false;
-          } else if ("22" == msg.errorCode) {
-            alert("该手机号已经注册！");
-            console.log("该手机号已经注册！");
-            return false;
-          }
-        }
-      })
-    })
-  </script>
-  <!-- /注册 -->
-
-
-
+  <!-- //登录 -->
   <!-- owlcarousel -->
   <script src="assets/js/owl.carousel.js"></script>
 

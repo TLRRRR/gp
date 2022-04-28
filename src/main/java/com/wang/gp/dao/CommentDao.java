@@ -28,5 +28,5 @@ public interface CommentDao {
 
     //添加一个评论
 //    int addComment(Comment comment);
-    int addComment(String commentContent, Long foodinfoId);
+    int addComment(String commentContent, Long foodinfoId, String commentAuthor);
 }

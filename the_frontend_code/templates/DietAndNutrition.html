@@ -5,17 +5,17 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
   <title>食物与健康</title>
-
   <!-- Google fonts -->
   <link href="//fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="//fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="../static/css/semantic.min.css">
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style-starter.css">
   <!-- 登录css -->
   <link rel="stylesheet" href="../static/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="../../static/js/layui/css/layui.css">
 </head>
 
 <body>
@@ -35,13 +35,13 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item @active">
               <a class="nav-link" href="home.html">Home </a>
             </li>
             <li class="nav-item @@active">
               <a class="nav-link" href="foodinfoList.html">食物说</a>
             </li>
-            <li class="nav-item @@active">
+            <li class="nav-item active">
               <a class="nav-link" href="DietAndNutrition.html">食谱与营养</a>
             </li>
           </ul>
@@ -84,7 +84,6 @@
   <div class="header-gap">
 
   </div>
-
 
   <!-- 侧登录模块 -->
   <div class="modal right fade" id="DomainModal" tabindex="-1" role="dialog" aria-labelledby="DomainModalLabel2">
@@ -157,11 +156,27 @@
       <div class="container py-lg-5 py-md-3">
         <div class="row">
           <div class="col-lg-6">
-            <span class="text">高血压</span>
+            <span class="text">高血压食谱</span>
+            <!-- 搜索框 -->
+            <div class="right m-item item m-mobile-hide">
+              <!-- <form name="search" action="#" method="post" target="_self"> -->
+              <div class="ui icon transparent input m-margin-tb-tiny" style="color: rgb(0, 0, 0)" target="_self">
+                <input style="color: rgb(9, 7, 7)" type="text" name="query" id="HypertensionQuery"
+                  placeholder="Search....">
+                <svg t="1650259061253" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg" p-id="2574" id="queryhighblood" width="20" height="20">
+                  <path
+                    d="M712.704 220.672c-135.68-135.68-355.84-135.68-491.52 0s-135.68 355.84 0 491.52 355.84 135.68 491.52 0 135.68-355.84 0-491.52zM145.92 787.456C-31.744 610.304-31.744 322.56 145.92 144.896c177.664-177.152 464.896-177.152 642.56 0 177.664 177.664 177.664 464.896 0 642.56s-465.408 177.664-642.56 0z m848.896 206.336c-24.064 24.064-63.488 24.064-87.552 0L819.2 906.24c-24.064-24.064-24.064-63.488 0-87.552 24.064-24.064 63.488-24.064 87.552 0l87.552 87.552c24.576 24.064 24.576 63.488 0.512 87.552z"
+                    p-id="2575"></path>
+                </svg>
+                <!-- <i onclick="document.forms['search'].submit()" class="search link icon"></i> -->
+              </div>
+              <!-- </form> -->
+            </div>
             <!-- <h3 class="title-big"><span>Build your brand</span> and grow your business</h3>
             <p class="mt-4">I can give your business a new creative start right away! You can download my resume
-              in order to learn the details of my professional life as a designer and photographer. </p>
-            <ul class="service-list mt-md-5 mt-4">
+              in order to learn the details of my professional life as a designer and photographer. </p> -->
+            <!-- <ul class="service-list mt-md-5 mt-4">
               <li class="service-link"><a href="#">UI/UX Design and Development</a></li>
               <li class="service-link"><a href="#">Branding Design and Identity</a></li>
               <li class="service-link"><a href="#">Mobile App Design</a></li>
@@ -169,8 +184,8 @@
               <li class="service-link"><a href="#">3D Modeling & Motion</a></li>
               <li class="service-link"><a href="#">PSD Design, Photoshop</a></li>
             </ul>
-            <a href="#url" class="btn btn-style btn-empty p-0">View my all services <span></span></a>
-          </div> -->
+            <a href="#url" class="btn btn-style btn-empty p-0">View my all services <span></span></a> -->
+          </div>
           <div class="col-lg-6 mt-lg-0 mt-5">
             <div class="position-relative">
               <img src="assets/images/about.jpg" alt="" class="radius-image img-fluid">
@@ -183,240 +198,74 @@
   <!-- //home page about section -->
 
   <!-- home page about section -->
-  <!-- <section class="w3l-homeblock2" id="skills">
+  <section class="w3l-homeblock2" id="skills">
     <div class="midd-w3 py-5">
       <div class="container py-lg-5 py-md-3">
         <div class="row">
           <div class="col-lg-6 align-self">
             <div class="position-relative px-lg-5 mx-lg-0 mx-md-5 image-padding">
-              <img src="assets/images/skills.png" alt="" class="radius-image img-fluid">
               <div class="position-absolute-images">
-                <img src="assets/images/file.png" class="img-fluid pos-img" alt="" />
-                <img src="assets/images/file1.png" class="img-fluid pos-img1" alt="" />
-                <img src="assets/images/file2.png" class="img-fluid pos-img2" alt="" />
+                <img src="../static/images/elfmaker.png" alt="" class="radius-image img-fluid">
               </div>
             </div>
           </div>
           <div class="col-lg-6 mt-lg-0 mt-md-5 mt-4">
-            <span class="text">My Featured Skills</span>
-            <h3 class="title-big">I’m using <span>top leading</span>
-              design methods.</h3>
-            <p class="mt-4">I Specialize in Branding and Strategy, and am passionate about creating Awesome
-              Portfolio work. And I always ready to impress the audience with my Creativity. </p>
-            <div class="skills-bars mt-5">
-              <div class="progress-info">
-                <h6 class="progress-tittle">UI/UX Design</h6>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 80%"
-                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                  </div>
-                </div>
-              </div>
-              <div class="progress-info">
-                <h6 class="progress-tittle">Ideas &amp; Technology
-                </h6>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 95%"
-                    aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
-                  </div>
-                </div>
-              </div>
-              <div class="progress-info">
-                <h6 class="progress-tittle">Branding Design</h6>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 55%"
-                    aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                  </div>
-                </div>
-              </div>
-              <div class="progress-info mb-0">
-                <h6 class="progress-tittle">Responsive Web Design</h6>
-                <div class="progress">
-                  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 80%"
-                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                  </div>
-                </div>
+            <span class="text">高血脂食谱</span>
+            <!-- 搜索框 -->
+            <div class="right m-item item m-mobile-hide">
+              <div class="ui icon transparent input m-margin-tb-tiny" style="color: rgb(0, 0, 0)" target="_self">
+                <input style="color: rgb(9, 7, 7)" type="text" name="query" id="HyperlipidemiaQuery"
+                  placeholder="Search....">
+                <svg t="1650259061253" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg" p-id="2574" id="Hyperlipidemia" width="20" height="20">
+                  <path
+                    d="M712.704 220.672c-135.68-135.68-355.84-135.68-491.52 0s-135.68 355.84 0 491.52 355.84 135.68 491.52 0 135.68-355.84 0-491.52zM145.92 787.456C-31.744 610.304-31.744 322.56 145.92 144.896c177.664-177.152 464.896-177.152 642.56 0 177.664 177.664 177.664 464.896 0 642.56s-465.408 177.664-642.56 0z m848.896 206.336c-24.064 24.064-63.488 24.064-87.552 0L819.2 906.24c-24.064-24.064-24.064-63.488 0-87.552 24.064-24.064 63.488-24.064 87.552 0l87.552 87.552c24.576 24.064 24.576 63.488 0.512 87.552z"
+                    p-id="2575"></path>
+                </svg>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section> -->
+    </div>
+  </section>
   <!-- //home page about section -->
 
   <!-- home page about section -->
-  <!-- <section class="w3l-homeblock3" id="awards">
+  <section class="w3l-homeblock3" id="awards">
     <div class="midd-w3 py-5">
       <div class="container py-lg-5 py-md-3">
         <div class="row">
           <div class="col-lg-6">
-            <span class="text">My Awards and Achievements </span>
-            <h3 class="title-big">Professional awards and
-              honors <span> I’ve reached.</span></h3>
-            <p class="mt-4">Personal awards. Having O7 Years of Experience that Motivated by the Desire to
-              achieve Success </p>
-            <div class="reward-list mt-5">
-              <div class="reward-item">
-                <div class="reward-item-photo"><img src="assets/images/banner.png" alt="" class="img-fluid"></div>
-                <div class="reward-item-detail">
-                  <span class="reward-item-title">Web design awards</span>
-                  <p class="reward-item-descr">For Best UX/UI Design App</p>
-                </div>
-              </div>
-              <div class="reward-item">
-                <div class="reward-item-photo"><img src="assets/images/skills.png" alt="" class="img-fluid"></div>
-                <div class="reward-item-detail">
-                  <span class="reward-item-title">Inovative ideas design Awards</span>
-                  <p class="reward-item-descr">For Most Loved Illustration </p>
-                </div>
-              </div>
-              <div class="reward-item">
-                <div class="reward-item-photo"><img src="assets/images/banner.png" alt="" class="img-fluid"></div>
-                <div class="reward-item-detail">
-                  <span class="reward-item-title">Creative Design awards</span>
-                  <p class="reward-item-descr">For Best UX/UI Project Design</p>
-                </div>
+            <span class="text">减肥食谱</span>
+            <!-- 搜索框 -->
+            <div class="right m-item item m-mobile-hide">
+              <div class="ui icon transparent input m-margin-tb-tiny" style="color: rgb(0, 0, 0)" target="_self">
+                <input style="color: rgb(9, 7, 7)" type="text" name="query" id="LoseweightQuery"
+                  placeholder="Search....">
+                <svg t="1650259061253" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg" p-id="2574" id="Loseweight" width="20" height="20">
+                  <path
+                    d="M712.704 220.672c-135.68-135.68-355.84-135.68-491.52 0s-135.68 355.84 0 491.52 355.84 135.68 491.52 0 135.68-355.84 0-491.52zM145.92 787.456C-31.744 610.304-31.744 322.56 145.92 144.896c177.664-177.152 464.896-177.152 642.56 0 177.664 177.664 177.664 464.896 0 642.56s-465.408 177.664-642.56 0z m848.896 206.336c-24.064 24.064-63.488 24.064-87.552 0L819.2 906.24c-24.064-24.064-24.064-63.488 0-87.552 24.064-24.064 63.488-24.064 87.552 0l87.552 87.552c24.576 24.064 24.576 63.488 0.512 87.552z"
+                    p-id="2575"></path>
+                </svg>
               </div>
             </div>
           </div>
           <div class="col-lg-6 align-self mt-lg-0 mt-md-5 mt-4">
             <div class="position-relative px-lg-5 mx-lg-0 mx-md-5 image-padding">
-              <img src="assets/images/awards.png" alt="" class="radius-image img-fluid">
               <div class="position-absolute-images">
-                <img src="assets/images/award.png" class="img-fluid pos-img" alt="" />
-                <img src="assets/images/award1.png" class="img-fluid pos-img1" alt="" />
-                <img src="assets/images/award2.png" class="img-fluid pos-img2" alt="" />
+                <img src="../static/images/elf.png" alt="" class="radius-image img-fluid">
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
   <!-- //home page about section -->
 
-  <!-- home page about section -->
-  <!-- <section class="w3l-clients" id="skills">
-    <div class="midd-w3 py-5">
-      <div class="container py-lg-5 py-md-3">
-        <div class="row">
-          <div class="col-lg-6 align-self">
-            <div class="position-relative px-lg-5">
-              <img src="assets/images/clients.png" alt="" class="radius-image img-fluid">
-            </div>
-          </div>
-          <div class="col-lg-6 mt-lg-0 mt-5">
-            <span class="text">Testimonials</span>
-            <h3 class="title-big">What my <span>clients think</span> about Me</h3>
-            <div id="owl-demo1" class="owl-carousel owl-theme mt-4 py-2 mb-4">
-              <div class="item">
-                <div class="testimonial-content">
-                  <div class="testimonial">
-                    <blockquote>
-                      <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae
-                        laudantium
-                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
-                        Dolores molestias adipisci dolor sit amet! by the Desire to achieve Success .</q>
-                    </blockquote>
-                    <div class="testi-des">
-                      <div class="test-img"><img src="assets/images/team1.jpg" class="img-fluid" alt="client-img">
-                      </div>
-                      <div class="peopl align-self">
-                        <h3>John wilson</h3>
-                        <p class="indentity">Seattle, Washington</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimonial-content">
-                  <div class="testimonial">
-                    <blockquote>
-                      <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae
-                        laudantium
-                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
-                        Dolores molestias adipisci dolor sit amet! by the Desire to achieve Success.</q>
-                    </blockquote>
-                    <div class="testi-des">
-                      <div class="test-img"><img src="assets/images/team2.jpg" class="img-fluid" alt="client-img">
-                      </div>
-                      <div class="peopl align-self">
-                        <h3>Julia sakura</h3>
-                        <p class="indentity">Seattle, Washington</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimonial-content">
-                  <div class="testimonial">
-                    <blockquote>
-                      <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae
-                        laudantium
-                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
-                        Dolores molestias adipisci dolor sit amet! by the Desire to achieve Success.</q>
-                    </blockquote>
-                    <div class="testi-des">
-                      <div class="test-img"><img src="assets/images/team3.jpg" class="img-fluid" alt="client-img">
-                      </div>
-                      <div class="peopl align-self">
-                        <h3>Roy Linderson</h3>
-                        <p class="indentity">Seattle, Washington</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimonial-content">
-                  <div class="testimonial">
-                    <blockquote>
-                      <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae
-                        laudantium
-                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
-                        Dolores molestias adipisci dolor sit amet! by the Desire to achieve Success.</q>
-                    </blockquote>
-                    <div class="testi-des">
-                      <div class="test-img"><img src="assets/images/team4.jpg" class="img-fluid" alt="client-img">
-                      </div>
-                      <div class="peopl align-self">
-                        <h3>Mike Thyson</h3>
-                        <p class="indentity">Seattle, Washington</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimonial-content">
-                  <div class="testimonial">
-                    <blockquote>
-                      <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit beatae
-                        laudantium
-                        voluptate rem ullam dolore nisi voluptatibus esse quasi, doloribus tempora.
-                        Dolores molestias adipisci dolor sit amet! by the Desire to achieve Success.</q>
-                    </blockquote>
-                    <div class="testi-des">
-                      <div class="test-img"><img src="assets/images/team2.jpg" class="img-fluid" alt="client-img">
-                      </div>
-                      <div class="peopl align-self">
-                        <h3>Laura gill</h3>
-                        <p class="indentity">Seattle, Washington</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-  <!-- //home page about section -->
   <div class="copyright py-sm-5 py-4 text-center">
     <div class="container">
     </div>
@@ -450,9 +299,133 @@
   <!-- jQuery and Bootstrap JS -->
   <script src="assets/js/jquery-3.3.1.min.js"></script>
 
-  <script src="assets/js/theme-change.js"></script><!-- theme switch js (light and dark)-->
+  <script src="../static/js/jquery/jquery-3.6.0.min.js"></script>
 
+  <script src="assets/js/theme-change.js"></script><!-- theme switch js (light and dark)-->
+  <script src="../../static/js/layui/layui.js" charset="utf-8"></script>
   <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
+
+  <!-- 高血压 -->
+  <div id="conten" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
+    style="display:none;">
+    <!-- <span id="foodMenu">msg.data</span> -->
+    <h3 class="ui dividing header" id="foodMenu"></h3>
+    <span id="description">msg.data</span>
+  </div>
+
+  <!-- 高血脂 -->
+  <div id="hyperlipidemia" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
+    style="display:none;">
+    <!-- <span id="foodMenu">msg.data</span> -->
+    <h3 class="ui dividing header" id="foodMenu"></h3>
+    <span id="effect">msg.data</span><br>
+    <span id="formula">msg.data</span><br>
+    <span id="usage">msg.data</span><br>
+  </div>
+
+  <!-- 减肥 -->
+  <div id="loseweight" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
+    style="display:none;">
+    <!-- <span id="foodMenu">msg.data</span> -->
+    <h3 class="ui dividing header" id="foodMenuLW"></h3>
+    <span id="effectLW">msg.data</span><br>
+    <span id="formulaLW">msg.data</span><br>
+    <span id="usageLW">msg.data</span><br>
+  </div>
+
+  <!-- 查询高血压食谱 -->
+  <script type="text/javascript">
+    $("#queryhighblood").on("click", function () {
+      $.ajax({
+        type: "post",
+        dataType: "json",
+        url: "http://localhost:8080/query/hypertension",
+        data: {
+          foodmenu: $("#HypertensionQuery").val()
+        },
+        success: function (msg) {
+          console.log("success")
+          document.getElementById("foodMenu").innerHTML = msg.data.foodMenu
+          document.getElementById("description").innerHTML = msg.data.description
+          layui.use('layer', function () {
+            var $ = layui.jquery, layer = layui.layer;
+            layer.open({
+              //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+              type: 1,
+              title: "高血压食谱",
+              area: ['1200px', '700px'],
+              content: $("#conten")//引用的弹出层的页面层的方式加载修改界面表单
+            });
+          })
+        }
+      })
+    })
+  </script>
+  <!-- 查询高血压食谱 -->
+
+  <!-- 查询高血脂食谱 -->
+  <script type="text/javascript">
+    $("#Hyperlipidemia").on("click", function () {
+      $.ajax({
+        type: "post",
+        dataType: "json",
+        url: "http://localhost:8080/query/hyperlipidemia",
+        data: {
+          foodmenu: $("#HyperlipidemiaQuery").val()
+        },
+        success: function (msg) {
+          console.log("success")
+          document.getElementById("foodMenu").innerHTML = msg.data.foodMenu
+          document.getElementById("effect").innerHTML = msg.data.effect
+          document.getElementById("formula").innerHTML = msg.data.formula
+          document.getElementById("usage").innerHTML = msg.data.usage
+          layui.use('layer', function () {
+            var $ = layui.jquery, layer = layui.layer;
+            layer.open({
+              //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+              type: 1,
+              title: "高血脂食谱",
+              area: ['1200px', '700px'],
+              content: $("#hyperlipidemia")//引用的弹出层的页面层的方式加载修改界面表单
+            });
+          })
+        }
+      })
+    })
+  </script>
+  <!-- 查询高血脂食谱 -->
+
+  <!-- 查询减肥食谱 -->
+  <script type="text/javascript">
+    $("#Loseweight").on("click", function () {
+      $.ajax({
+        type: "post",
+        dataType: "json",
+        url: "http://localhost:8080/query/loseweight",
+        data: {
+          foodmenu: $("#LoseweightQuery").val()
+        },
+        success: function (msg) {
+          console.log("success")
+          document.getElementById("foodMenuLW").innerHTML = msg.data.foodMenu
+          document.getElementById("effectLW").innerHTML = msg.data.effect
+          document.getElementById("formulaLW").innerHTML = msg.data.formula
+          document.getElementById("usageLW").innerHTML = msg.data.usage
+          layui.use('layer', function () {
+            var $ = layui.jquery, layer = layui.layer;
+            layer.open({
+              //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+              type: 1,
+              title: "高血脂食谱",
+              area: ['1200px', '700px'],
+              content: $("#loseweight")//引用的弹出层的页面层的方式加载修改界面表单
+            });
+          })
+        }
+      })
+    })
+  </script>
+  <!-- 查询减肥食谱 -->
 
   <!-- 登录 -->
   <script>
@@ -600,8 +573,6 @@
     })
   </script>
   <!-- /注册 -->
-
-
 
   <!-- owlcarousel -->
   <script src="assets/js/owl.carousel.js"></script>

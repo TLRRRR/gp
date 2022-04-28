@@ -21,8 +21,9 @@
 </head>
 
 <body>
+
     <!--导航-->
-    <!--header-->
+    <!--userheader-->
     <header id="site-header" class="fixed-top">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light stroke">
@@ -38,35 +39,25 @@
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item @@__active">
-                            <a class="nav-link" href="home.html">Home </a>
+                        <li class="nav-item @@active">
+                            <a class="nav-link" href="userHome.html">Home </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="foodinfoList.html">食物说</a>
+                            <a class="nav-link" href="userFoodinfoList.html">食物说</a>
                         </li>
-                        <li class="nav-item @@c__active">
-                            <a class="nav-link" href="DietAndNutrition.html">食谱与营养</a>
+                        <li class="nav-item @@active">
+                            <a class="nav-link" href="userDietAndNutrition.html">食谱与营养</a>
+                        </li>
+                        <li class="nav-item @@active">
+                            <a class="nav-link" href="admin/foodinfo.html">用户管理 </a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <div class="popup ml-auto">
-                        <a href="#menu" class="domain" data-toggle="modal" data-target="#DomainModal">
-                            <div class="hamburger">
-                                <svg t="1650099328672" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                                    xmlns="http://www.w3.org/2000/svg" p-id="2567" width="200" height="200">
-                                    <path
-                                        d="M500 128.8c-95.2 5.6-173.6 83.2-180 178.4-7.2 112 80.8 205.6 191.2 205.6 106.4 0 192-86.4 192-192 0.8-110.4-92-198.4-203.2-192zM512 575.2c-128 0-383.2 64-383.2 192v96c0 17.6 14.4 32 32 32h702.4c17.6 0 32-14.4 32-32V766.4c0-127.2-255.2-191.2-383.2-191.2z"
-                                        p-id="2568"></path>
-                                </svg>
-                            </div>
-
-                        </a>
-                    </div>
                 </div>
 
-                <!-- 亮暗主题 -->
+                <!-- toggle switch for light and dark theme -->
                 <div class="mobile-position ml-lg-2">
                     <nav class="navigation">
                         <div class="theme-switch-wrapper">
@@ -80,79 +71,13 @@
                         </div>
                     </nav>
                 </div>
-
+                <!-- //toggle switch for light and dark theme -->
             </nav>
         </div>
     </header>
-
-    <!-- 侧登录模块 -->
-    <div class="modal right fade" id="DomainModal" tabindex="-1" role="dialog" aria-labelledby="DomainModalLabel2">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-
-                <div class="modal-body">
-                    <div class="modal__content">
-                        <a class="navbar-brand"> <span>登录 </span></a>
-                        <div class="widget-social-icons mt-sm-5 mt-4">
-                            <ul class="icon-rounded address">
-                                <div class="wthree-field">
-                                    <input name="userName" id="userName" type="text" value="" placeholder="Username"
-                                        required>
-                                </div>
-                                <div class="wthree-field">
-                                    <input name="pwd" id="pwd" type="Password" placeholder="Password" required>
-                                </div>
-                                <div class="wthree-field">
-                                    <button type="button" id="wangsubmit" name="submit" class="btn">登录</button>
-                                </div>
-                                <div class="wthree-field">
-                                    <a href="#menu" class="domain" data-toggle="modal"
-                                        data-target="#DomainModal2">注册</a>
-                                </div>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 侧注册模块 -->
-    <div class="modal right fade" id="DomainModal2" tabindex="-1" role="dialog" aria-labelledby="DomainModalLabel2">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-
-                <div class="modal-body">
-                    <div class="modal__content">
-                        <a class="navbar-brand"> <span>注册 </span></a>
-                        <div class="widget-social-icons mt-sm-5 mt-4">
-                            <ul class="icon-rounded address">
-                                <div class="wthree-field">
-                                    <input name="userName" id="userNameRegister" type="text" value=""
-                                        placeholder="Username" required>
-                                </div>
-                                <div class="wthree-field">
-                                    <input name="pwd" id="pwdRegister" type="Password" placeholder="Password">
-                                </div>
-                                <div class="wthree-field">
-                                    <input name="tel" id="telRegister" type="text" placeholder="Telephone">
-                                </div>
-                                <div class="wthree-field">
-                                    <button type="button" name="submit" id="submitRegister" class="btn">注册</button>
-                                </div>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!--/userheader-->
     <!--顶部图片-->
-    <div class="m-bg-type_outer" style="width: 100%;height: 50%">
+    <div class="m-bg-type_outer" style="width: 100%;height: 50% ;margin-top:90px">
         <img src="../static/images/bg.jpg" alt="" class="ui m-bg image" style="width: 100%;height: 100%">
         <div class="m-bg-class_cover">
             <div class="ui container" style="position: relative ;bottom: -540px;">
@@ -168,14 +93,6 @@
                             <span style="color: #ffffff;font-size: 18px"> 作者: </span>
                             <span style="color: #ffffff;font-size: 18px" id="author"></span>
                         </div>
-                        <!-- <div class="item">
-                            <i class="calendar icon m-font-size-text-mini"></i>
-                            <span class="m-font-size-text-mini">2020-01-01</span>
-                        </div> -->
-                        <!-- <div class="item">
-                            <i class="clone icon m-font-size-text-mini"></i>
-                            <a href="#" target="_blank" style="color: #ffffff;font-size: 16px">我的故事</a>
-                        </div> -->
                     </div>
                 </div>
 
@@ -267,46 +184,13 @@
                                 <div class="content" id="txt">
                                     <span class="author">
                                         <!-- <span th:text="${comment.username}">Matt</span> -->
-                                        <span id="infoauthor">夏洛</span>
+                                        <span id="infoauthor">Matt</span>
                                         <!-- <div class="ui mini basic teal left pointing label m-padded-mini">栈主</div> -->
                                     </span>
-                                    <!-- <div class="metadata">
-                                        <span class="date">Today at 5:42PM</span>
-                                    </div> -->
                                     <div class="text">
                                         How artistic!
                                     </div>
-                                    <!-- <div class="actions">
-                                        <a class="reply" data-commentid="1" data-commentnickname="Matt"
-                                            onclick="reply(this)">回复</a>
-                                    </div> -->
                                 </div>
-                                <!--子集评论-->
-                                <!-- <div class="comments">
-                                    <div class="comment">
-                                        <a class="avatar">
-                                            <img src="../static/images/avatar.png">
-                                        </a>
-                                        <div class="content">
-                                            <a class="author">
-                                                <span>小红</span>
-                                                <div class="ui mini basic teal left pointing label m-padded-mini">栈主
-                                                </div>
-                                                &nbsp;<span class="m-teal">@ 小白</span>
-                                            </a>
-                                            <div class="metadata">
-                                                <span class="date">Today at 5:42PM</span>
-                                            </div>
-                                            <div class="text">
-                                                How artistic!
-                                            </div>
-                                            <div class="actions">
-                                                <a class="reply" data-commentid="1" data-commentnickname="Matt"
-                                                    onclick="reply(this)">回复</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -397,7 +281,6 @@
         });
     </script>
     <!-- //MENU-JS -->
-
     <!-- 显示文章详情 -->
     <script>
         //获取参数方法
@@ -468,14 +351,13 @@
             }
         })
 
-        // console.log(commentContent)
+        //添加评论
         $("#commentpost-btn").on("click", function () {
             var a = JSON.parse(localStorage.getItem("user"));
             // document.getElementById("dear_user").innerHTML = a.userName
             console.log(a)
             var commentContent = document.getElementById("text").value;
             var commentArea = document.getElementById("text");
-            console.log("nihaonihao")
             console.log("评论内容" + commentContent)
             $.ajax({
                 url: "http://localhost:8080/comment/addcomment",
@@ -523,133 +405,6 @@
                 }
             })
         })
-
-
-
-        // <!-- 评论功能 -->
-
-
-        // /* 获取按钮 */
-        // var btn = document.getElementById('commentpost-btn');
-        // /* 获取文本域 */
-        // var text = document.getElementById('text');
-        // /* 获取评论区 */
-        // var txt = document.getElementById("txt")
-
-        // btn.onclick = function () {
-        //     /* 获取文本域里的内容 */
-        //     var value = text.value
-        //     /* 创键li */
-        //     var ul = document.createElement('ul');
-        //     /* 把li放到ul */
-        //     // var lis = `<li>${value}</li><a class="del">删除</a>`
-        //     var lis = ` <div class="text" >${value}</div >`
-        //     // <div div class="text" >
-        //     //     How artistic!
-        //     //                     </div >
-        //     ul.innerHTML = lis
-        //     /* 把lu插入到评论中 */
-        //     txt.appendChild(ul);
-        //     //清空文本域
-        //     text.value = "";
-        //     //自动获取焦点
-        //     text.focus();
-        //     var del = ul.querySelector('.del')
-        //     /* 绑定删除事件 */
-        //     del.onclick = function () {
-        //         /* 将自身删除 */
-        //         ul.remove();
-        //     }
-        // }
-
-
-        //评论表单验证
-        // $('.ui.form').form({
-        //     fields: {
-        //         title: {
-        //             identifier: 'content',
-        //             rules: [{
-        //                 type: 'empty',
-        //                 prompt: '请输入评论内容'
-        //             }
-        //             ]
-        //         },
-        //         content: {
-        //             identifier: 'nickname',
-        //             rules: [{
-        //                 type: 'empty',
-        //                 prompt: '请输入你的大名'
-        //             }]
-        //         },
-        //         type: {
-        //             identifier: 'email',
-        //             rules: [{
-        //                 type: 'email',
-        //                 prompt: '请填写正确的邮箱地址'
-        //             }]
-        //         }
-        //     }
-        // });
-
-        // $(function () {
-        //     $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"comments/6");
-        // });
-
-        // $("#commentpost-btn").on("click", function () {
-        //     console.log("lalala")
-        //     // var boo = $('.ui.form').form('validate form');
-        //     // if (boo) {
-        //     console.log('校验成功');
-        //     postdata();
-        //     // } else {
-        //     // console.log('校验失败');
-        //     // }
-        // });
-
-        //点击发送评论后，评论区重新加载
-        // function postData() {
-        //     console.log("评论区重新加载模块")
-        //     $("#comment-container").load(/*[[@{/comments}]]*/"", {
-        //         // "parentComment.id": $("[name='parentComment.id']").val(),
-        //         // "blogId": $("[name='blogId']").val(),
-        //         // "username": $("[name='nickname']").val(),
-        //         // "email": $("[name='email']").val(),
-        //         "content": $("[name='content']").val()
-        //     }
-        //         // ,
-        //         //  function (responseTxt, statusTxt, xhr) {
-        //         //     $(window).scrollTo($('#goto'), 500);
-        //         //     clearContent();
-        //         // }
-        //     );
-        // }
-
-        // function postdata() {
-        //     console.log("this is little postdata")
-        //     $("#comment-container").on("load", "",{
-        //         // "content": $("[name='content']").val()
-        //         "content": "fuck my ass"
-
-        //     })
-        // }
-
-        //评论完成后，发消息人区域清空重置
-        // function clearContent() {
-        //     $("[name='nickname']").val('');
-        //     $("[name='email']").val('');
-        //     $("[name='content']").val('');
-        //     $("[name='parentComment.id']").val(-1);
-        //     $("[name='content']").attr("placeholder", "请输入评论信息...");
-        // }
-
-        //子集评论
-        // function reply(obj) {
-        //     var commentId = $(obj).data('commentid');
-        //     var commentNickname = $(obj).data('commentnickname');
-        //     $("[name='content']").attr("placeholder", "@" + commentNickname).focus();
-        //     $("[name='parentComment.id']").val(commentId);
-        //     $(window).scrollTo($('#comment-form'), 500);
-        // }
     </script>
 
 
@@ -693,78 +448,6 @@
                 console.log('Scrolled to waypoint!  ' + direction);
             }
         })
-
-        //评论表单验证
-        // $('.ui.form').form({
-        //     fields: {
-        //         title: {
-        //             identifier: 'content',
-        //             rules: [{
-        //                 type: 'empty',
-        //                 prompt: '请输入评论内容'
-        //             }
-        //             ]
-        //         },
-        //         content: {
-        //             identifier: 'nickname',
-        //             rules: [{
-        //                 type: 'empty',
-        //                 prompt: '请输入你的大名'
-        //             }]
-        //         },
-        //         type: {
-        //             identifier: 'email',
-        //             rules: [{
-        //                 type: 'email',
-        //                 prompt: '请填写正确的邮箱地址'
-        //             }]
-        //         }
-        //     }
-        // });
-
-        // $(function () {
-        //     $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"comments/6");
-        // });
-
-        // $('#commentpost-btn').click(function () {
-        //     var boo = $('.ui.form').form('validate form');
-        //     if (boo) {
-        //         console.log('校验成功');
-        //         postData();
-        //     } else {
-        //         console.log('校验失败');
-        //     }
-        // });
-
-        // function postData() {
-        //     $("#comment-container").load(/*[[@{/comments}]]*/"",{
-        //         "parentComment.id" : $("[name='parentComment.id']").val(),
-        //         "blogId" : $("[name='blogId']").val(),
-        //         "nickname": $("[name='nickname']").val(),
-        //         "email"   : $("[name='email']").val(),
-        //         "content" : $("[name='content']").val()
-        //     },function (responseTxt, statusTxt, xhr) {
-        //         $(window).scrollTo($('#goto'),500);
-        //         clearContent();
-        //     });
-        // }
-
-        // function clearContent() {
-        //     $("[name='nickname']").val('');
-        //     $("[name='email']").val('');
-        //     $("[name='content']").val('');
-        //     $("[name='parentComment.id']").val(-1);
-        //     $("[name='content']").attr("placeholder", "请输入评论信息...");
-        // }
-
-    // function reply(obj) {
-    //     var commentId = $(obj).data('commentid');
-    //     var commentNickname = $(obj).data('commentnickname');
-    //     $("[name='content']").attr("placeholder", "@"+commentNickname).focus();
-    //     $("[name='parentComment.id']").val(commentId);
-    //     $(window).scrollTo($('#comment-form'),500);
-    // }
-
     </script>
 </body>
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wang.gp.dao.HypertensionDao">
+
+    <!--    开启驼峰映射可代替-->
+    <!--    <resultMap id="hyper" type="Hypertension">-->
+    <!--        <result property="id" column="id"/>-->
+    <!--        <result property="foodMenu" column="food_menu"/>-->
+    <!--        <result property="description" column="description"/>-->
+    <!--    </resultMap>-->
+
+    <!--Hypertension-->
+    <select id="queryAllByFood" resultType="Hypertension">
+        SELECT *
+        FROM hypertension
+        WHERE food_menu like "%"#{foodmenu}"%"
+    </select>
+
+</mapper>

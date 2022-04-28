@@ -1,7 +1,6 @@
 package com.wang.gp.controller.admin;
 
 import com.wang.gp.pojo.FoodType;
-import com.wang.gp.pojo.Result;
 import com.wang.gp.pojo.base.baseEntity;
 import com.wang.gp.service.FoodTypeService;
 import org.springframework.beans.factory.annotation.Autowired;

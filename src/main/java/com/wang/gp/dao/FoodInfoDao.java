@@ -10,7 +10,7 @@ import java.util.Date;
 public interface FoodInfoDao {
 
     //添加信息
-    public int addFoodInfo(String title, String content, Date date, String flag, Long typeId, String description);
+    public int addFoodInfo(String title, String content, Date date, String flag, Long typeId, String description, String author);
 
     //删除信息
     public int deleteFoodInfoByTitle(String title);

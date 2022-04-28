@@ -36,13 +36,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item @@__active">
-                            <a class="nav-link" href="home.html">Home </a>
+                            <a class="nav-link" href="userHome.html">Home </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="foodinfoList.html">食物说</a>
+                            <a class="nav-link" href="userFoodinfoList.html">食物说</a>
                         </li>
                         <li class="nav-item @@c__active">
-                            <a class="nav-link" href="DietAndNutrition.html">食谱与营养</a>
+                            <a class="nav-link" href="userDietAndNutrition.html">食谱与营养</a>
+                        </li>
+                        <li class="nav-item @@active">
+                            <a class="nav-link" href="admin/foodinfo.html">用户管理 </a>
                         </li>
                     </ul>
                 </div>
@@ -51,12 +54,12 @@
                     <div class="popup ml-auto">
                         <a href="#menu" class="domain" data-toggle="modal" data-target="#DomainModal">
                             <div class="hamburger">
-                                <svg t="1650099328672" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                                <!-- <svg t="1650099328672" class="icon" viewBox="0 0 1024 1024" version="1.1"
                                     xmlns="http://www.w3.org/2000/svg" p-id="2567" width="200" height="200">
                                     <path
                                         d="M500 128.8c-95.2 5.6-173.6 83.2-180 178.4-7.2 112 80.8 205.6 191.2 205.6 106.4 0 192-86.4 192-192 0.8-110.4-92-198.4-203.2-192zM512 575.2c-128 0-383.2 64-383.2 192v96c0 17.6 14.4 32 32 32h702.4c17.6 0 32-14.4 32-32V766.4c0-127.2-255.2-191.2-383.2-191.2z"
                                         p-id="2568"></path>
-                                </svg>
+                                </svg> -->
                             </div>
 
                         </a>
@@ -251,7 +254,7 @@
                                                 a += '<div class="ui padded segment m-padded-tb-large m-opacity">' +
                                                     '<div class="ui large aligned mobile reversed stackable grid">' +
                                                     '<div class="eleven wide column ">' +
-                                                    '<a href="infodemo.html?id=' + i + '&pageNum=' + obj.curr + '&pageSize=' + obj.limit + '" class="ui header" id=' + i + ' align="center">' +
+                                                    '<a href="userinfodemo.html?id=' + i + '&pageNum=' + obj.curr + '&pageSize=' + obj.limit + '" class="ui header" id=' + i + ' align="center">' +
                                                     msg.data[i].title +
                                                     '</a>' +
                                                     '<p class="m-text m-margin-top-max">' +

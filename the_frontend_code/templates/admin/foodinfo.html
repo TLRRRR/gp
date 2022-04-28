@@ -27,7 +27,7 @@
                     <div class="ui dropdown  item">
                         <div class="text">
                             <!-- <img class="ui avatar image" src="/images/elf.png" th:src="@{/images/bg.jpg}"> -->
-                            <span id="dear_user">oneStar</span>
+                            <span id="dear_user"></span>
                         </div>
                         <i class="dropdown icon"></i>
                         <div class="menu">
@@ -58,9 +58,9 @@
             <input type="hidden" name="page">
             <div class="inline fields">
                 <div class="field">
-                    <input type="text" name="title" placeholder="标题">
+                    <input type="text" name="title" id="titleName" placeholder="标题">
                 </div>
-                <div class="field">
+                <!-- <div class="field">
                     <div class="ui labeled action input">
                         <div class="ui type selection dropdown">
                             <input type="hidden" name="typeId">
@@ -73,11 +73,11 @@
                         </div>
                         <button id="clear-btn" class="ui compact button">clear</button>
                     </div>
-                </div>
+                </div> -->
                 <div class="field">
 
                     <div class="field">
-                        <button type="button" id="search-btn" class="ui mini teal basic button"><i
+                        <button type="button" id="search_btn" class="ui mini teal basic button"><i
                                 class="search icon"></i>搜索
                         </button>
                     </div>
@@ -91,11 +91,9 @@
                     </a>
                 </div>
             </div>
-
         </div>
         <div id="table-container">
             <table class="ui compact teal table">
-
                 <tfoot>
                     <tr>
                         <th colspan="7">
@@ -103,16 +101,10 @@
                     </tr>
                 </tfoot>
             </table>
-
-
         </div>
         <table class="layui-hide" id="test" lay-filter="test"></table>
     </div>
 
-    <br>
-    <br>
-    <br>
-    <br>
     <br>
     <br>
     <br>
@@ -203,11 +195,10 @@
             var table = layui.table;
             table.render({
                 elem: '#test'
-                , url: 'http://localhost:8080/admin/toinfo'/*tpa=https://www.layuiweb.com/test/table/demo1.json*/
+                , url: 'http://localhost:8080/admin/toinfo'
                 , where: {
                     userName: a.userName
                 }
-                // , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板s
                 , height: 412
                 , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
                     title: '提示'
@@ -219,7 +210,7 @@
                     { field: 'id', width: 90, title: 'ID', sort: true }
                     , { field: 'title', width: 130, title: '标题' }
                     , { field: 'author', width: 90, title: '作者' }
-                    , { field: 'content', width: 250, title: '内容', sort: true }
+                    , { field: 'description', width: 250, title: '描述', sort: true }
                     , { field: 'date', width: 250, title: '日期' }
                     , { field: 'typeId', width: 130, title: '类型' }
                     , { field: 'flag', title: '签名', minWidth: 10, width: 90 } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
@@ -292,7 +283,6 @@
                                 //  typeid:
                             },
                             success: function (msg) {
-
                             }
                         })
                     })
@@ -302,6 +292,22 @@
     </script>
 
     <script>
+        $("#search_btn").on("click", function () {
+            var title = document.getElementById("titleName")
+            var data = {
+                title: title,
+                userName: a.userName
+            }
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                url: "http://localhost:8080/admin/",
+                data: data
+            })
+        })
+    </script>
+
+    <!-- <script>
 
         $('.menu.toggle').click(function () {
             $('.m-item').toggleClass('m-mobile-hide');
@@ -342,7 +348,7 @@
             });
         }
 
-    </script>
+    </script> -->
 </body>
 
 </html>

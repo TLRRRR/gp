@@ -20,8 +20,8 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public int addComment(String commentContent, Long foodinfoId) {
-        return commentDao.addComment(commentContent, foodinfoId);
+    public int addComment(String commentContent, Long foodinfoId, String commentAuthor) {
+        return commentDao.addComment(commentContent, foodinfoId, commentAuthor);
     }
 
 //    @Override

@@ -24,8 +24,8 @@
                 <div class="right m-item m-mobile-hide menu">
                     <div class="ui dropdown item">
                         <div class="text">
-                            <img class="ui avatar image" src="/images/admin.png">
-                            <span>onepiece</span>
+                            <!-- <img class="ui avatar image" src="/images/admin.png"> -->
+                            <span id="dear_user"></span>
                         </div>
                         <i class="dropdown icon"></i>
                         <div class="menu">
@@ -117,9 +117,13 @@
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
     <script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
 
+    <!-- 显示用户信息 -->
+    <script>
+        var a = JSON.parse(localStorage.getItem("user"));
+        document.getElementById("dear_user").innerHTML = a.userName
+    </script>
 
     <script>
-
         //初始化Markdown编辑器
         var contentEditor;
         $(function () {
@@ -153,7 +157,8 @@
                 content: $("#content").val(),
                 flag: $("#flag").val(),
                 typeId: $("#typeid").val(),
-                description: $("#description").val()
+                description: $("#description").val(),
+                author: a.userName
             }
             $.ajax({
                 type: "post",
