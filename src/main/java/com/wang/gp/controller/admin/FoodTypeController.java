@@ -131,4 +131,5 @@ public class FoodTypeController {
         return "/admin/addtype";
     }
 
+
 }

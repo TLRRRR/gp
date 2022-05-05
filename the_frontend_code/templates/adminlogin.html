@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <title>管理员登录</title>
+    <!-- Meta-Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- style CSS -->
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="assets/css/style-starter.css">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<!-- //Head -->
+
+<!-- Body -->
+
+<body>
+    <section class="main">
+        <div class="logo text-center">
+            <h1 class="text">管理员登录</h1>
+        </div>
+        <div class="content-w3ls text-center">
+            <img src="../static/images/admin.png" alt="" class="img-responsive">
+            <div class="wthree-field">
+                <input name="userName" id="userName" type="text" placeholder="Username" required>
+            </div>
+            <div class="wthree-field">
+                <input name="pwd" id="pwd" type="Password" placeholder="Password" required>
+            </div>
+            <div class="wthree-field">
+                <button type="button" id="adminsubmit" name="submit" class="btn">登录</button>
+            </div>
+            <div class="login-bottom">
+                <a href="adminregister.html" class="">快速注册</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+        function func() {
+            //验证用户是否已经注册过
+            var userName = $("#userName").val();//获取表单元素值
+            var pwd = $("#pwd").val();
+            // var userName = document.getElementById('userName').value;
+            if (userName == "") {
+                alert("昵称不能为空！");
+                return false;
+            }
+            if (pwd == "") {
+                alert("密码不能为空！");
+                return false;
+            }
+            if (pwd.length < 4) {
+                alert("密码不能少于4位！");
+                return false;
+            }
+            return true;
+        }
+
+        $("#adminsubmit").on("click", function () {
+            console.log("==================")
+            if (!func()) {
+                console.log("!!!!!!");
+                return false;
+            }
+            var userName = $("#userName").val();//获取表单元素值
+            var pwd = $("#pwd").val();
+            var data = {
+                adname: userName,
+                pwd: pwd
+            };
+            console.log(userName)
+            console.log(data)
+            $.ajax({
+                type: "POST",
+                //待载入页面的url
+                url: "http://localhost:8080/adminadmin/confirmAdmin",
+                data: data,
+                dataType: 'json',
+                success: function (msg) {
+                    console.log("进success了");
+                    console.log(msg)
+                    if ("200" == msg.code) {
+                        localStorage.setItem("user", JSON.stringify(msg.data))
+                        console.log("success" + msg);
+                        alert("handsome")
+                        window.location.href = "adminHome.html";
+                    } else if ("11" == msg.data) {
+                        alert("该用户不存在！");
+                        console.log("该用户不存在！");
+                        return false;
+                    } else if ("22" == msg.data) {
+                        alert("密码输入错误，错误输入三次后您的账户将会被锁定！");
+                        return false;
+                    } else if ("33" == msg.data) {
+                        alert("您由于错误登陆次数太多，系统已将您的账户锁定，请在三分钟后重新登录！");
+                        return false;
+                    }
+                },
+            });
+        });
+
+    </script>
+
+</body>
+<!-- //Body -->
+
+</html>

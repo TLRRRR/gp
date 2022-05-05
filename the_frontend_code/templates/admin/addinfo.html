@@ -7,8 +7,7 @@
     <title>博文发布</title>
     <link href="../../static/images/admin.png" th:href="@{/images/admin.png}" rel="icon" type="image/x-ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css"
-        th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
     <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
 </head>
 
@@ -19,7 +18,7 @@
             <div class="ui inverted secondary stackable menu">
                 <h2 class="ui olive header item" style="font-family: STSong">管理后台</h2>
                 <a href="foodinfo.html" class="active m-item item m-mobile-hide"><i class="home icon"></i>文章管理</a>
-                <a href="foodtype.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>分类管理</a>
+                <a href="foodbook.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>食谱管理</a>
                 <a href="../userHome.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>返回主页</a>
                 <div class="right m-item m-mobile-hide menu">
                     <div class="ui dropdown item">
@@ -56,6 +55,7 @@
             <div class="ui form">
                 <div class="required field">
                     <div class="ui left labeled input">
+                        <!-- 标签列表 -->
                         <div class="ui selection compact teal basic dropdown label">
                             <input type="hidden" value="原创" name="flag" id="flag">
                             <i class="dropdown icon"></i>
@@ -64,6 +64,19 @@
                                 <div class="item" data-value="原创">原创</div>
                                 <div class="item" data-value="转载">转载</div>
                                 <div class="item" data-value="翻译">翻译</div>
+                            </div>
+                        </div>
+                        <!-- 文章分类列表 -->
+                        <div class="ui left labeled action input" style="width: 250px;">
+                            <label class="ui compact teal basic label">分类</label>
+                            <div class="ui fluid selection dropdown">
+                                <input type="hidden" name="type" id="type">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">分类</div>
+                                <div class="menu" id="infotype">
+                                    <div class="item" data-value="高血压吗">高血压</div>
+                                    <div class="item" data-value="高血脂">高血脂</div>
+                                </div>
                             </div>
                         </div>
                         <input type="text" id="title" name="title" placeholder="标题">
@@ -81,24 +94,8 @@
                 </div>
 
                 <div class="two fields">
-                    <div class="required field">
-                        <div class="ui left labeled action input">
-                            <label class="ui compact teal basic label">分类</label>
-                            <div class="ui fluid selection dropdown">
-                                <input type="hidden" name="typeId" id="typeid">
-                                <i class="dropdown icon"></i>
-                                <div class="default text">分类</div>
-                                <div class="menu">
-                                    <div class="item" data-value="1">高血压</div>
-                                    <div class="item" data-value="2">高血脂</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="ui right aligned container">
                         <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
-                        <button type="button" id="save-btn" class="ui secondary button">保存</button>
                         <button type="button" id="publish-btn" class="ui teal button">发布</button>
                     </div>
                 </div>
@@ -134,6 +131,8 @@
                 path: "../../static/lib/editormd/lib/"
             });
         });
+
+
         $('.menu.toggle').click(function () {
             $('.m-item').toggleClass('m-mobile-hide');
         });
@@ -142,12 +141,6 @@
             on: 'hover'
         });
 
-        $('#save-btn').click(function () {
-            $('[name="published"]').val(false);
-            $('#blog-form').submit();
-        });
-
-
         $('#publish-btn').click(function () {
             // $('#blog-form').submit();
             // window.location.href = "foodinfo.html";
@@ -155,8 +148,7 @@
             var data = {
                 title: $("#title").val(),
                 content: $("#content").val(),
-                flag: $("#flag").val(),
-                typeId: $("#typeid").val(),
+                typew: $("#type").val(),
                 description: $("#description").val(),
                 author: a.userName
             }
@@ -166,7 +158,6 @@
                 data: data,
                 dataType: "json",
                 success: function (msg) {
-                    console.log("aaaa")
                     console.log(msg)
                     if (msg.code == "11") {
                         window.location.href = "foodinfo.html";
@@ -175,7 +166,26 @@
             })
         });
 
+        $.ajax({
+            url: "http://localhost:8080/admin/showinfotype",//获取食物文章类型列表
+            dataType: "json",
+            type: "post",
+            success: function (msg) {
+                // <div class="item" data-value="高血脂">高血脂</div>
+                console.log(msg.data[2].name)
+                let a = ''
+                for (let i = 0; i < msg.data.length; i++) {
+                    a += '<div class="item" data-value='
+                        + msg.data[i].name
+                        + '>'
+                        + msg.data[i].name
+                        + '</div>'
+                }
+                $("#infotype").html(a);
+            }
+        })
 
+        // 输入不为空判断
         $('.ui.form').form({
             fields: {
                 title: {

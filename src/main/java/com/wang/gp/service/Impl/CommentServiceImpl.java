@@ -6,6 +6,7 @@ import com.wang.gp.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -20,8 +21,8 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public int addComment(String commentContent, Long foodinfoId, String commentAuthor) {
-        return commentDao.addComment(commentContent, foodinfoId, commentAuthor);
+    public int addComment(String commentContent, Long foodinfoId, String commentAuthor, Date creationtime) {
+        return commentDao.addComment(commentContent, foodinfoId, commentAuthor, creationtime);
     }
 
 //    @Override

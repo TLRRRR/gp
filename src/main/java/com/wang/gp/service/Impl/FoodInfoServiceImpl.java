@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class FoodInfoServiceImpl implements FoodInfoService {
@@ -16,8 +17,8 @@ public class FoodInfoServiceImpl implements FoodInfoService {
     FoodInfoDao foodInfoDao;
 
     @Override
-    public int addFoodInfo(String title, String content, Date date, String flag, Long typeId, String description, String author) {
-        return foodInfoDao.addFoodInfo(title, content, date, flag, typeId, description, author);
+    public int addFoodInfo(String title, String content, Date date, String flag, String typew, String description, String author) {
+        return foodInfoDao.addFoodInfo(title, content, date, flag, typew, description, author);
     }
 
     @Override
@@ -58,5 +59,10 @@ public class FoodInfoServiceImpl implements FoodInfoService {
     @Override
     public ArrayList<FoodInfo> queryFoodinfoByUsername(String userName) {
         return foodInfoDao.queryFoodinfoByUsername(userName);
+    }
+
+    @Override
+    public List showInfotype() {
+        return foodInfoDao.showInfotype();
     }
 }

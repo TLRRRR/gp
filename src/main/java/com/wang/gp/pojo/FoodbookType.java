@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Hypertension {
+public class FoodbookType {
     private long id;
-    private String foodMenu;
-    private String description;
+    private String name;
 }

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <title>注册管理员</title>
+    <!-- Meta-Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- style CSS -->
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="assets/css/style-starter.css">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<!-- //Head -->
+
+<!-- Body -->
+
+<body>
+    <section class="main">
+        <div class="logo text-center">
+            <h1 class="text">注册管理员</h1>
+        </div>
+        <div class="content-w3ls text-center">
+            <img src="../static/images/admin.png" alt="" class="img-responsive">
+            <div class="wthree-field">
+                <input name="userName" id="userNameRegister" type="text" placeholder="Username" required>
+            </div>
+            <div class="wthree-field">
+                <input name="pwd" id="pwdRegister" type="Password" placeholder="Password" required>
+            </div>
+            <div class="wthree-field">
+                <button type="button" id="adminregister" name="submit" class="btn">注册</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script>
+        function rfunc() {
+            console.log("现在在rfunc方法中")
+            var userName = $("#userNameRegister").val();
+            // let user = document.getElementById("userName").value;
+            var pwd = $("#pwdRegister").val();
+            var tel = $("#telRegister").val();
+            if (userName == "") {
+                alert("用户名不能为空！");
+                return false;
+            }
+            if (pwd == "") {
+                alert("密码不能为空！");
+                return false;
+            }
+            if (tel == "") {
+                alert("手机号不能为空！");
+                return false;
+            }
+            // if (!(/^1[34578]\d{9}$/.test(pwd))) {
+            //     alert("手机号输入错误");
+            //     return false;
+            // }
+            if (pwd.length < 4) {
+                alert("密码不能少于4位！");
+                return false;
+            }
+            return true;
+        }
+
+        $("#adminregister").on("click", function () {
+            if (!rfunc()) {
+                console.log("!!!!!!");
+                return false;
+            }
+            var userName = $("#userNameRegister").val();//获取表单元素值
+            var pwd = $("#pwdRegister").val();
+            var tel = $("#telRegister").val();
+            var data = {
+                adname: userName,
+                pwd: pwd,
+            };
+            console.log(data);
+            $.ajax({
+                type: "POST",
+                //待载入页面的url,方法名
+                url: "http://localhost:8080/adminadmin/registeradmin",
+                data: data,    //后台传回的数据
+                dataType: 'json',
+                success: function (msg) {
+                    if ("22" == msg.code) {
+                        console.log("success");
+                        alert("注册成功！！！")
+                        localStorage.setItem("user", JSON.stringify(msg.data.adname))
+                        window.location.href = "adminHome.html";
+                    } else if ("11" == msg.code) {
+                        alert("该用户已经存在！");
+                        console.log("该用户已经存在！");
+                        return false;
+                    }
+                }
+            })
+        })
+    </script>
+
+</body>
+<!-- //Body -->
+
+</html>

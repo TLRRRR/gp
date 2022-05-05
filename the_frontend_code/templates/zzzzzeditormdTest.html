@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>mkToHtmlDemo</title>
+
+    <!--引入样式文件-->
+    <link rel="stylesheet" href="../static/lib/editormd/css/editormd.preview.min.css" />
+    <link rel="stylesheet" href="../static/css/me.css">
+    <link rel="stylesheet" href="../static/css/semantic.min.css">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="assets/css/style-starter.css">
+    <!-- 登录css -->
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css" media="all">
+</head>
+
+<body onload="mk()">
+    <!--输入需要转换的markdown文件开始-->
+
+    <!--userheader-->
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light stroke">
+                <a class="navbar-brand">
+                    <span> 食物</span>
+                    <span> 与健康</span>
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="fa icon-expand fa-bars"></span>
+                    <span class="fa icon-close fa-times"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item @@active">
+                            <a class="nav-link" href="userHome.html">Home </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="userFoodinfoList.html">食物说</a>
+                        </li>
+                        <li class="nav-item @@active">
+                            <a class="nav-link" href="userDietAndNutrition.html">食谱与营养</a>
+                        </li>
+                        <li class="nav-item @@active">
+                            <a class="nav-link" href="admin/foodinfo.html">用户管理 </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                </div>
+                <!-- toggle switch for light and dark theme -->
+                <div class="mobile-position ml-lg-2">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+                <!-- //toggle switch for light and dark theme -->
+            </nav>
+        </div>
+    </header>
+    <!--/userheader-->
+
+    <!--顶部图片-->
+    <div class="m-bg-type_outer" style="width: 100%;height: 50% ;margin-top:90px">
+        <img src="../static/images/bg.jpg" alt="" class="ui m-bg image" style="width: 100%;height: 100%">
+        <div class="m-bg-class_cover">
+            <div class="ui container" style="position: relative ;bottom: -540px;">
+
+                <h2 class="m-font-size-title-large" align="center" id="title"></h2>
+                <div class="ui container" align="center">
+                    <div class="ui horizontal link list" align="center">
+                        <!-- <div class="item">
+                            <div class="ui orange basic label" style="font-size: 7px">原创</div>
+                        </div> -->
+                        <div class="item">
+                            <!-- <i class="user outline outline icon m-font-size-text-mini"></i> -->
+                            <span style="color: #ffffff;font-size: 18px"> 作者: </span>
+                            <span style="color: #ffffff;font-size: 18px" id="author"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--中间内容-->
+    <div id="waypoint" class="m-margin- animated fadeIn">
+        <div class="ui container m-opacity box-shadow-max">
+            <!--内容-->
+            <div class="ui attached padded segment">
+                <br>
+                <br>
+                <!--中间主要内容部分-->
+                <div id="cont" style="display:none;">22222</div>
+                <div id="content" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large">
+                    <br>
+                    <textarea id="mkcontent"></textarea>
+                    <br>
+                    <br>
+                </div>
+                <div class="ui horizontal divider">end</div>
+            </div>
+
+            <!-- 评论区域 -->
+            <div class="ui bottom attached segment">
+                <!--评论区域列表-->
+                <div id="comment-container" class="ui teal segment">
+                    <div>
+                        <div class="ui threaded comments" style="max-width: 100%;">
+                            <h3 class="ui dividing header">评论</h3>
+                            <div class="comment">
+                                <div class="content" id="txt">
+                                    <span class="author">
+                                        <span id="infoauthor">Matt</span>
+                                    </span>
+                                    <div class="text">
+                                        How artistic!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 评论人信息页面 -->
+                <div id="comment-form" class="ui form">
+                    <input type="hidden" name="blogId">
+                    <input type="hidden" name="parentComment.id" value="-1">
+                    <div class="field">
+                        <textarea name="content" id="text" placeholder="请输入评论信息..."></textarea>
+                    </div>
+                    <div class="fields">
+                        <div class="field  m-margin-bottom-small m-mobile-wide">
+                            <button id="commentpost-btn" type="button" class="ui teal button m-mobile-wide"><i
+                                    class="edit icon"></i>发布</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--引入js文件-->
+    <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../static/lib/editormd/lib/marked.min.js"></script>
+    <script src="../static/lib/editormd/lib/prettify.min.js"></script>
+    <script src="../static/lib/editormd/lib/raphael.min.js"></script>
+    <script src="../static/lib/editormd/lib/underscore.min.js"></script>
+    <script src="../static/lib/editormd/lib/sequence-diagram.min.js"></script>
+    <script src="../static/lib/editormd/lib/jquery.flowchart.min.js"></script>
+    <script src="../static/lib/editormd/lib/flowchart.min.js"></script>
+    <script src="../static/lib/editormd/editormd.min.js"></script>
+
+
+    <!-- MENU-JS -->
+    <script>
+        $(window).on("scroll", function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function () {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function () {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+    </script>
+    <!-- //MENU-JS -->
+
+    <!-- 显示文章详情 -->
+    <script>
+        //获取参数方法
+        function GetUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+        //使用获取参数方法
+        var id = GetUrlParam("id");
+        var pageNum = GetUrlParam("pageNum");
+        var pageSize = GetUrlParam("pageSize");
+        console.log("id:" + id + "  name:" + name);
+        console.log("pageNum:" + pageNum + "  name:" + name);
+        console.log("pageSize:" + pageSize + "  name:" + name);
+
+        //文章详情
+        $.ajax({
+            url: "http://localhost:8080/infodetail",
+            dataType: "json",
+            type: "post",
+            data: {
+                id: 2,
+                pageNum: 5,
+                pageSize: 5
+            },
+            success: function (msg) {
+                console.log("that is my json code: " + msg.code);
+                console.log("that is my json data: " + msg.data.content);
+                if (msg.code == 200) {
+                    console.log("like success")
+                    document.getElementById("title").innerHTML = msg.data.title;
+                    document.getElementById("cont").innerHTML = msg.data.content;
+                    document.getElementById("author").innerHTML = msg.data.author;
+                }
+            }
+        })
+
+        //展示评论
+        $.ajax({
+            url: "http://localhost:8080/infocomment",
+            dataType: "json",
+            type: "post",
+            data: {
+                id: id,
+                pageNum: pageNum,
+                pageSize: pageSize
+            },
+            success: function (msg) {
+                console.log(msg.data.length)
+                if (msg.code == 200) {
+                    let comment = ''
+                    for (let i = 0; i < msg.data.length; i++) {
+                        comment += '<div class="comment">' +
+                            '<div class="content" id="txt">' +
+                            '<span class="author">' +
+                            msg.data[i].username +
+                            '</span>' +
+                            '<div class="text">' +
+                            msg.data[i].content +
+                            '</div>' +
+                            '</div>' +
+                            '</div>'
+                    }
+                    $(".ui.threaded.comments").html(comment);
+                }
+            }
+        })
+
+        //添加评论
+        $("#commentpost-btn").on("click", function () {
+            var a = JSON.parse(localStorage.getItem("user"));
+            // document.getElementById("dear_user").innerHTML = a.userName
+            console.log(a)
+            var commentContent = document.getElementById("text").value;
+            var commentArea = document.getElementById("text");
+            console.log("评论内容" + commentContent)
+            $.ajax({
+                url: "http://localhost:8080/comment/addcomment",
+                dataType: "json",
+                type: "post",
+                data: {
+                    id: id,
+                    pageNum: pageNum,
+                    pageSize: pageSize,
+                    commentContent: commentContent,
+                    commentAuthor: a.userName
+                },
+                success: function () {
+                    commentArea.value = "";
+                    $.ajax({
+                        url: "http://localhost:8080/infocomment",
+                        dataType: "json",
+                        type: "post",
+                        data: {
+                            id: id,
+                            pageNum: pageNum,
+                            pageSize: pageSize
+                        },
+                        success: function (msg) {
+                            console.log(msg.data.length)
+                            if (msg.code == 200) {
+                                console.log("like success")
+                                let comment = ''
+                                for (let i = 0; i < msg.data.length; i++) {
+                                    comment += '<div class="comment">' +
+                                        '<div class="content" id="txt">' +
+                                        '<span class="author">' +
+                                        msg.data[i].username +
+                                        '</span>' +
+                                        '<div class="text">' +
+                                        msg.data[i].content +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>'
+                                }
+                                $(".ui.threaded.comments").html(comment);
+                            }
+                        }
+                    })
+                }
+            })
+        })
+    </script>
+
+    <!-- mkdown转HTML -->
+    <script>
+        function mk() {
+            console.log("mkmkmkmkmkmkmkmkmkmk")
+            //先对容器初始化
+            $("#content").html(' <textarea id="mkcontent"></textarea>');
+
+            var a = document.getElementById("content").innerHTML
+            $("#mkcontent").val(document.getElementById("cont").innerHTML)
+            //转换开始,第一个参数是上面的div的id
+            editormd.markdownToHTML("content", {
+                htmlDecode: "style,script,iframe", //可以过滤标签解码
+                emoji: true,
+                taskList: true,
+                tex: true,                // 默认不解析
+                flowChart: true,          // 默认不解析
+                sequenceDiagram: true,    // 默认不解析
+            });
+        }
+    </script>
+
+</body>
+
+</html>

@@ -33,7 +33,7 @@
         WHERE name = #{name}
     </select>
 
-<!--    查询所有事物分类-->
+<!--    查询所有食物信息分类-->
     <select id="queryAllFoodType" resultType="FoodType">
         SELECT *
         FROM foodtype

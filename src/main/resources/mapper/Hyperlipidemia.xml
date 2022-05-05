@@ -4,11 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wang.gp.dao.HyperlipidemiaDao">
 
-    <!--Hyperlipidemia-->
-    <select id="queryAllByFood" resultType="Hyperlipidemia">
+    <!--高血脂食谱-->
+    <select id="queryAllHyperlipidemiaByFood" resultType="Foodbook">
         SELECT *
-        FROM hyperlipidemia
-        WHERE food_menu like "%"#{foodmenu}"%"
+        FROM foodbook
+        WHERE food_menu like "%"#{foodmenu}"%"and typew = "hyperlipidemia"
     </select>
 
 </mapper>

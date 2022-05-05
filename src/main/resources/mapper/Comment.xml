@@ -15,8 +15,8 @@
     <!--        values (#{username},#{content},#{create_time},#{foodinfo_id},#{parent_comment_id})-->
     <!--    </insert>-->
     <insert id="addComment">
-        insert into comment (content, foodinfo_id, username)
-        values (#{commentContent}, #{foodinfoId}, #{commentAuthor})
+        insert into comment (content, foodinfo_id, username, creationtime)
+        values (#{commentContent}, #{foodinfoId}, #{commentAuthor}, #{creationtime})
     </insert>
 
 

@@ -16,11 +16,12 @@
     <nav class="ui inverted gird-header">
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">
-                <h2 class="ui olive header item" style="font-family: STSong">管理后台</h2>
-                <a href="foodinfo.html" class="m-item item m-mobile-hide"><i class="home icon"></i>文章管理</a>
-                <a href="foodtype.html" class="active m-item item m-mobile-hide"><i
-                        class="clone outline icon"></i>分类管理</a>
-                <a href="../userHome.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>返回主页</a>
+                <h2 class="ui olive header item" style="font-family: STSong">管理员后台</h2>
+                <a href="adminfoodinfo.html" class="m-item item m-mobile-hide"><i class="home icon"></i>文章管理</a>
+                <a href="adminfoodtype.html" class="active m-item item m-mobile-hide"><i class="clone outline icon"></i>文章分类管理</a>
+                <a href="adminfoodbook.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>食谱管理</a>
+                <a href="adminfoodbooktype.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>食谱分类管理</a>
+                <a href="../adminHome.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>返回主页</a>
                 <div class="right m-item m-mobile-hide menu">
                     <div class="ui dropdown  item">
                         <div class="text">
@@ -85,7 +86,7 @@
     <!-- 显示用户信息 -->
     <script>
         var a = JSON.parse(localStorage.getItem("user"));
-        document.getElementById("dear_user").innerHTML = a.userName
+        document.getElementById("dear_user").innerHTML = a
     </script>
 
     <script>

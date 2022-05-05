@@ -16,8 +16,6 @@ public interface FoodTypeDao {
 
     public FoodType queryFoodTypeByName(String name);
 
-    //    public int addFoodType(FoodType foodType);
-//    public int addFoodType(Long id,String name);
     public int addFoodType(String name);
 
     public int deleteFoodInfoById(Long id);

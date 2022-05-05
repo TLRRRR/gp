@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wang.gp.dao.FoodbookTypeDao">
+
+    <!--查询所有食谱类型-->
+    <select id="queryAllFoodbookType" resultType="FoodbookType">
+        SELECT *
+        FROM foodbook_type
+    </select>
+
+    <!--添加食谱类型-->
+    <insert id="addFoodbookType">
+        INSERT INTO foodbook_type(name)
+        VALUES (#{name})
+    </insert>
+
+    <!--删除食谱类型-->
+    <delete id="deleteFoodbooktypeById">
+        DELETE
+        FROM foodbook_type
+        WHERE id = #{id}
+    </delete>
+
+    <!--更新食谱类型-->
+    <update id="updateFoodbookType">
+        UPDATE foodbook_type
+        SET name=#{name}
+        where id = #{id}
+    </update>
+
+
+    <!--    &lt;!&ndash;根据id查询foodbooktype&ndash;&gt;-->
+    <!--    <select id="queryFoodTypeById" resultType="FoodbookType">-->
+    <!--        SELECT *-->
+    <!--        FROM foodbook_type-->
+    <!--        WHERE id = #{id}-->
+    <!--    </select>-->
+
+    <!--    <select id="queryFoodTypeByName" resultType="FoodbookType">-->
+    <!--        SELECT *-->
+    <!--        FROM foodbook_type-->
+    <!--        WHERE name = #{name}-->
+    <!--    </select>-->
+
+</mapper>

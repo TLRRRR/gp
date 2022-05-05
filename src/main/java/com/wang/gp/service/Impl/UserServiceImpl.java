@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     LoginDao loginDao;
 
-    @Autowired
-    HttpServletRequest request;
+//    @Autowired
+//    HttpServletRequest request;
 
 
     public User selectUserById(int userId){
@@ -110,14 +110,16 @@ public class UserServiceImpl implements UserService {
             if (count > 2)//连续错误登陆次数已经超过三次
             {
                 System.out.println("登录错误次数太多，账户锁定");
-                String jsonStr = "{\"errorCode\":\"33\",\"errorMessage\":\"您由于错误登陆次数太多，系统已将您的账户锁定，请在三分钟后重新登录！\"}";
+//                String jsonStr = "{\"errorCode\":\"33\",\"errorMessage\":\"您由于错误登陆次数太多，系统已将您的账户锁定，请在三分钟后重新登录！\"}";
+                String jsonStr = "33";
                 loginDao.updateUser(user.getUserName(), errorLoginTime, count + 1);
                 return jsonStr;
             } else {
                 //id存在，密码错误
                 if ((np_user == null)) {        //用户存在但密码输入错误，那么输出密码输入错误，并且如果当前和上次错误时间相隔不到1分钟则count+1;
                     System.out.println("id存在，密码错误");
-                    String jsonStr = "{\"errorCode\":\"22\",\"errorMessage\":\"密码输入错误，错误输入三次后您的账户将会被锁定！\"}";
+//                    String jsonStr = "{\"errorCode\":\"22\",\"errorMessage\":\"密码输入错误，错误输入三次后您的账户将会被锁定！\"}";
+                    String jsonStr = "22";
                     loginDao.updateUser(user.getUserName(), errorLoginTime, count + 1);
                     return jsonStr;
                 } else {
@@ -137,8 +139,8 @@ public class UserServiceImpl implements UserService {
             System.out.println(user.getUserName());
             System.out.println(errorLoginTime);
             loginDao.updateUser(user.getUserName(), errorLoginTime, count + 1);
-            String jsonStr = "{\"errorCode\":\"11\",\"errorMessage\":\"该用户不存在\"}";
-//            String jsonStr = "{errorCode:11,errorMessage:该用户不存在}";
+//            String jsonStr = "{\"errorCode\":\"11\",\"errorMessage\":\"该用户不存在\"}";
+            String jsonStr = "11";
             return jsonStr;
         }
     }

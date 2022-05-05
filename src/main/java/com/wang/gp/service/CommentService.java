@@ -2,6 +2,7 @@ package com.wang.gp.service;
 
 import com.wang.gp.pojo.Comment;
 
+import java.util.Date;
 import java.util.List;
 
 public interface CommentService {
@@ -10,5 +11,5 @@ public interface CommentService {
     //添加一个评论
 //    int addComment(Comment comment);
 
-    int addComment(String commentContent, Long foodinfoId, String commentAuthor);
+    int addComment(String commentContent, Long foodinfoId, String commentAuthor, Date creationtime);
 }

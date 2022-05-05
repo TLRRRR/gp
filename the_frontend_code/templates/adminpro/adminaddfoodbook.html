@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增食谱</title>
+    <link href="../../static/images/admin.png" th:href="@{/images/admin.png}" rel="icon" type="image/x-ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css"
+        th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="../assets/css/style-starter.css">
+</head>
+
+<body>
+    <!--导航-->
+    <nav class="ui inverted gird-header">
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu">
+                <h2 class="ui olive header item" style="font-family: STSong">管理员后台</h2>
+                <a href="adminfoodinfo.html" class=" m-item item m-mobile-hide"><i class="home icon"></i>文章管理</a>
+                <a href="adminfoodtype.html" class=" m-item item m-mobile-hide"><i
+                        class="clone outline icon"></i>文章分类管理</a>
+                <a href="adminfoodbook.html" class=" active m-item item m-mobile-hide"><i
+                        class="clone outline icon"></i>食谱管理</a>
+                <a href="adminfoodbooktype.html" class=" m-item item m-mobile-hide"><i
+                        class="clone outline icon"></i>食谱分类管理</a>
+                <a href="../adminHome.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>返回主页</a>
+                <div class="right m-item m-mobile-hide menu">
+                    <div class="ui dropdown item">
+                        <div class="text">
+                            <!-- <img class="ui avatar image" src="/images/admin.png"> -->
+                            <span id="dear_user"></span>
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a href="#" class="item">注销</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+    <div class="m-padded-tb-hugex">
+        <div class="ui attached pointing menu">
+            <div class="ui container">
+            </div>
+        </div>
+    </div>
+
+    <!--中间内容-->
+    <div class="">
+        <div class="ui container">
+            <div class="ui form">
+                <div class="required field">
+                    <div class="ui left labeled input">
+                        <div class="ui selection compact teal basic dropdown label" style="width: 130px;">
+                            <input type="hidden" value="高血压食谱" name="type" id="type">
+                            <i class="dropdown icon"></i>
+                            <div class="text">高血压食谱</div>
+                            <div class="menu" id="foodbooktype">
+                                <!-- <div class="item" data-value="高血压食谱">高血压食谱</div>
+                                <div class="item" data-value="高血脂食谱">高血脂食谱</div>
+                                <div class="item" data-value="减肥食谱">减肥食谱</div> -->
+                            </div>
+                        </div>
+                        <input type="text" id="foodMenu" name="foodMenu" placeholder="食谱名称">
+                    </div>
+                </div>
+                <span class="text">食谱说明</span>
+                <div class="required field">
+                    <textarea name="description" id="description" placeholder="食谱说明..." maxlength="200"></textarea>
+                </div>
+                <span class="text">食谱材料</span>
+                <div class="required field">
+                    <textarea name="formula" id="formula" placeholder="食谱材料..." maxlength="200"></textarea>
+                </div>
+                <span class="text">食谱做法</span>
+                <div class="required field">
+                    <textarea name="usage" id="usage" placeholder="食谱做法..." maxlength="200"></textarea>
+                </div>
+
+                <div class="two fields">
+                    <div class="ui right aligned container">
+                        <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                        <button type="button" id="publish-btn" class="ui teal button">发布</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
+
+    <!-- 显示用户信息 -->
+    <script>
+        //获取用户姓名
+        var a = JSON.parse(localStorage.getItem("user"));
+        document.getElementById("dear_user").innerHTML = a
+    </script>
+
+    <script>
+        //初始化Markdown编辑器
+        // var contentEditor;
+        // $(function () {
+        //     contentEditor = editormd("md-content", {
+        //         width: "100%",
+        //         height: 640,
+        //         syncScrolling: "single",
+        //         path: "../../static/lib/editormd/lib/"
+        //     });
+        // });
+        // $('.menu.toggle').click(function () {
+        //     $('.m-item').toggleClass('m-mobile-hide');
+        // });
+
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+        });
+
+        $.ajax({
+            url: "http://localhost:8080/admin/showfoodbooktype",//获取食物文章类型列表
+            dataType: "json",
+            type: "post",
+            success: function (msg) {
+                // <div class="item" data-value="高血脂">高血脂</div>
+                console.log(msg.data[2].name)
+                let a = ''
+                for (let i = 0; i < msg.data.length; i++) {
+                    a += '<div class="item" data-value='
+                        + msg.data[i].name
+                        + '>'
+                        + msg.data[i].name
+                        + '</div>'
+                }
+                $("#foodbooktype").html(a);
+            }
+        })
+
+        $('#publish-btn').click(function () {
+            console.log("foodinfo")
+            var data = {
+                foodMenu: $("#foodMenu").val(),
+                description: $("#description").val(),
+                formula: $("#formula").val(),
+                usagew: $("#usage").val(),
+                typew: $("#type").val(),
+                author: a.userName
+            }
+            $.ajax({
+                type: "post",
+                url: "http://localhost:8080/admin/addfoodbook",
+                data: data,
+                dataType: "json",
+                success: function (msg) {
+                    console.log(msg)
+                    if (msg.code == "200") {
+                        window.location.href = "foodbook.html";
+                    }
+                }
+            })
+        });
+
+
+    </script>
+</body>
+
+</html>

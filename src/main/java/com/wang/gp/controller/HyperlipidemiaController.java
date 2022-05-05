@@ -1,6 +1,6 @@
 package com.wang.gp.controller;
 
-import com.wang.gp.pojo.Hyperlipidemia;
+import com.wang.gp.pojo.Foodbook;
 import com.wang.gp.pojo.base.baseEntity;
 import com.wang.gp.service.HyperlipidemiaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +16,9 @@ public class HyperlipidemiaController {
 
     @RequestMapping("/hyperlipidemia")
     public baseEntity queryHyperlipidemia(String foodmenu){
-        System.out.println(foodmenu);
-        Hyperlipidemia hyperlipidemia = hyperlipidemiaService.queryAllByFood(foodmenu);
-        System.out.println("--------------"+hyperlipidemia);
-        return baseEntity.success(hyperlipidemia);
+        System.out.println("高血脂食谱："+foodmenu);
+        Foodbook foodbook = hyperlipidemiaService.queryAllHyperlipidemiaByFood(foodmenu);
+        System.out.println("--------------"+foodbook);
+        return baseEntity.success(foodbook);
     }
 }

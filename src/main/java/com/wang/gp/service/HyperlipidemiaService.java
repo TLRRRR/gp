@@ -1,8 +1,8 @@
 package com.wang.gp.service;
 
-import com.wang.gp.pojo.Hyperlipidemia;
+import com.wang.gp.pojo.Foodbook;
 
 public interface HyperlipidemiaService {
     //根据名称查询
-    public Hyperlipidemia queryAllByFood(String foodmenu);
+    public Foodbook queryAllHyperlipidemiaByFood(String foodmenu);
 }

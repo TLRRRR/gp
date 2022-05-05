@@ -18,4 +18,5 @@ public class FoodInfo {
     private Date date;
     private String flag;
     private Long typeId;
+    private String typew;
 }

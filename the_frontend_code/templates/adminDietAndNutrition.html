@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>食物与健康</title>
+  <!-- Google fonts -->
+  <link href="//fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="//fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../static/css/semantic.min.css">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="assets/css/style-starter.css">
+  <!-- 登录css -->
+  <link rel="stylesheet" href="../static/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="../../static/js/layui/css/layui.css">
+</head>
+
+<body>
+  <!--header-->
+  <header id="site-header" class="fixed-top">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light stroke">
+        <a class="navbar-brand" href="index.html">
+          <span> 食物</span>
+          <span> 与健康</span>
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="fa icon-expand fa-bars"></span>
+          <span class="fa icon-close fa-times"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item @@active">
+              <a class="nav-link" href="adminHome.html">Home </a>
+            </li>
+            <li class="nav-item @@active">
+              <a class="nav-link" href="adminFoodinfoList.html">食物说</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="adminDietAndNutrition.html">食谱与营养</a>
+            </li>
+            <li class="nav-item @@active">
+              <a class="nav-link" href="adminpro/adminfoodinfo.html">管理员 </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <!-- <div class="popup ml-auto">
+            <a href="#menu" class="domain" data-toggle="modal" data-target="#DomainModal">
+              <div class="hamburger">
+                <span class="top-bar"></span>
+                <span class="middle-bar"></span>
+                <span class="bottom-bar"></span>
+              </div>
+            </a>
+          </div> -->
+        </div>
+
+        <!-- toggle switch for light and dark theme -->
+        <div class="mobile-position ml-lg-2">
+          <nav class="navigation">
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox">
+                <div class="mode-container">
+                  <i class="gg-sun"></i>
+                  <i class="gg-moon"></i>
+                </div>
+              </label>
+            </div>
+          </nav>
+        </div>
+        <!-- //toggle switch for light and dark theme -->
+      </nav>
+    </div>
+  </header>
+  <!--/header-->
+  <div class="header-gap">
+
+  </div>
+
+  <!-- //Domain modal -->
+  <!-- home page about section -->
+  <section class="w3l-homeblock1" id="about">
+    <div class="midd-w3 py-5">
+      <div class="container py-lg-5 py-md-3">
+        <div class="row">
+          <div class="col-lg-6">
+            <span class="text">高血压食谱</span>
+            <!-- 搜索框 -->
+            <div class="right m-item item m-mobile-hide">
+              <!-- <form name="search" action="#" method="post" target="_self"> -->
+              <div class="ui icon transparent input m-margin-tb-tiny" style="color: rgb(0, 0, 0)" target="_self">
+                <input style="color: rgb(9, 7, 7)" type="text" name="query" id="HypertensionQuery"
+                  placeholder="Search....">
+                <svg t="1650259061253" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg" p-id="2574" id="queryhighblood" width="20" height="20">
+                  <path
+                    d="M712.704 220.672c-135.68-135.68-355.84-135.68-491.52 0s-135.68 355.84 0 491.52 355.84 135.68 491.52 0 135.68-355.84 0-491.52zM145.92 787.456C-31.744 610.304-31.744 322.56 145.92 144.896c177.664-177.152 464.896-177.152 642.56 0 177.664 177.664 177.664 464.896 0 642.56s-465.408 177.664-642.56 0z m848.896 206.336c-24.064 24.064-63.488 24.064-87.552 0L819.2 906.24c-24.064-24.064-24.064-63.488 0-87.552 24.064-24.064 63.488-24.064 87.552 0l87.552 87.552c24.576 24.064 24.576 63.488 0.512 87.552z"
+                    p-id="2575"></path>
+                </svg>
+                <!-- <i onclick="document.forms['search'].submit()" class="search link icon"></i> -->
+              </div>
+              <!-- </form> -->
+            </div>
+            <!-- <h3 class="title-big"><span>Build your brand</span> and grow your business</h3>
+            <p class="mt-4">I can give your business a new creative start right away! You can download my resume
+              in order to learn the details of my professional life as a designer and photographer. </p> -->
+            <!-- <ul class="service-list mt-md-5 mt-4">
+              <li class="service-link"><a href="#">UI/UX Design and Development</a></li>
+              <li class="service-link"><a href="#">Branding Design and Identity</a></li>
+              <li class="service-link"><a href="#">Mobile App Design</a></li>
+              <li class="service-link"><a href="#">Art, Logo, SVG & Illustration</a></li>
+              <li class="service-link"><a href="#">3D Modeling & Motion</a></li>
+              <li class="service-link"><a href="#">PSD Design, Photoshop</a></li>
+            </ul>
+            <a href="#url" class="btn btn-style btn-empty p-0">View my all services <span></span></a> -->
+          </div>
+          <div class="col-lg-6 mt-lg-0 mt-5">
+            <div class="position-relative">
+              <img src="assets/images/about.jpg" alt="" class="radius-image img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //home page about section -->
+
+  <!-- home page about section -->
+  <section class="w3l-homeblock2" id="skills">
+    <div class="midd-w3 py-5">
+      <div class="container py-lg-5 py-md-3">
+        <div class="row">
+          <div class="col-lg-6 align-self">
+            <div class="position-relative px-lg-5 mx-lg-0 mx-md-5 image-padding">
+              <div class="position-absolute-images">
+                <img src="../static/images/elfmaker.png" alt="" class="radius-image img-fluid">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-lg-0 mt-md-5 mt-4">
+            <span class="text">高血脂食谱</span>
+            <!-- 搜索框 -->
+            <div class="right m-item item m-mobile-hide">
+              <div class="ui icon transparent input m-margin-tb-tiny" style="color: rgb(0, 0, 0)" target="_self">
+                <input style="color: rgb(9, 7, 7)" type="text" name="query" id="HyperlipidemiaQuery"
+                  placeholder="Search....">
+                <svg t="1650259061253" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg" p-id="2574" id="Hyperlipidemia" width="20" height="20">
+                  <path
+                    d="M712.704 220.672c-135.68-135.68-355.84-135.68-491.52 0s-135.68 355.84 0 491.52 355.84 135.68 491.52 0 135.68-355.84 0-491.52zM145.92 787.456C-31.744 610.304-31.744 322.56 145.92 144.896c177.664-177.152 464.896-177.152 642.56 0 177.664 177.664 177.664 464.896 0 642.56s-465.408 177.664-642.56 0z m848.896 206.336c-24.064 24.064-63.488 24.064-87.552 0L819.2 906.24c-24.064-24.064-24.064-63.488 0-87.552 24.064-24.064 63.488-24.064 87.552 0l87.552 87.552c24.576 24.064 24.576 63.488 0.512 87.552z"
+                    p-id="2575"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <!-- //home page about section -->
+
+  <!-- home page about section -->
+  <section class="w3l-homeblock3" id="awards">
+    <div class="midd-w3 py-5">
+      <div class="container py-lg-5 py-md-3">
+        <div class="row">
+          <div class="col-lg-6">
+            <span class="text">减肥食谱</span>
+            <!-- 搜索框 -->
+            <div class="right m-item item m-mobile-hide">
+              <div class="ui icon transparent input m-margin-tb-tiny" style="color: rgb(0, 0, 0)" target="_self">
+                <input style="color: rgb(9, 7, 7)" type="text" name="query" id="LoseweightQuery"
+                  placeholder="Search....">
+                <svg t="1650259061253" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg" p-id="2574" id="Loseweight" width="20" height="20">
+                  <path
+                    d="M712.704 220.672c-135.68-135.68-355.84-135.68-491.52 0s-135.68 355.84 0 491.52 355.84 135.68 491.52 0 135.68-355.84 0-491.52zM145.92 787.456C-31.744 610.304-31.744 322.56 145.92 144.896c177.664-177.152 464.896-177.152 642.56 0 177.664 177.664 177.664 464.896 0 642.56s-465.408 177.664-642.56 0z m848.896 206.336c-24.064 24.064-63.488 24.064-87.552 0L819.2 906.24c-24.064-24.064-24.064-63.488 0-87.552 24.064-24.064 63.488-24.064 87.552 0l87.552 87.552c24.576 24.064 24.576 63.488 0.512 87.552z"
+                    p-id="2575"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 align-self mt-lg-0 mt-md-5 mt-4">
+            <div class="position-relative px-lg-5 mx-lg-0 mx-md-5 image-padding">
+              <div class="position-absolute-images">
+                <img src="../static/images/elf.png" alt="" class="radius-image img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- //home page about section -->
+
+  <div class="copyright py-sm-5 py-4 text-center">
+    <div class="container">
+    </div>
+  </div>
+  <!-- move top -->
+  <button onclick="topFunction()" id="movetop" title="Go to top">
+    <span class="fa fa-angle-up"></span>
+  </button>
+  <script>
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+      scrollFunction()
+    };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("movetop").style.display = "block";
+      } else {
+        document.getElementById("movetop").style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+  <!-- /move top -->
+
+  <!-- jQuery and Bootstrap JS -->
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+
+  <script src="../static/js/jquery/jquery-3.6.0.min.js"></script>
+
+  <script src="assets/js/theme-change.js"></script><!-- theme switch js (light and dark)-->
+  <script src="../../static/js/layui/layui.js" charset="utf-8"></script>
+  <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
+
+  <!-- 高血压 -->
+  <div id="conten" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
+    style="display:none;">
+    <!-- <span id="foodMenu">msg.data</span> -->
+    <h3 class="ui dividing header" id="foodMenu"></h3>
+    <span id="description">msg.data</span>
+  </div>
+
+  <!-- 高血脂 -->
+  <div id="hyperlipidemia" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
+    style="display:none;">
+    <!-- <span id="foodMenu">msg.data</span> -->
+    <h3 class="ui dividing header" id="foodMenu"></h3>
+    <span id="effect">msg.data</span><br>
+    <span id="formula">msg.data</span><br>
+    <span id="usage">msg.data</span><br>
+  </div>
+
+  <!-- 减肥 -->
+  <div id="loseweight" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
+    style="display:none;">
+    <!-- <span id="foodMenu">msg.data</span> -->
+    <h3 class="ui dividing header" id="foodMenuLW"></h3>
+    <span id="effectLW">msg.data</span><br>
+    <span id="formulaLW">msg.data</span><br>
+    <span id="usageLW">msg.data</span><br>
+  </div>
+
+  <!-- 查询高血压食谱 -->
+  <script type="text/javascript">
+    $("#queryhighblood").on("click", function () {
+      $.ajax({
+        type: "post",
+        dataType: "json",
+        url: "http://localhost:8080/query/hypertension",
+        data: {
+          foodmenu: $("#HypertensionQuery").val()
+        },
+        success: function (msg) {
+          console.log("success")
+          document.getElementById("foodMenu").innerHTML = msg.data.foodMenu
+          document.getElementById("description").innerHTML = msg.data.description
+          layui.use('layer', function () {
+            var $ = layui.jquery, layer = layui.layer;
+            layer.open({
+              //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+              type: 1,
+              title: "高血压食谱",
+              area: ['1200px', '700px'],
+              content: $("#conten")//引用的弹出层的页面层的方式加载修改界面表单
+            });
+          })
+        }
+      })
+    })
+  </script>
+  <!-- 查询高血压食谱 -->
+
+  <!-- 查询高血脂食谱 -->
+  <script type="text/javascript">
+    $("#Hyperlipidemia").on("click", function () {
+      $.ajax({
+        type: "post",
+        dataType: "json",
+        url: "http://localhost:8080/query/hyperlipidemia",
+        data: {
+          foodmenu: $("#HyperlipidemiaQuery").val()
+        },
+        success: function (msg) {
+          console.log("success")
+          document.getElementById("foodMenu").innerHTML = msg.data.foodMenu
+          document.getElementById("effect").innerHTML = msg.data.effect
+          document.getElementById("formula").innerHTML = msg.data.formula
+          document.getElementById("usage").innerHTML = msg.data.usage
+          layui.use('layer', function () {
+            var $ = layui.jquery, layer = layui.layer;
+            layer.open({
+              //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+              type: 1,
+              title: "高血脂食谱",
+              area: ['1200px', '700px'],
+              content: $("#hyperlipidemia")//引用的弹出层的页面层的方式加载修改界面表单
+            });
+          })
+        }
+      })
+    })
+  </script>
+  <!-- 查询高血脂食谱 -->
+
+  <!-- 查询减肥食谱 -->
+  <script type="text/javascript">
+    $("#Loseweight").on("click", function () {
+      $.ajax({
+        type: "post",
+        dataType: "json",
+        url: "http://localhost:8080/query/loseweight",
+        data: {
+          foodmenu: $("#LoseweightQuery").val()
+        },
+        success: function (msg) {
+          console.log("success")
+          document.getElementById("foodMenuLW").innerHTML = msg.data.foodMenu
+          document.getElementById("effectLW").innerHTML = msg.data.effect
+          document.getElementById("formulaLW").innerHTML = msg.data.formula
+          document.getElementById("usageLW").innerHTML = msg.data.usage
+          layui.use('layer', function () {
+            var $ = layui.jquery, layer = layui.layer;
+            layer.open({
+              //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+              type: 1,
+              title: "高血脂食谱",
+              area: ['1200px', '700px'],
+              content: $("#loseweight")//引用的弹出层的页面层的方式加载修改界面表单
+            });
+          })
+        }
+      })
+    })
+  </script>
+  <!-- 查询减肥食谱 -->
+
+  <!-- 登录 -->
+  <script>
+    function func() {
+      //验证用户是否已经注册过
+      var userName = $("#userName").val();//获取表单元素值
+      var pwd = $("#pwd").val();
+      // var userName = document.getElementById('userName').value;
+      if (userName == "") {
+        alert("手机号不能为空！");
+        return false;
+      }
+      if (pwd == "") {
+        alert("密码不能为空！");
+        return false;
+      }
+      if (pwd.length < 4) {
+        alert("密码不能少于4位！");
+        return false;
+      }
+      return true;
+    }
+
+    $("#wangsubmit").on("click", function () {
+      console.log("ssssssss")
+      if (!func()) {
+        console.log("!!!!!!");
+        return false;
+      }
+      var userName = $("#userName").val();//获取表单元素值
+      var pwd = $("#pwd").val();
+      var data = {
+        userName: userName,
+        pwd: pwd
+      };
+      console.log(userName)
+      console.log(data)
+      $.ajax({
+        type: "POST",
+        //待载入页面的url
+        url: "http://localhost:8080/login",
+        data: data,
+        dataType: 'json',
+        success: function (msg) {
+          console.log("进success了");
+          console.log(msg)
+          if ("200" == msg.code) {
+            localStorage.setItem("user", JSON.stringify(msg.data))
+            console.log("success");
+            alert("handsome")
+            window.location.href = "userHome.html";
+          } else if ("11" == msg.errorCode) {
+            alert("该用户不存在！");
+            console.log("该用户不存在！");
+            return false;
+          } else if ("22" == msg.errorCode) {
+            alert("密码输入错误，错误输入三次后您的账户将会被锁定！why");
+            return false;
+          } else if ("33" == msg.errorCode) {
+            alert("您由于错误登陆次数太多，系统已将您的账户锁定，请在三分钟后重新登录！");
+            return false;
+          }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+          console.log("进error了")
+          // 状态码
+          console.log(XMLHttpRequest.status);
+          // 状态
+          console.log(XMLHttpRequest.readyState);
+          // 错误信息
+          console.log(textStatus);
+        }
+      });
+    });
+  </script>
+  <!-- /登录 -->
+
+  <!-- 注册 -->
+  <script>
+    function rfunc() {
+      console.log("现在在rfunc方法中")
+      var userName = $("#userNameRegister").val();
+      // let user = document.getElementById("userName").value;
+      var pwd = $("#pwdRegister").val();
+      var tel = $("#telRegister").val();
+      if (userName == "") {
+        alert("用户名不能为空！");
+        return false;
+      }
+      if (pwd == "") {
+        alert("密码不能为空！");
+        return false;
+      }
+      if (tel == "") {
+        alert("手机号不能为空！");
+        return false;
+      }
+      // if (!(/^1[34578]\d{9}$/.test(pwd))) {
+      //     alert("手机号输入错误");
+      //     return false;
+      // }
+      if (pwd.length < 4) {
+        alert("密码不能少于4位！");
+        return false;
+      }
+      return true;
+    }
+
+    $("#submitRegister").on("click", function () {
+      if (!rfunc()) {
+        console.log("!!!!!!");
+        return false;
+      }
+      var userName = $("#userNameRegister").val();//获取表单元素值
+      var pwd = $("#pwdRegister").val();
+      var tel = $("#telRegister").val();
+      var data = {
+        userName: userName,
+        pwd: pwd,
+        tel: tel
+      };
+      console.log(data);
+      $.ajax({
+        type: "POST",
+        //待载入页面的url,方法名
+        url: "http://localhost:8080/register",
+        data: data,    //后台传回的数据
+        dataType: 'json',
+        success: function (msg) {
+          if ("00" == msg.errorCode) {
+            console.log("success");
+            alert("注册成功！！！")
+            window.location.href = "userHome.html";
+          } else if ("11" == msg.errorCode) {
+            alert("该用户已经存在！");
+            console.log("该用户已经存在！");
+            return false;
+          } else if ("22" == msg.errorCode) {
+            alert("该手机号已经注册！");
+            console.log("该手机号已经注册！");
+            return false;
+          }
+        }
+      })
+    })
+  </script>
+  <!-- /注册 -->
+
+  <!-- owlcarousel -->
+  <script src="assets/js/owl.carousel.js"></script>
+
+  <!-- script for tesimonials carousel slider -->
+  <script>
+    $(document).ready(function () {
+      $("#owl-demo1").owlCarousel({
+        loop: true,
+        nav: false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          736: {
+            items: 1,
+            nav: false
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for tesimonials carousel slider -->
+
+  <!-- script for portfolio slider -->
+  <script>
+    $(document).ready(function () {
+      $("#owl-portfolio").owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: false,
+        responsiveClass: true,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          568: {
+            items: 2,
+            nav: false
+          },
+          1080: {
+            items: 3,
+            nav: false
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for portfolio slider -->
+
+  <!-- script for featured posts blog slider -->
+  <script>
+    $(document).ready(function () {
+      $('.owl-testimonial').owlCarousel({
+        loop: true,
+        margin: 0,
+        nav: true,
+        responsiveClass: true,
+        autoplay: false,
+        autoplayTimeout: 5000,
+        autoplaySpeed: 1000,
+        autoplayHoverPause: false,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          480: {
+            items: 1,
+            nav: false
+          },
+          667: {
+            items: 1,
+            nav: false
+          },
+          1000: {
+            items: 1,
+            nav: false
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for featured posts blog slider -->
+
+  <!-- script for banner typing text -->
+  <script>
+    function autoType(elementClass, typingSpeed) {
+      var thhis = $(elementClass);
+      thhis.css({
+        "position": "relative",
+        "display": "inline-block"
+      });
+      thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
+      thhis = thhis.find(".text-js");
+      var text = thhis.text().trim().split('');
+      var amntOfChars = text.length;
+      var newString = "";
+      thhis.text("|");
+      setTimeout(function () {
+        thhis.css("opacity", 1);
+        thhis.prev().removeAttr("style");
+        thhis.text("");
+        for (var i = 0; i < amntOfChars; i++) {
+          (function (i, char) {
+            setTimeout(function () {
+              newString += char;
+              thhis.text(newString);
+            }, i * typingSpeed);
+          })(i + 1, text[i]);
+        }
+      }, 1500);
+    }
+
+    $(document).ready(function () {
+      // Now to start autoTyping just call the autoType function with the 
+      // class of outer div
+      // The second paramter is the speed between each letter is typed.   
+      autoType(".type-js", 200);
+    });
+  </script>
+  <!-- //script for banner typing text -->
+
+
+  <!-- disable body scroll which navbar is in active -->
+  <script>
+    $(function () {
+      $('.navbar-toggler').click(function () {
+        $('body').toggleClass('noscroll');
+      })
+    });
+  </script>
+  <!-- disable body scroll which navbar is in active -->
+
+  <!-- MENU-JS -->
+  <script>
+    $(window).on("scroll", function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 80) {
+        $("#site-header").addClass("nav-fixed");
+      } else {
+        $("#site-header").removeClass("nav-fixed");
+      }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+      $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+      $(window).on("resize", function () {
+        if ($(window).width() > 991) {
+          $("header").removeClass("active");
+        }
+      });
+    });
+  </script>
+  <!-- //MENU-JS -->
+
+  <!-- bootstrap -->
+  <script src="assets/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

@@ -8,10 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/admin")
@@ -22,16 +19,14 @@ public class FoodInfoController {
 
     //显示所有食物信息
     @ResponseBody
-    @RequestMapping("/tooinfo")
-    public baseEntity<ArrayList> allInfo(String userName) {
-        System.out.println("用户名" + userName);
-        ArrayList<FoodInfo> list1 = foodInfoDao.queryFoodinfoByUsername(userName);
-//        System.out.println(list);
-//        System.out.println("success: " + baseEntity.success(list));
-        return baseEntity.success1(list1);
+    @RequestMapping("/allfoodinfo")
+    public baseEntity<ArrayList> queryFoodInfo() {
+        System.out.println("queryFoodInfo");
+        ArrayList<FoodInfo> list = foodInfoDao.queryFoodInfo();
+        return baseEntity.success1(list);
     }
 
-    //根据title查询食物信息
+    //显示用户发布的文章
     @ResponseBody
     @RequestMapping("/toinfo")
     public baseEntity<ArrayList> queryInfoByTitle(String userName, String title) {
@@ -43,10 +38,10 @@ public class FoodInfoController {
     //添加食物信息后跳转到食物信息博客页面
     @ResponseBody
     @RequestMapping("/addinfo")
-    public Map<String, String> addInfo(String title, String content, Date date, String flag, Long typeId, String description, String author) {
+    public Map<String, String> addInfo(String title, String content, Date date, String flag, String typew, String description, String author) {
         System.out.println("foodinfo :" + title + "  " + content);
-        System.out.println("dame long   " + typeId);
-        int i = foodInfoDao.addFoodInfo(title, content, new Date(), flag, typeId, description, author);
+        System.out.println("dame long   " + typew);
+        int i = foodInfoDao.addFoodInfo(title, content, new Date(), flag, typew, description, author);
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("code", "11");
         System.out.println(map);
@@ -67,7 +62,14 @@ public class FoodInfoController {
     @RequestMapping("/updateinfo")
     public void updateInfo(Long id, String title, String content, Long typeId, String flag) {
         System.out.println(id + title + content + typeId + flag);
-//        foodInfoDao.updateFoodInfo(id, title, content, typeId, flag);
+    }
 
+    //显示文章类别列表
+    @ResponseBody
+    @RequestMapping("/showinfotype")
+    public baseEntity showInfotype() {
+        System.out.println("show foodinfo type");
+        List list = foodInfoDao.showInfotype();
+        return baseEntity.success(list);
     }
 }

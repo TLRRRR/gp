@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食谱管理</title>
+    <link href="../../static/images/elf.png" th:href="@{/images/elf.png}" rel="icon" type="image/x-ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css"
+        th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" href="../../static/js/layui/css/layui.css">
+</head>
+
+<body>
+    <!--导航栏-->
+    <nav class="ui inverted gird-header">
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu">
+                <h2 class="ui olive header item" style="font-family: STSong">管理员后台</h2>
+                <a href="adminfoodinfo.html" class=" m-item item m-mobile-hide"><i class="home icon"></i>文章管理</a>
+                <a href="adminfoodtype.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>文章分类管理</a>
+                <a href="adminfoodbook.html" class=" active m-item item m-mobile-hide"><i class="clone outline icon"></i>食谱管理</a>
+                <a href="adminfoodbooktype.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>食谱分类管理</a>
+                <a href="../adminHome.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>返回主页</a>
+                <div class="right m-item m-mobile-hide menu">
+                    <div class="ui dropdown  item">
+                        <div class="text">
+                            <!-- <img class="ui avatar image" src="/images/elf.png" th:src="@{/images/bg.jpg}"> -->
+                            <span id="dear_user"></span>
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a href="#" class="item">注销</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+    <div class="m-padded-tb-hugex">
+        <div class="ui attached pointing menu">
+            <div class="ui container">
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <!--中间内容-->
+    <div class="ui container">
+        <div class="ui secondary segment form">
+            <input type="hidden" name="page">
+            <div class="inline fields">
+                <div class="field">
+                    <input type="text" name="title" id="titleName" placeholder="标题">
+                </div>
+                <div class="field">
+
+                    <div class="field">
+                        <button type="button" id="search_btn" class="ui mini teal basic button"><i
+                                class="search icon"></i>搜索
+                        </button>
+                    </div>
+
+                </div>
+                <div align="right">
+                    <a href="addfoodbook.html">
+                        <button type="button" class="ui teal button m-mobile-wide m-margin-top"><i
+                                class="pencil icon"></i>新增
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="table-container">
+            <table class="ui compact teal table">
+                <tfoot>
+                    <tr>
+                        <th colspan="7">
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <table class="layui-hide" id="foodbooklist" lay-filter="foodbooklist"></table>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <script src="../../static/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
+    <script src="../../static/js/layui/layui.js" charset="utf-8"></script>
+
+    <!-- 显示用户信息 -->
+    <script>
+        console.log(localStorage.getItem("user"))
+        var a = JSON.parse(localStorage.getItem("user"));
+        console.log(a.userName)
+        document.getElementById("dear_user").innerHTML = a
+        // $("#user").val(localStorage.getItem)
+    </script>
+
+    <!-- //markdown编辑器 -->
+    <script>
+        var contentEditor;
+        $(function () {
+            contentEditor = editormd("md-content", {
+                width: "100%",
+                height: 540,
+                syncScrolling: "single",
+                path: "../../static/lib/editormd/lib/"
+            });
+        });
+    </script>
+
+    <!-- //弹出层update表单 -->
+    <div class="ui form" id="updatefoodbook" style="display:none;">
+        <div class="required field">
+            <div class="ui left labeled input">
+                <div class="ui selection compact teal basic dropdown label">
+                    <input type="hidden" value="高血压食谱" name="type" id="type">
+                    <i class="dropdown icon"></i>
+                    <div class="text">高血压食谱</div>
+                    <div class="menu">
+                        <div class="item" data-value="高血压食谱">高血压食谱</div>
+                        <div class="item" data-value="高血脂食谱">高血脂食谱</div>
+                        <div class="item" data-value="减肥食谱">减肥食谱</div>
+                    </div>
+                </div>
+                <input type="text" id="foodMenu" name="foodMenu" placeholder="食谱名称">
+            </div>
+        </div>
+        <span>食谱说明</span>
+        <div class="required field">
+            <textarea name="description" id="description" placeholder="食谱说明..." maxlength="200"></textarea>
+        </div>
+        <span>食谱材料</span>
+        <div class="required field">
+            <textarea name="formula" id="formula" placeholder="食谱材料..." maxlength="200"></textarea>
+        </div>
+        <span>食谱做法</span>
+        <div class="required field">
+            <textarea name="usage" id="usage" placeholder="食谱做法..." maxlength="200"></textarea>
+        </div>
+
+        <div class="two fields">
+            <div class="ui right aligned container">
+                <button type="button" id="update-btn" class="ui teal button">确认修改</button>
+            </div>
+        </div>
+    </div>
+    <!-- <script -->
+
+    <!-- //编辑删除按钮 -->
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+    <!-- //layui工具 -->
+    <script>
+        layui.use('table', function () {
+            var table = layui.table;
+            var b = table.render({
+                elem: '#foodbooklist'
+                , url: 'http://localhost:8080/admin/allfoodbook'
+                , height: 412
+                , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                    title: '提示'
+                    , layEvent: 'LAYTABLE_TIPS'
+                    , icon: 'layui-icon-tips'
+                }]
+                , title: '用户数据表'
+                , cols: [[
+                    { field: 'id', width: 90, title: 'ID', sort: true }
+                    , { field: 'foodMenu', width: 130, title: '食谱名称' }
+                    , { field: 'description', width: 90, title: '食谱描述' }
+                    , { field: 'formula', width: 250, title: '食谱材料', sort: true }
+                    , { field: 'usagew', width: 250, title: '食谱做法' }
+                    , { field: 'creationtime', width: 130, title: '创建时间' }
+                    , { field: 'typew', title: '类型', minWidth: 10, width: 90 } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                    , { field: 'author', title: '作者', width: 90 }
+                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
+                ]]
+                , page: true
+            });
+
+            //监听行工具事件
+            table.on('tool(foodbooklist)', function (obj) {
+                var data = obj.data;
+                console.log(obj)
+                if (obj.event === 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del();
+                        layer.close(index);
+                        $.ajax({
+                            url: "http://localhost:8080/admin/deletefoodbook",
+                            type: "post",
+                            dataType: "json",
+                            data: { id: data.id },
+                        })
+                    });
+                } else if (obj.event === 'edit') {
+                    $("#foodMenu").val(data.foodMenu)
+                    $("#description").val(data.description)
+                    $("#formula").val(data.formula)
+                    $("#usage").val(data.usagew)
+                    $("#type").val(data.typew)
+                    layer.open({
+                        //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                        type: 1,
+                        title: "修改食谱信息",
+                        area: ['1200px', '700px'],
+                        content: $("#updatefoodbook")//引用的弹出层的页面层的方式加载修改界面表单
+                    });
+                    console.log("hahahaha")
+                    $('#update-btn').on('click', function () {
+                        console.log("success up")
+                        $.ajax({
+                            url: "http://localhost:8080/admin/updatefoodbook",
+                            type: "post",
+                            dataType: "json",
+                            data: {
+                                id: data.id,
+                                foodMenu: $("#foodMenu").val(),
+                                description: $("#description").val(),
+                                formula: $("#formula").val(),
+                                usagew: $("#usage").val()
+                            },
+                            success: function (msg) {
+                                if (msg.code == 200) {
+                                    console.log("修改成功")
+                                    layer.closeAll();
+                                    // window.location.reload();
+                                    table.reload('foodbooklist',{})
+                                }
+                            }
+                        })
+                    })
+                }
+            });
+        });
+
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+        });
+    </script>
+
+    <script>
+        $("#search_btn").on("click", function () {
+            var title = document.getElementById("titleName")
+            var data = {
+                title: title,
+                userName: a.userName
+            }
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                url: "http://localhost:8080/admin/",
+                data: data
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -5,12 +5,13 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Mapper
 public interface FoodInfoDao {
 
     //添加信息
-    public int addFoodInfo(String title, String content, Date date, String flag, Long typeId, String description, String author);
+    public int addFoodInfo(String title, String content, Date date, String flag, String typew, String description, String author);
 
     //删除信息
     public int deleteFoodInfoByTitle(String title);
@@ -35,4 +36,7 @@ public interface FoodInfoDao {
 
     //根据用户名查询食物信息文章
     public ArrayList<FoodInfo> queryFoodinfoByUsername(String userName);
+
+    //查询食物文章类型列表
+    public List showInfotype();
 }

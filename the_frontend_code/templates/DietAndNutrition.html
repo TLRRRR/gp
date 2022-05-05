@@ -149,8 +149,7 @@
     </div>
   </div>
 
-  <!-- //Domain modal -->
-  <!-- home page about section -->
+  <!-- 高血压 -->
   <section class="w3l-homeblock1" id="about">
     <div class="midd-w3 py-5">
       <div class="container py-lg-5 py-md-3">
@@ -169,22 +168,8 @@
                     d="M712.704 220.672c-135.68-135.68-355.84-135.68-491.52 0s-135.68 355.84 0 491.52 355.84 135.68 491.52 0 135.68-355.84 0-491.52zM145.92 787.456C-31.744 610.304-31.744 322.56 145.92 144.896c177.664-177.152 464.896-177.152 642.56 0 177.664 177.664 177.664 464.896 0 642.56s-465.408 177.664-642.56 0z m848.896 206.336c-24.064 24.064-63.488 24.064-87.552 0L819.2 906.24c-24.064-24.064-24.064-63.488 0-87.552 24.064-24.064 63.488-24.064 87.552 0l87.552 87.552c24.576 24.064 24.576 63.488 0.512 87.552z"
                     p-id="2575"></path>
                 </svg>
-                <!-- <i onclick="document.forms['search'].submit()" class="search link icon"></i> -->
               </div>
-              <!-- </form> -->
             </div>
-            <!-- <h3 class="title-big"><span>Build your brand</span> and grow your business</h3>
-            <p class="mt-4">I can give your business a new creative start right away! You can download my resume
-              in order to learn the details of my professional life as a designer and photographer. </p> -->
-            <!-- <ul class="service-list mt-md-5 mt-4">
-              <li class="service-link"><a href="#">UI/UX Design and Development</a></li>
-              <li class="service-link"><a href="#">Branding Design and Identity</a></li>
-              <li class="service-link"><a href="#">Mobile App Design</a></li>
-              <li class="service-link"><a href="#">Art, Logo, SVG & Illustration</a></li>
-              <li class="service-link"><a href="#">3D Modeling & Motion</a></li>
-              <li class="service-link"><a href="#">PSD Design, Photoshop</a></li>
-            </ul>
-            <a href="#url" class="btn btn-style btn-empty p-0">View my all services <span></span></a> -->
           </div>
           <div class="col-lg-6 mt-lg-0 mt-5">
             <div class="position-relative">
@@ -195,9 +180,9 @@
       </div>
     </div>
   </section>
-  <!-- //home page about section -->
+  <!-- 高血压 -->
 
-  <!-- home page about section -->
+  <!-- 高血脂 -->
   <section class="w3l-homeblock2" id="skills">
     <div class="midd-w3 py-5">
       <div class="container py-lg-5 py-md-3">
@@ -230,9 +215,9 @@
     </div>
     </div>
   </section>
-  <!-- //home page about section -->
+  <!-- 高血脂 -->
 
-  <!-- home page about section -->
+  <!-- 减肥 -->
   <section class="w3l-homeblock3" id="awards">
     <div class="midd-w3 py-5">
       <div class="container py-lg-5 py-md-3">
@@ -264,7 +249,7 @@
       </div>
     </div>
   </section>
-  <!-- //home page about section -->
+  <!-- 减肥 -->
 
   <div class="copyright py-sm-5 py-4 text-center">
     <div class="container">
@@ -305,37 +290,37 @@
   <script src="../../static/js/layui/layui.js" charset="utf-8"></script>
   <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
 
-  <!-- 高血压 -->
+  <!-- 高血压食谱展示 -->
   <div id="conten" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
     style="display:none;">
-    <!-- <span id="foodMenu">msg.data</span> -->
-    <h3 class="ui dividing header" id="foodMenu"></h3>
-    <span id="description">msg.data</span>
+    <h3 class="ui dividing header" id="foodMenuHT" style="margin-top: 10px;"></h3>
+    <p class="text">食谱描述：<span class="text" id="descriptionHT">msg.data</span></p>
+    <p class="text">食谱材料：<span class="text" id="formulaHT">msg.data</span></p>
+    <p class="text">食谱做法：<span class="text" id="usageHT">msg.data</span></p>
   </div>
-
-  <!-- 高血脂 -->
+ 
+  <!-- 高血脂食谱展示 -->
   <div id="hyperlipidemia" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
     style="display:none;">
-    <!-- <span id="foodMenu">msg.data</span> -->
-    <h3 class="ui dividing header" id="foodMenu"></h3>
-    <span id="effect">msg.data</span><br>
-    <span id="formula">msg.data</span><br>
-    <span id="usage">msg.data</span><br>
+    <h3 class="ui dividing header" id="foodMenuHL" style="margin-top: 10px;"></h3>
+    <p class="text">食谱描述：<span class="text" id="descriptionHL">msg.data</span></p>
+    <p class="text">食谱材料：<span class="text" id="formulaHL">msg.data</span></p>
+    <p class="text">食谱做法：<span class="text" id="usageHL">msg.data</span></p>
   </div>
 
-  <!-- 减肥 -->
+  <!-- 减肥食谱展示 -->
   <div id="loseweight" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
     style="display:none;">
-    <!-- <span id="foodMenu">msg.data</span> -->
-    <h3 class="ui dividing header" id="foodMenuLW"></h3>
-    <span id="effectLW">msg.data</span><br>
-    <span id="formulaLW">msg.data</span><br>
-    <span id="usageLW">msg.data</span><br>
+    <h3 class="ui dividing header" id="foodMenuLW" style="margin-top: 10px;"></h3>
+    <p class="text">食谱描述：<span class="text" id="effectLW">msg.data</span><br></p>
+    <p class="text">食谱材料：<span class="text" id="formulaLW">msg.data</span><br></p>
+    <p class="text">食谱做法：<span class="text" id="usageLW">msg.data</span><br></p>
   </div>
 
   <!-- 查询高血压食谱 -->
   <script type="text/javascript">
     $("#queryhighblood").on("click", function () {
+      let HypertensionQueryArea = document.getElementById("HypertensionQuery")
       $.ajax({
         type: "post",
         dataType: "json",
@@ -345,8 +330,11 @@
         },
         success: function (msg) {
           console.log("success")
-          document.getElementById("foodMenu").innerHTML = msg.data.foodMenu
-          document.getElementById("description").innerHTML = msg.data.description
+          HypertensionQueryArea.value = ''
+          document.getElementById("foodMenuHT").innerHTML = msg.data.foodMenu
+          document.getElementById("descriptionHT").innerHTML = msg.data.description
+          document.getElementById("formulaHT").innerHTML = msg.data.formula
+          document.getElementById("usageHT").innerHTML = msg.data.usagew
           layui.use('layer', function () {
             var $ = layui.jquery, layer = layui.layer;
             layer.open({
@@ -366,6 +354,7 @@
   <!-- 查询高血脂食谱 -->
   <script type="text/javascript">
     $("#Hyperlipidemia").on("click", function () {
+      let HyperlipidemiaQueryArea = document.getElementById("HyperlipidemiaQuery")
       $.ajax({
         type: "post",
         dataType: "json",
@@ -374,11 +363,12 @@
           foodmenu: $("#HyperlipidemiaQuery").val()
         },
         success: function (msg) {
+          HyperlipidemiaQueryArea.value = ''
           console.log("success")
-          document.getElementById("foodMenu").innerHTML = msg.data.foodMenu
-          document.getElementById("effect").innerHTML = msg.data.effect
-          document.getElementById("formula").innerHTML = msg.data.formula
-          document.getElementById("usage").innerHTML = msg.data.usage
+          document.getElementById("foodMenuHL").innerHTML = msg.data.foodMenu
+          document.getElementById("descriptionHL").innerHTML = msg.data.description
+          document.getElementById("formulaHL").innerHTML = msg.data.formula
+          document.getElementById("usageHL").innerHTML = msg.data.usagew
           layui.use('layer', function () {
             var $ = layui.jquery, layer = layui.layer;
             layer.open({
@@ -398,6 +388,7 @@
   <!-- 查询减肥食谱 -->
   <script type="text/javascript">
     $("#Loseweight").on("click", function () {
+      let LoseweightQueryArea = document.getElementById("LoseweightQuery")
       $.ajax({
         type: "post",
         dataType: "json",
@@ -406,11 +397,12 @@
           foodmenu: $("#LoseweightQuery").val()
         },
         success: function (msg) {
+          LoseweightQueryArea.value = ''
           console.log("success")
           document.getElementById("foodMenuLW").innerHTML = msg.data.foodMenu
-          document.getElementById("effectLW").innerHTML = msg.data.effect
+          document.getElementById("effectLW").innerHTML = msg.data.description
           document.getElementById("formulaLW").innerHTML = msg.data.formula
-          document.getElementById("usageLW").innerHTML = msg.data.usage
+          document.getElementById("usageLW").innerHTML = msg.data.usagew
           layui.use('layer', function () {
             var $ = layui.jquery, layer = layui.layer;
             layer.open({
@@ -576,139 +568,6 @@
 
   <!-- owlcarousel -->
   <script src="assets/js/owl.carousel.js"></script>
-
-  <!-- script for tesimonials carousel slider -->
-  <script>
-    $(document).ready(function () {
-      $("#owl-demo1").owlCarousel({
-        loop: true,
-        nav: false,
-        responsiveClass: true,
-        responsive: {
-          0: {
-            items: 1,
-            nav: false
-          },
-          736: {
-            items: 1,
-            nav: false
-          }
-        }
-      })
-    })
-  </script>
-  <!-- //script for tesimonials carousel slider -->
-
-  <!-- script for portfolio slider -->
-  <script>
-    $(document).ready(function () {
-      $("#owl-portfolio").owlCarousel({
-        loop: true,
-        margin: 20,
-        nav: false,
-        responsiveClass: true,
-        responsive: {
-          0: {
-            items: 1,
-            nav: false
-          },
-          568: {
-            items: 2,
-            nav: false
-          },
-          1080: {
-            items: 3,
-            nav: false
-          }
-        }
-      })
-    })
-  </script>
-  <!-- //script for portfolio slider -->
-
-  <!-- script for featured posts blog slider -->
-  <script>
-    $(document).ready(function () {
-      $('.owl-testimonial').owlCarousel({
-        loop: true,
-        margin: 0,
-        nav: true,
-        responsiveClass: true,
-        autoplay: false,
-        autoplayTimeout: 5000,
-        autoplaySpeed: 1000,
-        autoplayHoverPause: false,
-        responsive: {
-          0: {
-            items: 1,
-            nav: false
-          },
-          480: {
-            items: 1,
-            nav: false
-          },
-          667: {
-            items: 1,
-            nav: false
-          },
-          1000: {
-            items: 1,
-            nav: false
-          }
-        }
-      })
-    })
-  </script>
-  <!-- //script for featured posts blog slider -->
-
-  <!-- script for banner typing text -->
-  <script>
-    function autoType(elementClass, typingSpeed) {
-      var thhis = $(elementClass);
-      thhis.css({
-        "position": "relative",
-        "display": "inline-block"
-      });
-      thhis.prepend('<div class="cursor" style="right: initial; left:0;"></div>');
-      thhis = thhis.find(".text-js");
-      var text = thhis.text().trim().split('');
-      var amntOfChars = text.length;
-      var newString = "";
-      thhis.text("|");
-      setTimeout(function () {
-        thhis.css("opacity", 1);
-        thhis.prev().removeAttr("style");
-        thhis.text("");
-        for (var i = 0; i < amntOfChars; i++) {
-          (function (i, char) {
-            setTimeout(function () {
-              newString += char;
-              thhis.text(newString);
-            }, i * typingSpeed);
-          })(i + 1, text[i]);
-        }
-      }, 1500);
-    }
-
-    $(document).ready(function () {
-      // Now to start autoTyping just call the autoType function with the 
-      // class of outer div
-      // The second paramter is the speed between each letter is typed.   
-      autoType(".type-js", 200);
-    });
-  </script>
-  <!-- //script for banner typing text -->
-
-
-  <!-- disable body scroll which navbar is in active -->
-  <script>
-    $(function () {
-      $('.navbar-toggler').click(function () {
-        $('body').toggleClass('noscroll');
-      })
-    });
-  </script>
-  <!-- disable body scroll which navbar is in active -->
 
   <!-- MENU-JS -->
   <script>

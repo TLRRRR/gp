@@ -6,22 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link href="../static/images/me.jpg" th:href="@{/images/me.jpg}" rel="icon" type="image/x-ico">
+
+
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-    <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}">
-    <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}">
-    <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
-    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">
     <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
-    <link rel="stylesheet" href="../static/css/timeline.css" th:href="@{/css/timeline.css}">
+    <link rel="stylesheet" href="../static/lib/editormd/css/editormd.preview.min.css" />
+
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style-starter.css">
     <!-- 登录css -->
     <link rel="stylesheet" href="../static/css/style.css" type="text/css" media="all">
-
 </head>
 
-<body>
-
+<body onload="mk()">
     <!--导航-->
     <!--userheader-->
     <header id="site-header" class="fixed-top">
@@ -105,72 +103,20 @@
         <div class="ui container m-opacity box-shadow-max">
             <!--内容-->
             <div class="ui attached padded segment">
+                <br>
+                <br>
                 <!--中间主要内容部分-->
-                <div id="conten" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large">
+                <div id="cont" style="display:none;">22222</div>
+                <div id="content" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large">
+                    <br>
+                    <textarea id="mkcontent"></textarea>
                     <br>
                     <br>
-                    <span id="content"></span>
-                    <br>
-                    <br>
-                    Bukowski wanted to be a writer. But for decades his work was rejected by almost every magazine,
-                    newspaper,
-                    journal, agent, and publisher he submitted to. His work was horrible, they said. Crude. Disgusting.
-                    Depraved. And as
-                    the stacks of rejection slips piled up, the weight of his failures pushed him deep into an
-                    alcohol-fueled depression that
-                    would follow him for most of his life.
-                    Bukowski had a day job as a letter-filer at a post office. He got paid shit money and spent most of
-                    it on booze. He
-                    gambled away the rest at the racetrack. At night, he would drink alone and sometimes hammer out
-                    poetry on his beat-
-                    up old typewriter. Often, he’d wake up on the floor, having passed out the night before.
-                    Thirty years went by like this, most of it a meaningless blur of alcohol, drugs, gambling, and
-                    prostitutes. Then,
-                    when Bukowski was fifty, after a lifetime of failure and self-loathing, an editor at a small
-                    independent publishing
-                    house took a strange interest in him. The editor couldn’t offer Bukowski much money or much promise
-                    of sales. But
-                    he had a weird affection for the drunk loser, so he decided to take a chance on him. It was the
-                    first real shot Bukowski
-                    had ever gotten, and, he realized, probably the only one he would ever get. Bukowski wrote back to
-                    the editor: “I have
-                    one of two choices—stay in the post office and go crazy . . . or stay out here and play at writer
-                    and starve. I have
-                    decided to starve.”
-                    Upon signing the contract, Bukowski wrote his first novel in three weeks. It was called simply Post
-                    Office. In the
-                    dedication, he wrote, “Dedicated to nobody.”
-                    Bukowski would make it as a novelist and poet. He would go on and publish six novels and hundreds of
-                    poems,
-                    selling over two million copies of his books. His popularity defied everyone’s expectations,
-                    particularly his own.
-                    Stories like Bukowski’s are the bread and butter of our cultural narrative. Bukowski’s life embodies
-                    the American
-                    Dream: a man fights for what he wants, never gives up, and eventually achieves his wildest dreams.
-                    It’s practically a
-                    movie waiting to happen. We all look at stories like Bukowski’s and say, “See? He never gave up. He
-                    never stopped
-                    trying. He always believed in himself. He persisted against all the odds and made something of
-                    himself!”
-                    It is then strange that on Bukowski’s tombstone, the epitaph reads: “Don’t try.”
-                    See, despite the book sales and the fame, Bukowski was a loser. He knew it. And his success stemmed
-                    not from
-                    some determination to be a winner, but from the fact that he knew he was a loser, accepted it, and
-                    then wrote honestly
-                    about it. He never tried to be anything other than what he was. The genius in Bukowski’s work was
-                    not in overcoming
-                    unbelievable odds or developing himself into a shining literary light. It was the opposite. It was
-                    his simple ability to be
-                    completely, unflinchingly honest with himself—especially the worst parts of himself—and to share his
-                    failings without
-                    hesitation or doubt.
-                    <!-- </tbody> -->
-                    <!-- </table> -->
                 </div>
                 <div class="ui horizontal divider">end</div>
             </div>
 
-
+            <!-- 评论区域 -->
             <div class="ui bottom attached segment">
                 <!--评论区域列表-->
                 <div id="comment-container" class="ui teal segment">
@@ -226,32 +172,20 @@
         </div>
     </div>
 
-    <div id="toolbar" class="m-padded m-fixed m-right-bottom" style="display: none">
-        <div class="ui vertical icon buttons ">
-            <button type="button" class="ui toc teal button">目录</button>
-            <a href="#comment-container" class="ui teal button">评论</a>
-            <div id="toTop-button" class="ui icon button"><i class="chevron up icon"></i></div>
-        </div>
-    </div>
-
-    <div class="ui toc-container flowing popup transition hidden" style="width: 250px!important;">
-        <ol class="js-toc">
-
-        </ol>
-    </div>
-
-    <div id="qrcode" class="ui wechat-qr flowing popup transition hidden " style="width: 130px !important;">
-        <!--<img src="./static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 120px !important;">-->
-    </div>
-
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
-    <script src="../static/lib/qrcode/qrcode.min.js" th:src="@{/lib/qrcode/qrcode.min.js}"></script>
-    <script src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>
-    <script src="../static/lib/tocbot/tocbot.min.js" th:src="@{/lib/tocbot/tocbot.min.js}"></script>
-    <script src="../static/lib/waypoints/jquery.waypoints.min.js"
-        th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
+    <script src="assets/js/theme-change.js"></script><!-- theme switch js (light and dark)-->
+
     <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
+
+    <script src="../static/lib/editormd/lib/marked.min.js"></script>
+    <script src="../static/lib/editormd/lib/prettify.min.js"></script>
+    <script src="../static/lib/editormd/lib/raphael.min.js"></script>
+    <script src="../static/lib/editormd/lib/underscore.min.js"></script>
+    <script src="../static/lib/editormd/lib/sequence-diagram.min.js"></script>
+    <script src="../static/lib/editormd/lib/jquery.flowchart.min.js"></script>
+    <script src="../static/lib/editormd/lib/flowchart.min.js"></script>
+    <script src="../static/lib/editormd/editormd.min.js"></script>
 
     <!-- MENU-JS -->
     <script>
@@ -281,6 +215,7 @@
         });
     </script>
     <!-- //MENU-JS -->
+
     <!-- 显示文章详情 -->
     <script>
         //获取参数方法
@@ -313,14 +248,13 @@
                 if (msg.code == 200) {
                     console.log("like success")
                     document.getElementById("title").innerHTML = msg.data.title;
-                    document.getElementById("content").innerHTML = msg.data.content;
+                    document.getElementById("cont").innerHTML = msg.data.content;
                     document.getElementById("author").innerHTML = msg.data.author;
                 }
             }
         })
 
         //展示评论
-        // function
         $.ajax({
             url: "http://localhost:8080/infocomment",
             dataType: "json",
@@ -407,48 +341,44 @@
         })
     </script>
 
+    <!-- mkdown转HTML -->
+    <script>
+        function mk() {
+            console.log("mkmkmkmkmkmkmkmkmkmk")
+            //先对容器初始化
+            $("#content").html(' <textarea id="mkcontent"></textarea>');
 
-
-    <script th:inline="javascript">
-
-        // $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
-
-        $('.menu.toggle').click(function () {
-            $('.m-item').toggleClass('m-mobile-hide');
-        });
-
-        tocbot.init({
-            // Where to render the table of contents.
-            tocSelector: '.js-toc',
-            // Where to grab the headings to build the table of contents.
-            contentSelector: '.js-toc-content',
-            // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h1, h2, h3',
-        });
-
-        $('.toc.button').popup({
-            popup: $('.toc-container.popup'),
-            on: 'click',
-            position: 'left center'
-        });
-
-        $('#toTop-button').click(function () {
-            $(window).scrollTo(0, 500);
-        });
-
-
-        var waypoint = new Waypoint({
-            element: document.getElementById('waypoint'),
-            handler: function (direction) {
-                if (direction == 'down') {
-                    $('#toolbar').show(100);
-                } else {
-                    $('#toolbar').hide(500);
-                }
-                console.log('Scrolled to waypoint!  ' + direction);
-            }
-        })
+            var a = document.getElementById("content").innerHTML
+            $("#mkcontent").val(document.getElementById("cont").innerHTML)
+            //转换开始,第一个参数是上面的div的id
+            editormd.markdownToHTML("content", {
+                htmlDecode: "style,script,iframe", //可以过滤标签解码
+                emoji: true,
+                taskList: true,
+                tex: true,                // 默认不解析
+                flowChart: true,          // 默认不解析
+                sequenceDiagram: true,    // 默认不解析
+            });
+        }
     </script>
+
 </body>
+
+
+
+<!-- <script type="text/javascript">
+    $(window.onload=function () {
+        console.log("111111111")
+        let textEditor;
+        textEditor = editormd.markdownToHtml("content", {
+            htmlDecode: "style,script,iframe",
+            emoji: true,
+            taskList: true,
+            tex: true, //默认不解析
+            flowChart: true, //默认不解析
+            sequenceDiagram: true //默认不解析
+        })
+    })
+</script> -->
 
 </html>

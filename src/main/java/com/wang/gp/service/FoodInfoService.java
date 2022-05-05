@@ -4,11 +4,12 @@ import com.wang.gp.pojo.FoodInfo;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public interface FoodInfoService {
 
     //添加信息
-    public int addFoodInfo(String title, String content, Date date, String flag, Long typeId, String description, String author);
+    public int addFoodInfo(String title, String content, Date date, String flag, String typew, String description, String author);
 
     //删除信息
     public int deleteFoodInfoByTitle(String title);
@@ -33,4 +34,7 @@ public interface FoodInfoService {
 
     //根据用户名查询食物信息文章
     public ArrayList<FoodInfo> queryFoodinfoByUsername(String userName);
+
+    //查询食物文章类型列表
+    public List showInfotype();
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wang.gp.dao.AdminDao">
+
+    <!--    <select id="selectUserById" resultType="Admin">-->
+    <!--        SELECT *-->
+    <!--        FROM admin-->
+    <!--        WHERE userId = #{userId}-->
+    <!--    </select>-->
+
+    <!--查询user密码、姓名用于验证-->
+    <select id="confirmAdmin" resultType="Admin">
+        SELECT adname, pwd
+        FROM admin
+        WHERE adname = #{adname}
+          and pwd = #{pwd}
+    </select>
+
+    <!--查询表中是否已经存在该用户-->
+    <select id="confirmAdminAdname" resultType="Admin">
+        SELECT adname, pwd
+        FROM admin
+        WHERE adname = #{adname}
+    </select>
+
+    <!--注册管理员-->
+    <insert id="registerAdmin">
+        INSERT INTO admin(adname, pwd)
+        VALUES (#{adname}, #{pwd})
+    </insert>
+
+    <!--    &lt;!&ndash;查询表中是否已经存在此tel&ndash;&gt;-->
+    <!--    <select id="queryUserByTel" resultType="Admin">-->
+    <!--        SELECT *-->
+    <!--        FROM admin-->
+    <!--        WHERE tel = #{user.tel}-->
+    <!--    </select>-->
+
+    <!--    &lt;!&ndash;注册用户&ndash;&gt;-->
+    <!--    <insert id="registerUser">-->
+    <!--        INSERT INTO admin(userName, pwd, tel)-->
+    <!--        VALUES (#{userName}, #{pwd}, #{tel})-->
+    <!--    </insert>-->
+
+    <!--    &lt;!&ndash; 更新密码 &ndash;&gt;-->
+    <!--    <update id="updatePwd">-->
+    <!--        UPDATE admin-->
+    <!--        SET pwd=#{pwd}-->
+    <!--        WHERE tel = #{tel}-->
+    <!--    </update>-->
+</mapper>

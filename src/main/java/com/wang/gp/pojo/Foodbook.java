@@ -4,13 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Hyperlipidemia {
+public class Foodbook {
     private long id;
+    private String author;
     private String foodMenu;
-    private String effect;
+    private String description;
     private String formula;
-    private String usage;
+    private String usagew;
+    private Date creationtime;
+    private String typew;
 }

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分类管理</title>
+    <link href="../../static/images/me.jpg" th:href="@{/images/me.jpg}" rel="icon" type="image/x-ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
+    <link rel="stylesheet" href="../../static/js/layui/css/layui.css">
+</head>
+
+<body>
+    <!--导航栏-->
+    <nav class="ui inverted gird-header">
+        <div class="ui container">
+            <div class="ui inverted secondary stackable menu">
+                <h2 class="ui olive header item" style="font-family: STSong">管理员后台</h2>
+                <a href="adminfoodinfo.html" class="m-item item m-mobile-hide"><i class="home icon"></i>文章管理</a>
+                <a href="adminfoodtype.html" class="m-item item m-mobile-hide"><i
+                        class="clone outline icon"></i>文章分类管理</a>
+                <a href="adminfoodbook.html" class=" m-item item m-mobile-hide"><i
+                        class="clone outline icon"></i>食谱管理</a>
+                <a href="adminfoodbooktype.html" class="active m-item item m-mobile-hide"><i
+                        class="clone outline icon"></i>食谱分类管理</a>
+                <a href="../adminHome.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>返回主页</a>
+                <div class="right m-item m-mobile-hide menu">
+                    <div class="ui dropdown  item">
+                        <div class="text">
+                            <!-- <img class="ui avatar image" src="/images/elf.png" th:src="@{/images/bg.jpg}"> -->
+                            <span id="dear_user"></span>
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a href="#" class="item">注销</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+
+    <div class="m-padded-tb-hugex">
+        <div class="ui attached pointing menu">
+            <div class="ui container">
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!--中间内容-->
+    <div class="m-padded-tb-big">
+        <div class="ui container">
+            <table class="ui compact teal table">
+                <!-- <thead>
+                    <tr align="center">
+                        <th>ID</th>
+                        <th>名称</th>
+                        <th>操作</th>
+                    </tr>
+                </thead> -->
+                <!-- <tbody>
+                    <tr align="center">
+                        <td>1</td>
+                        <td>我的故事</td>
+                        <td>
+                            <a href="#" class="ui mini teal basic button">编辑</a>
+                            <a href="#" onclick="return confirm('确定要删除该分类吗？三思啊! 删了可就没了！')"
+                                class="ui mini red basic button">删除</a>
+                        </td>
+                    </tr>
+                </tbody> -->
+                <tfoot>
+                    <tr>
+                        <th colspan="6">
+                            <!-- <div class="ui inverted divided stackable grid">
+                                <div class="three wide column" align="center">
+                                    <a class="item">上一页</a>
+                                </div>
+
+                                <div class="ten wide column" align="center">
+                                    <p>第 <span></span> 页，共 <span></span> 页，有 <span></span> 个分类</p>
+                                </div>
+
+                                <div class="three wide column" align="center">
+                                    <a class="item">下一页</a>
+                                </div>
+                            </div>
+                            <div align="center">
+                                <a href="addtype.html">
+                                    <button type="button" class="ui teal button m-mobile-wide m-margin-top"><i
+                                            class="pencil icon"></i>新增
+                                    </button>
+                                </a>
+                            </div> -->
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <table class="layui-hide" id="test" lay-filter="test"></table>
+            <div align="center">
+                <a href="adminaddfoodbooktype.html">
+                    <button type="button" class="ui teal button m-mobile-wide m-margin-top"><i
+                            class="pencil icon"></i>新增
+                    </button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="../../static/js/layui/layui.js" charset="utf-8"></script>
+
+    <!-- 显示用户信息 -->
+    <script>
+        var a = JSON.parse(localStorage.getItem("user"));
+        document.getElementById("dear_user").innerHTML = a
+    </script>
+
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+    <script>
+        layui.use('table', function () {
+            var table = layui.table;
+
+            table.render({
+                elem: '#test'
+                , url: 'http://localhost:8080/admin/queryallfoodbooktype'/*tpa=https://www.layuiweb.com/test/table/demo1.json*/
+                // , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+                , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                    title: '提示'
+                    , layEvent: 'LAYTABLE_TIPS'
+                    , icon: 'layui-icon-tips'
+                }]
+                , title: '用户数据表'
+                , cols: [[
+                    { field: 'id', width: 153, title: 'ID', sort: true }
+                    , { field: 'name', width: 337, title: '名称' }
+                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 613 }
+                ]]
+                , page: true
+            });
+
+            //头工具栏事件
+            table.on('toolbar(test)', function (obj) {
+                var checkStatus = table.checkStatus(obj.config.id);
+                switch (obj.event) {
+                    case 'getCheckData':
+                        var data = checkStatus.data;
+                        layer.alert(JSON.stringify(data));
+                        break;
+                    case 'getCheckLength':
+                        var data = checkStatus.data;
+                        layer.msg('选中了：' + data.length + ' 个');
+                        break;
+                    case 'isAll':
+                        layer.msg(checkStatus.isAll ? '全选' : '未全选');
+                        break;
+
+                    //自定义头工具栏右侧图标 - 提示
+                    case 'LAYTABLE_TIPS':
+                        layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                        break;
+                };
+            });
+
+            //监听行工具事件
+            table.on('tool(test)', function (obj) {
+                var data = obj.data;
+                console.log(obj)
+                if (obj.event === 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del();
+                        $.ajax({
+                            url: "http://localhost:8080/admin/deletefoodbooktypebyid",
+                            type: "post",
+                            dataType: "json",
+                            data: { id: data.id },
+                        })
+                        layer.close(index);
+                    });
+                } else if (obj.event === 'edit') {
+                    layer.prompt({
+                        formType: 2
+                        , value: data.name
+                    }, function (value, index) {
+                        obj.update({
+                            name: value
+                        });
+                        console.log(value)
+                        $.ajax({
+                            url: "http://localhost:8080/admin/updatefoodbooktype",
+                            type: "post",
+                            dataType: "json",
+                            data: {
+                                id: data.id,
+                                name: value
+                            },
+                        })
+                        layer.close(index);
+                    });
+                    // layer.open({
+                    //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                    // type: 1,
+                    // title: "修改食物类型",
+                    // area: ['420px', '330px'],
+                    // <input >
+                    // content: $("#popUpdateTest")//引用的弹出层的页面层的方式加载修改界面表单
+                    // });
+                }
+            });
+        });
+    </script>
+    <script>
+
+        // $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+        });
+
+        //消息提示关闭初始化
+        $('.message .close')
+            .on('click', function () {
+                $(this)
+                    .closest('.message')
+                    .transition('fade');
+            });
+
+    </script>
+</body>
+
+</html>

@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Loseweight {
-    private long id;
-    private String foodMenu;
-    private String effect;
-    private String formula;
-    private String usage;
+public class Admin {
+    private Long id;
+    private String adname;
+    private String pwd;
 }

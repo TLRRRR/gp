@@ -4,6 +4,7 @@ import com.wang.gp.pojo.Comment;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 @Mapper
@@ -28,5 +29,5 @@ public interface CommentDao {
 
     //添加一个评论
 //    int addComment(Comment comment);
-    int addComment(String commentContent, Long foodinfoId, String commentAuthor);
+    int addComment(String commentContent, Long foodinfoId, String commentAuthor, Date creationtime);
 }

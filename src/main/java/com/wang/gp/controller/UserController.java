@@ -1,6 +1,5 @@
 package com.wang.gp.controller;
 
-import com.wang.gp.pojo.Login;
 import com.wang.gp.pojo.User;
 import com.wang.gp.pojo.base.baseEntity;
 import com.wang.gp.service.LoginService;
@@ -11,9 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.Date;
-import java.util.UUID;
 
 @Controller
 public class UserController {
@@ -50,19 +46,19 @@ public class UserController {
     //登录验证
     @ResponseBody
     @RequestMapping("/login")
-    public baseEntity<User> login(@RequestParam(value = "userName") String userName, @RequestParam(value = "pwd") String pwd,
-                                  HttpServletRequest request) {
+    public baseEntity login(@RequestParam(value = "userName") String userName, @RequestParam(value = "pwd") String pwd,
+                            HttpServletRequest request) {
         User user = new User();
         user.setUserName(userName);
         user.setPwd(MD5Utils.getMD5(pwd));
         String login = userService.login(user);
         if (login == "success") {
-//            String ticket =
             request.getSession().setAttribute("LoginUser", user.getUserName());
-            System.out.println("用户的session是："+request.getSession());
+            System.out.println("用户的session是：" + request.getSession());
+//            return "{\"errorCode\":\"200\",\"errorMessage\":\"登陆成功！\"}";
             return baseEntity.success(user);
         } else {
-            return baseEntity.failed(500,"登录失败");
+            return baseEntity.success1(Integer.parseInt(login));
         }
     }
 //    @ResponseBody

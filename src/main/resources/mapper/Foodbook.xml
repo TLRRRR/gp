@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wang.gp.dao.FoodbookDao">
+
+    <!--添加食谱-->
+    <insert id="addFoodbook">
+        INSERT INTO foodbook(food_menu, description, formula, usagew, creationtime, author, typew)
+        VALUES (#{foodMenu}, #{description}, #{formula}, #{usagew}, #{creationtime}, #{author}, #{typew})
+    </insert>
+
+    <!--查询用户foodbook-->
+    <select id="allAuthorFoodbook" resultType="Foodbook">
+        SELECT *
+        FROM foodbook
+        where author = #{author}
+    </select>
+
+    <!--查询所有foodbook-->
+    <select id="allFoodbook" resultType="Foodbook">
+        SELECT *
+        FROM foodbook
+    </select>
+
+    <!--删除食谱-->
+    <delete id="deletefoodbook">
+        DELETE
+        FROM foodbook
+        WHERE id = #{id}
+    </delete>
+
+    <!--更新食谱-->
+    <update id="updatefoodbook">
+        UPDATE foodbook
+        SET food_menu=#{foodMenu},
+            description=#{description},
+            formula=#{formula},
+            usagew=#{usagew}
+        WHERE id = #{id}
+    </update>
+
+    <!--查询食谱类型-->
+    <select id="showFoodbookType" resultType="FoodbookType">
+        SELECT *
+        FROM foodbook_type
+    </select>
+
+</mapper>

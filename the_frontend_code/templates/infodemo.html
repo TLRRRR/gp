@@ -6,23 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link href="../static/images/me.jpg" th:href="@{/images/me.jpg}" rel="icon" type="image/x-ico">
+
+
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-    <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}">
-    <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}">
-    <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
-    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">
     <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
-    <link rel="stylesheet" href="../static/css/timeline.css" th:href="@{/css/timeline.css}">
+    <link rel="stylesheet" href="../static/lib/editormd/css/editormd.preview.min.css" />
+
     <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style-starter.css">
     <!-- 登录css -->
     <link rel="stylesheet" href="../static/css/style.css" type="text/css" media="all">
-
 </head>
 
-<body>
+<body onload="mk()">
     <!--导航-->
-    <!--header-->
     <header id="site-header" class="fixed-top">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light stroke">
@@ -61,7 +59,6 @@
                                         p-id="2568"></path>
                                 </svg>
                             </div>
-
                         </a>
                     </div>
                 </div>
@@ -80,7 +77,6 @@
                         </div>
                     </nav>
                 </div>
-
             </nav>
         </div>
     </header>
@@ -188,72 +184,20 @@
         <div class="ui container m-opacity box-shadow-max">
             <!--内容-->
             <div class="ui attached padded segment">
+                <br>
+                <br>
                 <!--中间主要内容部分-->
-                <div id="conten" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large">
+                <div id="cont" style="display:none;">22222</div>
+                <div id="content" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large">
+                    <br>
+                    <textarea id="mkcontent"></textarea>
                     <br>
                     <br>
-                    <span id="content"></span>
-                    <br>
-                    <br>
-                    Bukowski wanted to be a writer. But for decades his work was rejected by almost every magazine,
-                    newspaper,
-                    journal, agent, and publisher he submitted to. His work was horrible, they said. Crude. Disgusting.
-                    Depraved. And as
-                    the stacks of rejection slips piled up, the weight of his failures pushed him deep into an
-                    alcohol-fueled depression that
-                    would follow him for most of his life.
-                    Bukowski had a day job as a letter-filer at a post office. He got paid shit money and spent most of
-                    it on booze. He
-                    gambled away the rest at the racetrack. At night, he would drink alone and sometimes hammer out
-                    poetry on his beat-
-                    up old typewriter. Often, he’d wake up on the floor, having passed out the night before.
-                    Thirty years went by like this, most of it a meaningless blur of alcohol, drugs, gambling, and
-                    prostitutes. Then,
-                    when Bukowski was fifty, after a lifetime of failure and self-loathing, an editor at a small
-                    independent publishing
-                    house took a strange interest in him. The editor couldn’t offer Bukowski much money or much promise
-                    of sales. But
-                    he had a weird affection for the drunk loser, so he decided to take a chance on him. It was the
-                    first real shot Bukowski
-                    had ever gotten, and, he realized, probably the only one he would ever get. Bukowski wrote back to
-                    the editor: “I have
-                    one of two choices—stay in the post office and go crazy . . . or stay out here and play at writer
-                    and starve. I have
-                    decided to starve.”
-                    Upon signing the contract, Bukowski wrote his first novel in three weeks. It was called simply Post
-                    Office. In the
-                    dedication, he wrote, “Dedicated to nobody.”
-                    Bukowski would make it as a novelist and poet. He would go on and publish six novels and hundreds of
-                    poems,
-                    selling over two million copies of his books. His popularity defied everyone’s expectations,
-                    particularly his own.
-                    Stories like Bukowski’s are the bread and butter of our cultural narrative. Bukowski’s life embodies
-                    the American
-                    Dream: a man fights for what he wants, never gives up, and eventually achieves his wildest dreams.
-                    It’s practically a
-                    movie waiting to happen. We all look at stories like Bukowski’s and say, “See? He never gave up. He
-                    never stopped
-                    trying. He always believed in himself. He persisted against all the odds and made something of
-                    himself!”
-                    It is then strange that on Bukowski’s tombstone, the epitaph reads: “Don’t try.”
-                    See, despite the book sales and the fame, Bukowski was a loser. He knew it. And his success stemmed
-                    not from
-                    some determination to be a winner, but from the fact that he knew he was a loser, accepted it, and
-                    then wrote honestly
-                    about it. He never tried to be anything other than what he was. The genius in Bukowski’s work was
-                    not in overcoming
-                    unbelievable odds or developing himself into a shining literary light. It was the opposite. It was
-                    his simple ability to be
-                    completely, unflinchingly honest with himself—especially the worst parts of himself—and to share his
-                    failings without
-                    hesitation or doubt.
-                    <!-- </tbody> -->
-                    <!-- </table> -->
                 </div>
                 <div class="ui horizontal divider">end</div>
             </div>
 
-
+            <!-- 评论区域 -->
             <div class="ui bottom attached segment">
                 <!--评论区域列表-->
                 <div id="comment-container" class="ui teal segment">
@@ -319,55 +263,32 @@
                         <textarea name="content" id="text" placeholder="请输入评论信息..."></textarea>
                     </div>
                     <div class="fields">
-                        <!-- <div class="field m-mobile-wide m-margin-bottom-small">
-                            <div class="ui left icon input">
-                                <i class="user icon"></i>
-                                <input type="text" name="nickname" placeholder="姓名">
-                            </div>
-                        </div>
-                        <div class="field m-mobile-wide m-margin-bottom-small">
-                            <div class="ui left icon input">
-                                <i class="mail icon"></i>
-                                <input type="text" name="email" placeholder="邮箱">
-                            </div>
-                        </div> -->
                         <div class="field  m-margin-bottom-small m-mobile-wide">
                             <button id="commentpost-btn" type="button" class="ui teal button m-mobile-wide"><i
                                     class="edit icon"></i>发布</button>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 
-    <div id="toolbar" class="m-padded m-fixed m-right-bottom" style="display: none">
-        <div class="ui vertical icon buttons ">
-            <button type="button" class="ui toc teal button">目录</button>
-            <a href="#comment-container" class="ui teal button">评论</a>
-            <div id="toTop-button" class="ui icon button"><i class="chevron up icon"></i></div>
-        </div>
-    </div>
-
-    <div class="ui toc-container flowing popup transition hidden" style="width: 250px!important;">
-        <ol class="js-toc">
-
-        </ol>
-    </div>
-
-    <div id="qrcode" class="ui wechat-qr flowing popup transition hidden " style="width: 130px !important;">
-        <!--<img src="./static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 120px !important;">-->
-    </div>
-
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
-    <script src="../static/lib/qrcode/qrcode.min.js" th:src="@{/lib/qrcode/qrcode.min.js}"></script>
-    <script src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>
-    <script src="../static/lib/tocbot/tocbot.min.js" th:src="@{/lib/tocbot/tocbot.min.js}"></script>
-    <script src="../static/lib/waypoints/jquery.waypoints.min.js"
-        th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
+    <script src="assets/js/theme-change.js"></script><!-- theme switch js (light and dark)-->
+
     <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
+
+    <script src="../static/lib/editormd/lib/marked.min.js"></script>
+    <script src="../static/lib/editormd/lib/prettify.min.js"></script>
+    <script src="../static/lib/editormd/lib/raphael.min.js"></script>
+    <script src="../static/lib/editormd/lib/underscore.min.js"></script>
+    <script src="../static/lib/editormd/lib/sequence-diagram.min.js"></script>
+    <script src="../static/lib/editormd/lib/jquery.flowchart.min.js"></script>
+    <script src="../static/lib/editormd/lib/flowchart.min.js"></script>
+    <script src="../static/lib/editormd/editormd.min.js"></script>
+
+
 
     <!-- MENU-JS -->
     <script>
@@ -397,6 +318,158 @@
         });
     </script>
     <!-- //MENU-JS -->
+
+    <!-- bootstrap 侧模块展示-->
+    <script src="assets/js/bootstrap.min.js"></script>
+
+    <!-- 登录 -->
+    <script>
+        function func() {
+            //验证用户是否已经注册过
+            var userName = $("#userName").val();//获取表单元素值
+            var pwd = $("#pwd").val();
+            // var userName = document.getElementById('userName').value;
+            if (userName == "") {
+                alert("手机号不能为空！");
+                return false;
+            }
+            if (pwd == "") {
+                alert("密码不能为空！");
+                return false;
+            }
+            if (pwd.length < 4) {
+                alert("密码不能少于4位！");
+                return false;
+            }
+            return true;
+        }
+
+        $("#wangsubmit").on("click", function () {
+            console.log("ssssssss")
+            if (!func()) {
+                console.log("!!!!!!");
+                return false;
+            }
+            var userName = $("#userName").val();//获取表单元素值
+            var pwd = $("#pwd").val();
+            var data = {
+                userName: userName,
+                pwd: pwd
+            };
+            console.log(userName)
+            console.log(data)
+            $.ajax({
+                type: "POST",
+                //待载入页面的url
+                url: "http://localhost:8080/login",
+                data: data,
+                dataType: 'json',
+                success: function (msg) {
+                    console.log("进success了");
+                    console.log(msg)
+                    if ("200" == msg.code) {
+                        localStorage.setItem("user", JSON.stringify(msg.data))
+                        console.log("success" + msg);
+                        alert("handsome")
+                        let url = window.location.search;//获取当前页面的确认
+                        let userinfodemo = "userinfodemo.html" + url
+                        window.location.href = userinfodemo;//用户发评论
+                    } else if ("11" == msg.data) {
+                        alert("该用户不存在！");
+                        console.log("该用户不存在！");
+                        return false;
+                    } else if ("22" == msg.data) {
+                        alert("密码输入错误，错误输入三次后您的账户将会被锁定！");
+                        return false;
+                    } else if ("33" == msg.data) {
+                        alert("您由于错误登陆次数太多，系统已将您的账户锁定，请在三分钟后重新登录！");
+                        return false;
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log("进error了")
+                    // 状态码
+                    console.log(XMLHttpRequest.status);
+                    // 状态
+                    console.log(XMLHttpRequest.readyState);
+                    // 错误信息
+                    console.log(textStatus);
+                }
+            });
+        });
+    </script>
+    <!-- /登录 -->
+
+    <!-- 注册 -->
+    <script>
+        function rfunc() {
+            console.log("现在在rfunc方法中")
+            var userName = $("#userNameRegister").val();
+            // let user = document.getElementById("userName").value;
+            var pwd = $("#pwdRegister").val();
+            var tel = $("#telRegister").val();
+            if (userName == "") {
+                alert("用户名不能为空！");
+                return false;
+            }
+            if (pwd == "") {
+                alert("密码不能为空！");
+                return false;
+            }
+            if (tel == "") {
+                alert("手机号不能为空！");
+                return false;
+            }
+            // if (!(/^1[34578]\d{9}$/.test(pwd))) {
+            //     alert("手机号输入错误");
+            //     return false;
+            // }
+            if (pwd.length < 4) {
+                alert("密码不能少于4位！");
+                return false;
+            }
+            return true;
+        }
+
+        $("#submitRegister").on("click", function () {
+            if (!rfunc()) {
+                console.log("!!!!!!");
+                return false;
+            }
+            var userName = $("#userNameRegister").val();//获取表单元素值
+            var pwd = $("#pwdRegister").val();
+            var tel = $("#telRegister").val();
+            var data = {
+                userName: userName,
+                pwd: pwd,
+                tel: tel
+            };
+            console.log(data);
+            $.ajax({
+                type: "POST",
+                //待载入页面的url,方法名
+                url: "http://localhost:8080/register",
+                data: data,    //后台传回的数据
+                dataType: 'json',
+                success: function (msg) {
+                    if ("00" == msg.errorCode) {
+                        console.log("success");
+                        alert("注册成功！！！")
+                        window.location.href = "userHome.html";
+                    } else if ("11" == msg.errorCode) {
+                        alert("该用户已经存在！");
+                        console.log("该用户已经存在！");
+                        return false;
+                    } else if ("22" == msg.errorCode) {
+                        alert("该手机号已经注册！");
+                        console.log("该手机号已经注册！");
+                        return false;
+                    }
+                }
+            })
+        })
+    </script>
+    <!-- /注册 -->
 
     <!-- 显示文章详情 -->
     <script>
@@ -430,14 +503,13 @@
                 if (msg.code == 200) {
                     console.log("like success")
                     document.getElementById("title").innerHTML = msg.data.title;
-                    document.getElementById("content").innerHTML = msg.data.content;
+                    document.getElementById("cont").innerHTML = msg.data.content;
                     document.getElementById("author").innerHTML = msg.data.author;
                 }
             }
         })
 
         //展示评论
-        // function
         $.ajax({
             url: "http://localhost:8080/infocomment",
             dataType: "json",
@@ -470,301 +542,36 @@
 
         // console.log(commentContent)
         $("#commentpost-btn").on("click", function () {
-            var a = JSON.parse(localStorage.getItem("user"));
-            // document.getElementById("dear_user").innerHTML = a.userName
-            console.log(a)
-            var commentContent = document.getElementById("text").value;
+            alert("登录后可评论！")
             var commentArea = document.getElementById("text");
-            console.log("nihaonihao")
-            console.log("评论内容" + commentContent)
-            $.ajax({
-                url: "http://localhost:8080/comment/addcomment",
-                dataType: "json",
-                type: "post",
-                data: {
-                    id: id,
-                    pageNum: pageNum,
-                    pageSize: pageSize,
-                    commentContent: commentContent,
-                    commentAuthor: a.userName
-                },
-                success: function () {
-                    commentArea.value = "";
-                    $.ajax({
-                        url: "http://localhost:8080/infocomment",
-                        dataType: "json",
-                        type: "post",
-                        data: {
-                            id: id,
-                            pageNum: pageNum,
-                            pageSize: pageSize
-                        },
-                        success: function (msg) {
-                            console.log(msg.data.length)
-                            if (msg.code == 200) {
-                                console.log("like success")
-                                let comment = ''
-                                for (let i = 0; i < msg.data.length; i++) {
-                                    comment += '<div class="comment">' +
-                                        '<div class="content" id="txt">' +
-                                        '<span class="author">' +
-                                        msg.data[i].username +
-                                        '</span>' +
-                                        '<div class="text">' +
-                                        msg.data[i].content +
-                                        '</div>' +
-                                        '</div>' +
-                                        '</div>'
-                                }
-                                $(".ui.threaded.comments").html(comment);
-                            }
-                        }
-                    })
-                }
-            })
+            commentArea.value = "";
         })
-
-
-
-        // <!-- 评论功能 -->
-
-
-        // /* 获取按钮 */
-        // var btn = document.getElementById('commentpost-btn');
-        // /* 获取文本域 */
-        // var text = document.getElementById('text');
-        // /* 获取评论区 */
-        // var txt = document.getElementById("txt")
-
-        // btn.onclick = function () {
-        //     /* 获取文本域里的内容 */
-        //     var value = text.value
-        //     /* 创键li */
-        //     var ul = document.createElement('ul');
-        //     /* 把li放到ul */
-        //     // var lis = `<li>${value}</li><a class="del">删除</a>`
-        //     var lis = ` <div class="text" >${value}</div >`
-        //     // <div div class="text" >
-        //     //     How artistic!
-        //     //                     </div >
-        //     ul.innerHTML = lis
-        //     /* 把lu插入到评论中 */
-        //     txt.appendChild(ul);
-        //     //清空文本域
-        //     text.value = "";
-        //     //自动获取焦点
-        //     text.focus();
-        //     var del = ul.querySelector('.del')
-        //     /* 绑定删除事件 */
-        //     del.onclick = function () {
-        //         /* 将自身删除 */
-        //         ul.remove();
-        //     }
-        // }
-
-
-        //评论表单验证
-        // $('.ui.form').form({
-        //     fields: {
-        //         title: {
-        //             identifier: 'content',
-        //             rules: [{
-        //                 type: 'empty',
-        //                 prompt: '请输入评论内容'
-        //             }
-        //             ]
-        //         },
-        //         content: {
-        //             identifier: 'nickname',
-        //             rules: [{
-        //                 type: 'empty',
-        //                 prompt: '请输入你的大名'
-        //             }]
-        //         },
-        //         type: {
-        //             identifier: 'email',
-        //             rules: [{
-        //                 type: 'email',
-        //                 prompt: '请填写正确的邮箱地址'
-        //             }]
-        //         }
-        //     }
-        // });
-
-        // $(function () {
-        //     $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"comments/6");
-        // });
-
-        // $("#commentpost-btn").on("click", function () {
-        //     console.log("lalala")
-        //     // var boo = $('.ui.form').form('validate form');
-        //     // if (boo) {
-        //     console.log('校验成功');
-        //     postdata();
-        //     // } else {
-        //     // console.log('校验失败');
-        //     // }
-        // });
-
-        //点击发送评论后，评论区重新加载
-        // function postData() {
-        //     console.log("评论区重新加载模块")
-        //     $("#comment-container").load(/*[[@{/comments}]]*/"", {
-        //         // "parentComment.id": $("[name='parentComment.id']").val(),
-        //         // "blogId": $("[name='blogId']").val(),
-        //         // "username": $("[name='nickname']").val(),
-        //         // "email": $("[name='email']").val(),
-        //         "content": $("[name='content']").val()
-        //     }
-        //         // ,
-        //         //  function (responseTxt, statusTxt, xhr) {
-        //         //     $(window).scrollTo($('#goto'), 500);
-        //         //     clearContent();
-        //         // }
-        //     );
-        // }
-
-        // function postdata() {
-        //     console.log("this is little postdata")
-        //     $("#comment-container").on("load", "",{
-        //         // "content": $("[name='content']").val()
-        //         "content": "fuck my ass"
-
-        //     })
-        // }
-
-        //评论完成后，发消息人区域清空重置
-        // function clearContent() {
-        //     $("[name='nickname']").val('');
-        //     $("[name='email']").val('');
-        //     $("[name='content']").val('');
-        //     $("[name='parentComment.id']").val(-1);
-        //     $("[name='content']").attr("placeholder", "请输入评论信息...");
-        // }
-
-        //子集评论
-        // function reply(obj) {
-        //     var commentId = $(obj).data('commentid');
-        //     var commentNickname = $(obj).data('commentnickname');
-        //     $("[name='content']").attr("placeholder", "@" + commentNickname).focus();
-        //     $("[name='parentComment.id']").val(commentId);
-        //     $(window).scrollTo($('#comment-form'), 500);
-        // }
+        $("#text").on("click", function () {
+            alert("登录后可评论！")
+            let url = window.location.search;//获取当前页面的确认
+            console.log(url)
+        })
     </script>
 
+    <!-- mkdown转HTML -->
+    <script>
+        function mk() {
+            console.log("mkmkmkmkmkmkmkmkmkmk")
+            //先对容器初始化
+            $("#content").html(' <textarea id="mkcontent"></textarea>');
 
-
-    <script th:inline="javascript">
-
-        // $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
-
-        $('.menu.toggle').click(function () {
-            $('.m-item').toggleClass('m-mobile-hide');
-        });
-
-        tocbot.init({
-            // Where to render the table of contents.
-            tocSelector: '.js-toc',
-            // Where to grab the headings to build the table of contents.
-            contentSelector: '.js-toc-content',
-            // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h1, h2, h3',
-        });
-
-        $('.toc.button').popup({
-            popup: $('.toc-container.popup'),
-            on: 'click',
-            position: 'left center'
-        });
-
-        $('#toTop-button').click(function () {
-            $(window).scrollTo(0, 500);
-        });
-
-
-        var waypoint = new Waypoint({
-            element: document.getElementById('waypoint'),
-            handler: function (direction) {
-                if (direction == 'down') {
-                    $('#toolbar').show(100);
-                } else {
-                    $('#toolbar').hide(500);
-                }
-                console.log('Scrolled to waypoint!  ' + direction);
-            }
-        })
-
-        //评论表单验证
-        // $('.ui.form').form({
-        //     fields: {
-        //         title: {
-        //             identifier: 'content',
-        //             rules: [{
-        //                 type: 'empty',
-        //                 prompt: '请输入评论内容'
-        //             }
-        //             ]
-        //         },
-        //         content: {
-        //             identifier: 'nickname',
-        //             rules: [{
-        //                 type: 'empty',
-        //                 prompt: '请输入你的大名'
-        //             }]
-        //         },
-        //         type: {
-        //             identifier: 'email',
-        //             rules: [{
-        //                 type: 'email',
-        //                 prompt: '请填写正确的邮箱地址'
-        //             }]
-        //         }
-        //     }
-        // });
-
-        // $(function () {
-        //     $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"comments/6");
-        // });
-
-        // $('#commentpost-btn').click(function () {
-        //     var boo = $('.ui.form').form('validate form');
-        //     if (boo) {
-        //         console.log('校验成功');
-        //         postData();
-        //     } else {
-        //         console.log('校验失败');
-        //     }
-        // });
-
-        // function postData() {
-        //     $("#comment-container").load(/*[[@{/comments}]]*/"",{
-        //         "parentComment.id" : $("[name='parentComment.id']").val(),
-        //         "blogId" : $("[name='blogId']").val(),
-        //         "nickname": $("[name='nickname']").val(),
-        //         "email"   : $("[name='email']").val(),
-        //         "content" : $("[name='content']").val()
-        //     },function (responseTxt, statusTxt, xhr) {
-        //         $(window).scrollTo($('#goto'),500);
-        //         clearContent();
-        //     });
-        // }
-
-        // function clearContent() {
-        //     $("[name='nickname']").val('');
-        //     $("[name='email']").val('');
-        //     $("[name='content']").val('');
-        //     $("[name='parentComment.id']").val(-1);
-        //     $("[name='content']").attr("placeholder", "请输入评论信息...");
-        // }
-
-    // function reply(obj) {
-    //     var commentId = $(obj).data('commentid');
-    //     var commentNickname = $(obj).data('commentnickname');
-    //     $("[name='content']").attr("placeholder", "@"+commentNickname).focus();
-    //     $("[name='parentComment.id']").val(commentId);
-    //     $(window).scrollTo($('#comment-form'),500);
-    // }
-
+            var a = document.getElementById("content").innerHTML
+            $("#mkcontent").val(document.getElementById("cont").innerHTML)
+            //转换开始,第一个参数是上面的div的id
+            editormd.markdownToHTML("content", {
+                htmlDecode: "style,script,iframe", //可以过滤标签解码
+                emoji: true,
+                taskList: true,
+                tex: true,                // 默认不解析
+                flowChart: true,          // 默认不解析
+                sequenceDiagram: true,    // 默认不解析
+            });
+        }
     </script>
 </body>
 

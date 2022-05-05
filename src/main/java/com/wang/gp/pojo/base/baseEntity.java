@@ -18,7 +18,6 @@ public class baseEntity<T> implements Serializable {
     private String error;
 
     /**
-     *
      * @param t
      * @return
      */
@@ -43,12 +42,20 @@ public class baseEntity<T> implements Serializable {
         return base;
     }
 
-
-    public static <T> baseEntity<T> failed(String error) {
-        return failed(66,error);
+    public static <T> baseEntity<T> success3(T t, int code) {
+        baseEntity<T> base = new baseEntity<>();
+        base.setData(t);
+        base.setSuccess(true);
+        base.setCode(code);
+        return base;
     }
 
-    public static <T> baseEntity<T> failed(int code,String error) {
+
+    public static <T> baseEntity<T> failed(String error) {
+        return failed(66, error);
+    }
+
+    public static <T> baseEntity<T> failed(int code, String error) {
         baseEntity<T> base = new baseEntity<>();
         base.setCode(500);
         base.setData(null);

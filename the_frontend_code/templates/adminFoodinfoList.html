@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食物与健康</title>
+
+    <link href="../static/images/me.jpg" th:href="@{/images/me.jpg}" rel="icon" type="image/x-ico">
+    <link rel="stylesheet" href="../static/css/semantic.min.css">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css"
+        th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+    <link rel="stylesheet" href="../static/js/layui/css/layui.css">
+    <link rel="stylesheet" href="assets/css/style-starter.css">
+    <!-- 登录css -->
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css" media="all">
+
+</head>
+
+<body>
+    <!--header-->
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light stroke">
+                <a class="navbar-brand" href="index.html">
+                    <span> 食物</span>
+                    <span> 与健康</span>
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="fa icon-expand fa-bars"></span>
+                    <span class="fa icon-close fa-times"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item @@__active">
+                            <a class="nav-link" href="adminHome.html">Home </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="adminFoodinfoList.html">食物说</a>
+                        </li>
+                        <li class="nav-item @@c__active">
+                            <a class="nav-link" href="adminDietAndNutrition.html">食谱与营养</a>
+                        </li>
+                        <li class="nav-item @@active">
+                            <a class="nav-link" href="adminpro/adminfoodinfo.html">管理员 </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                </div>
+
+                <!-- 亮暗主题 -->
+                <div class="mobile-position ml-lg-2">
+                    <nav class="navigation">
+                        <div class="theme-switch-wrapper">
+                            <label class="theme-switch" for="checkbox">
+                                <input type="checkbox" id="checkbox">
+                                <div class="mode-container">
+                                    <i class="gg-sun"></i>
+                                    <i class="gg-moon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </nav>
+                </div>
+
+            </nav>
+        </div>
+    </header>
+
+    <!--中间内容-->
+    <section class="w3l-homeblock1" id="about">
+        <!-- <div class="m-padded-tb-big animated fadeIn"> -->
+        <div class="ui container" style="margin-top:90px">
+            <div class="ui-vertical-segment">
+            </div>
+            <div id="demo7"></div>
+        </div>
+        <!-- </div> -->
+    </section>
+
+    <br>
+    <br>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>
+    <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/layui/layui.js" charset="utf-8"></script>
+    <script src="assets/js/theme-change.js"></script>
+
+    <!-- MENU-JS -->
+    <script>
+        $(window).on("scroll", function () {
+            var scroll = $(window).scrollTop();
+
+            if (scroll >= 80) {
+                $("#site-header").addClass("nav-fixed");
+            } else {
+                $("#site-header").removeClass("nav-fixed");
+            }
+        });
+
+        //Main navigation Active Class Add Remove
+        $(".navbar-toggler").on("click", function () {
+            $("header").toggleClass("active");
+        });
+        $(document).on("ready", function () {
+            if ($(window).width() > 991) {
+                $("header").removeClass("active");
+            }
+            $(window).on("resize", function () {
+                if ($(window).width() > 991) {
+                    $("header").removeClass("active");
+                }
+            });
+        });
+    </script>
+    <!-- //MENU-JS -->
+
+    <script>
+        $(function () {
+            $('.navbar-toggler').click(function () {
+                $('body').toggleClass('noscroll');
+            })
+        });
+    </script>
+
+    <!-- 食物文章标题列表 -->
+    <script>
+        $.ajax({
+            url: "http://localhost:8080/allinfo",//获取食物博客条数
+            dataType: "json",
+            type: "post",
+            success: function (msg) {
+                if (msg.code == 200) {
+                    layui.use(['laypage', 'layer'], function () {
+                        var laypage = layui.laypage
+                            , layer = layui.layer;
+                        laypage.render({
+                            elem: 'demo7',
+                            count: msg.data,
+                            layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
+                            limit: 5,
+                            limits: [5, 7, 9, 11],
+                            jump: function (obj, first) {
+                                $.ajax({
+                                    url: "http://localhost:8080/gapinfo",
+                                    dataType: "json",
+                                    type: "post",
+                                    data: {
+                                        pageNum: obj.curr,
+                                        pageSize: obj.limit
+                                    },
+                                    success: function (msg) {
+                                        console.log("for循环长度" + msg.data.length)
+                                        if (msg.code == 200) {
+                                            let a = '';
+                                            for (let i = 0; i < msg.data.length; i++) {
+                                                a += '<div class="ui padded segment m-padded-tb-large m-opacity">' +
+                                                    '<div class="ui large aligned mobile reversed stackable grid">' +
+                                                    '<div class="eleven wide column ">' +
+                                                    '<a href="admininfodemo.html?id=' + i + '&pageNum=' + obj.curr + '&pageSize=' + obj.limit + '" class="ui header" id=' + i + ' align="center">' +
+                                                    msg.data[i].title +
+                                                    '</a>' +
+                                                    '<p class="m-text m-margin-top-max">' +
+                                                    msg.data[i].content +
+                                                    '</p>' +
+                                                    '</div>' +
+                                                    '</div>' +
+                                                    '</div>';
+                                            }
+                                            $(".ui-vertical-segment").html(a);
+                                        }
+                                    }
+                                })
+                            }
+                        })
+                    })
+                }
+            }
+        })
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-show');
+
+        });
+    </script>
+
+    <!-- bootstrap -->
+    <script src="assets/js/bootstrap.min.js"></script>
+</body>
+
+</html>

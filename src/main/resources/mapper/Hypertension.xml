@@ -5,17 +5,17 @@
 <mapper namespace="com.wang.gp.dao.HypertensionDao">
 
     <!--    开启驼峰映射可代替-->
-    <!--    <resultMap id="hyper" type="Hypertension">-->
+    <!--    <resultMap id="hyper" type="Foodbook">-->
     <!--        <result property="id" column="id"/>-->
     <!--        <result property="foodMenu" column="food_menu"/>-->
     <!--        <result property="description" column="description"/>-->
     <!--    </resultMap>-->
 
-    <!--Hypertension-->
-    <select id="queryAllByFood" resultType="Hypertension">
+    <!--高血压食谱-->
+    <select id="queryAllHypertensionByFood" resultType="Foodbook">
         SELECT *
-        FROM hypertension
-        WHERE food_menu like "%"#{foodmenu}"%"
+        FROM foodbook
+        WHERE food_menu like "%"#{foodmenu}"%" and typew = "hypertension"
     </select>
 
 </mapper>

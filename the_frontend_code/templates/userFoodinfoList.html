@@ -51,19 +51,6 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <div class="popup ml-auto">
-                        <a href="#menu" class="domain" data-toggle="modal" data-target="#DomainModal">
-                            <div class="hamburger">
-                                <!-- <svg t="1650099328672" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                                    xmlns="http://www.w3.org/2000/svg" p-id="2567" width="200" height="200">
-                                    <path
-                                        d="M500 128.8c-95.2 5.6-173.6 83.2-180 178.4-7.2 112 80.8 205.6 191.2 205.6 106.4 0 192-86.4 192-192 0.8-110.4-92-198.4-203.2-192zM512 575.2c-128 0-383.2 64-383.2 192v96c0 17.6 14.4 32 32 32h702.4c17.6 0 32-14.4 32-32V766.4c0-127.2-255.2-191.2-383.2-191.2z"
-                                        p-id="2568"></path>
-                                </svg> -->
-                            </div>
-
-                        </a>
-                    </div>
                 </div>
 
                 <!-- 亮暗主题 -->
@@ -85,74 +72,6 @@
         </div>
     </header>
 
-    <!-- 侧登录模块 -->
-    <div class="modal right fade" id="DomainModal" tabindex="-1" role="dialog" aria-labelledby="DomainModalLabel2">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-
-                <div class="modal-body">
-                    <div class="modal__content">
-                        <a class="navbar-brand"> <span>登录 </span></a>
-                        <div class="widget-social-icons mt-sm-5 mt-4">
-                            <ul class="icon-rounded address">
-                                <div class="wthree-field">
-                                    <input name="userName" id="userName" type="text" value="" placeholder="Username"
-                                        required>
-                                </div>
-                                <div class="wthree-field">
-                                    <input name="pwd" id="pwd" type="Password" placeholder="Password" required>
-                                </div>
-                                <div class="wthree-field">
-                                    <button type="button" id="wangsubmit" name="submit" class="btn">登录</button>
-                                </div>
-                                <div class="wthree-field">
-                                    <a href="#menu" class="domain" data-toggle="modal"
-                                        data-target="#DomainModal2">注册</a>
-                                </div>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 侧注册模块 -->
-    <div class="modal right fade" id="DomainModal2" tabindex="-1" role="dialog" aria-labelledby="DomainModalLabel2">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-
-                <div class="modal-body">
-                    <div class="modal__content">
-                        <a class="navbar-brand"> <span>注册 </span></a>
-                        <div class="widget-social-icons mt-sm-5 mt-4">
-                            <ul class="icon-rounded address">
-                                <div class="wthree-field">
-                                    <input name="userName" id="userNameRegister" type="text" value=""
-                                        placeholder="Username" required>
-                                </div>
-                                <div class="wthree-field">
-                                    <input name="pwd" id="pwdRegister" type="Password" placeholder="Password">
-                                </div>
-                                <div class="wthree-field">
-                                    <input name="tel" id="telRegister" type="text" placeholder="Telephone">
-                                </div>
-                                <div class="wthree-field">
-                                    <button type="button" name="submit" id="submitRegister" class="btn">注册</button>
-                                </div>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <!--中间内容-->
     <section class="w3l-homeblock1" id="about">
         <!-- <div class="m-padded-tb-big animated fadeIn"> -->
@@ -164,22 +83,12 @@
         <!-- </div> -->
     </section>
 
-    <!-- <section class="w3l-homeblock2" id="about">
-        你在我的心里永远是故乡
-        <div class="ui container">
-            <div class="ui-vertical-segment">
-            </div>
-            <div id="demo7"></div>
-        </div>
-    </section> -->
-
     <br>
     <br>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-    <script src="../static/lib/waypoints/jquery.waypoints.min.js"
-        th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
+    <script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>
     <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
     <script src="../static/js/layui/layui.js" charset="utf-8"></script>
     <script src="assets/js/theme-change.js"></script>
@@ -221,6 +130,7 @@
         });
     </script>
 
+    <!-- 食物文章标题列表 -->
     <script>
         $.ajax({
             url: "http://localhost:8080/allinfo",//获取食物博客条数

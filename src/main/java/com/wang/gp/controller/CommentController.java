@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -34,7 +35,8 @@ public class CommentController {
         //添加评论到相应的文章下
         long foodinfoId = list.get(Math.toIntExact(id)).getId();
         System.out.println(foodinfoId);
-        int i = commentService.addComment(commentContent, foodinfoId, commentAuthor);
+        Date creationtime = new Date();
+        int i = commentService.addComment(commentContent, foodinfoId, commentAuthor, creationtime);
         List<Comment> commentByFoodinfoId = commentService.findCommentByFoodinfoId(list.get(Math.toIntExact(id)).getId());//文章内容
         System.out.println(commentContent);
         return baseEntity.success(commentByFoodinfoId);
