@@ -454,6 +454,7 @@
                 success: function (msg) {
                     if ("00" == msg.errorCode) {
                         console.log("success");
+                        localStorage.setItem("user", JSON.stringify(data))
                         alert("注册成功！！！")
                         window.location.href = "userHome.html";
                     } else if ("11" == msg.errorCode) {

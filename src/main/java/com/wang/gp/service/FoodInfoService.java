@@ -9,7 +9,7 @@ import java.util.List;
 public interface FoodInfoService {
 
     //添加信息
-    public int addFoodInfo(String title, String content, Date date, String flag, String typew, String description, String author);
+    public int addFoodInfo(String title, String content, Date date, String flag, long typeid, String typew, String description, String author);
 
     //删除信息
     public int deleteFoodInfoByTitle(String title);

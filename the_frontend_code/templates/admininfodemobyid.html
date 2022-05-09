@@ -225,21 +225,15 @@
         }
         //使用获取参数方法
         var id = GetUrlParam("id");
-        var pageNum = GetUrlParam("pageNum");
-        var pageSize = GetUrlParam("pageSize");
         console.log("id:" + id + "  name:" + name);
-        console.log("pageNum:" + pageNum + "  name:" + name);
-        console.log("pageSize:" + pageSize + "  name:" + name);
 
         //文章详情
         $.ajax({
-            url: "http://localhost:8080/infodetail",
+            url: "http://localhost:8080/infobyid",
             dataType: "json",
             type: "post",
             data: {
-                id: id,
-                pageNum: pageNum,
-                pageSize: pageSize
+                id: id
             },
             success: function (msg) {
                 console.log("that is my json code: " + msg.code);
@@ -255,13 +249,11 @@
 
         //展示评论
         $.ajax({
-            url: "http://localhost:8080/infocomment",
+            url: "http://localhost:8080/infocommentbyid",
             dataType: "json",
             type: "post",
             data: {
                 id: id,
-                pageNum: pageNum,
-                pageSize: pageSize
             },
             success: function (msg) {
                 console.log(msg.data.length)
@@ -293,31 +285,27 @@
             var commentArea = document.getElementById("text");
             console.log("评论内容" + commentContent)
             $.ajax({
-                url: "http://localhost:8080/comment/addcomment",
+                url: "http://localhost:8080/addinfocommentbyid",
                 dataType: "json",
                 type: "post",
                 data: {
-                    id: id,
-                    pageNum: pageNum,
-                    pageSize: pageSize,
+                    foodinfoId: id,
                     commentContent: commentContent,
                     commentAuthor: a.adname
                 },
                 success: function () {
                     commentArea.value = "";
+                    //展示评论
                     $.ajax({
-                        url: "http://localhost:8080/infocomment",
+                        url: "http://localhost:8080/infocommentbyid",
                         dataType: "json",
                         type: "post",
                         data: {
                             id: id,
-                            pageNum: pageNum,
-                            pageSize: pageSize
                         },
                         success: function (msg) {
                             console.log(msg.data.length)
                             if (msg.code == 200) {
-                                console.log("like success")
                                 let comment = ''
                                 for (let i = 0; i < msg.data.length; i++) {
                                     comment += '<div class="comment">' +

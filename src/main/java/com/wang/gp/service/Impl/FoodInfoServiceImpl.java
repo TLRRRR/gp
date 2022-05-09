@@ -17,8 +17,8 @@ public class FoodInfoServiceImpl implements FoodInfoService {
     FoodInfoDao foodInfoDao;
 
     @Override
-    public int addFoodInfo(String title, String content, Date date, String flag, String typew, String description, String author) {
-        return foodInfoDao.addFoodInfo(title, content, date, flag, typew, description, author);
+    public int addFoodInfo(String title, String content, Date date, String flag, long typeid, String typew, String description, String author) {
+        return foodInfoDao.addFoodInfo(title, content, date, flag, typeid, typew, description, author);
     }
 
     @Override

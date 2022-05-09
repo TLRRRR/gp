@@ -45,7 +45,7 @@
                             <a class="nav-link" href="adminDietAndNutrition.html">食谱与营养</a>
                         </li>
                         <li class="nav-item @@active">
-                            <a class="nav-link" href="adminpro/adminfoodinfo.html">管理员 </a>
+                            <a class="nav-link" href="adminpro/laydemopro.html">管理员 </a>
                         </li>
                     </ul>
                 </div>
@@ -76,6 +76,14 @@
     <section class="w3l-homeblock1" id="about">
         <!-- <div class="m-padded-tb-big animated fadeIn"> -->
         <div class="ui container" style="margin-top:90px">
+            <div class="ui segment m-padded-tb-large m-opacity">
+                <div class="uiucontainer" align="center">
+                    <!-- <div class="ui labeled button m-margin-tb-tiny">
+                        <a href="#" class="ui basic  button">好文</a>
+                        <div class="ui basic  left pointing label">24</div>
+                    </div> -->
+                </div>
+            </div>
             <div class="ui-vertical-segment">
             </div>
             <div id="demo7"></div>
@@ -130,6 +138,109 @@
         });
     </script>
 
+    <!-- 文章类别 -->
+    <script>
+        $.ajax({
+            url: "http://localhost:8080/infotypes",
+            dataType: "json",
+            type: "post",
+            success: function (msg) {
+                if (msg.code == 200) {
+                    console.log(msg.data.length)
+                    let types = '';
+                    for (let t = 0; t < msg.data.length; t++) {
+                        types += '<div class="ui labeled button m-margin-tb-tiny">' +
+                            '<butten class="ui basic  button" onclick="typew()" id="' + msg.data[t].typeid + '">' + msg.data[t].typew + '</butten>' +
+                            '<div class="ui basic  left pointing label">' + msg.data[t].cou + '</div>' +
+                            '</div>'
+                    }
+                    $(".uiucontainer").html(types);
+                }
+            }
+        });
+        function typew() {
+            console.log(event.currentTarget.innerHTML) //获取事件绑定元素的内容
+            $.ajax({
+                url: "http://localhost:8080/atypewinfo",
+                dataType: "json",
+                type: "post",
+                data: {
+                    typew: event.currentTarget.innerHTML
+                },
+                success: function (msg) {
+                    console.log("同一类别文章展示")
+                    if (msg.code == 200) {
+                        let a = '';
+                        for (let i = 0; i < msg.data.length; i++) {
+                            a += '<div class="ui padded segment m-padded-tb-large m-opacity">' +
+                                '<div class="ui large aligned mobile reversed stackable grid">' +
+                                '<div class="eleven wide column ">' +
+                                '<a href="admininfodemobyid.html?id=' + msg.data[i].id + ' " class="ui header" align="center" id="' + msg.data[i].id + '">' +
+                                msg.data[i].title +
+                                '</a>' +
+                                '<p class="m-text m-margin-top-max">' +
+                                msg.data[i].description +
+                                '</p>' +
+
+                                '<div class="ui grid">' +
+
+                                '<div class="eleven wide column">' +
+                                '<div class="ui mini horizontal link list">' +
+                                '<div class="item">' +
+                                '<div class="content"><span class="header">' + msg.data[i].author + '</span></div>' +
+                                '</div>' +
+                                '<div class="item">' +
+                                '<i class="calendar icon"></i><span>' + msg.data[i].date + '</span>' +
+                                '</div>' +
+                                '' +
+                                '' +
+                                '</div>' +
+                                '</div>' +
+
+                                '<div class="right aligned five wide column">' +
+                                '<span class="ui teal basic label m-padded-tiny m-text-thin">' + msg.data[i].typew + '</span>' +
+                                '</div>' +
+                                '</div>' +
+
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+                        }
+                        $(".ui-vertical-segment").html(a);
+                    }
+                }
+            })
+        }
+
+        // function typewinfodetail() {
+        //     console.log(event.currentTarget.innerHTML) //获取事件绑定元素的内容
+        //     console.log(event.currentTarget.id)　//获取事件绑定元素id
+        //     $.ajax({
+        //         url: "http://localhost:8080/infobyid",
+        //         dataType: "json",
+        //         type: "post",
+        //         data: {
+        //             id: event.currentTarget.id
+        //         },
+        //         success: function () {
+
+        //         }
+        //     })
+        // }
+
+        // $(".uiucontainer").on("click", function () {
+        //     console.log("点击了uiucon")
+        //     $.ajax({
+        //         url: "http://localhost:8080/atypewinfo",
+        //         dataType: "json",
+        //         type: "post",
+        //         data: {
+        //             typew:
+        //         }
+        //     })
+        // })
+    </script>
+
     <!-- 食物文章标题列表 -->
     <script>
         $.ajax({
@@ -168,8 +279,27 @@
                                                     msg.data[i].title +
                                                     '</a>' +
                                                     '<p class="m-text m-margin-top-max">' +
-                                                    msg.data[i].content +
+                                                    msg.data[i].description +
                                                     '</p>' +
+
+                                                    '<div class="ui grid">' +
+
+                                                    '<div class="eleven wide column">' +
+                                                    '<div class="ui mini horizontal link list">' +
+                                                    '<div class="item">' +
+                                                    '<div class="content"><span class="header">' + msg.data[i].author + '</span></div>' +
+                                                    '</div>' +
+                                                    '<div class="item">' +
+                                                    '<i class="calendar icon"></i><span>' + msg.data[i].date + '</span>' +
+                                                    '</div>' +
+                                                    '</div>' +
+                                                    '</div>' +
+                                                    
+                                                    '<div class="right aligned five wide column">' +
+                                                    '<span class="ui teal basic label m-padded-tiny m-text-thin">' + msg.data[i].typew + '</span>' +
+                                                    '</div>' +
+                                                    '</div>' +
+
                                                     '</div>' +
                                                     '</div>' +
                                                     '</div>';

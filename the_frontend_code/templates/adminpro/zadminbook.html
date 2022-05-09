@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章管理</title>
+    <link rel="stylesheet" href="../../static/js/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/css/semantic.min.css">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
+</head>
+
+<body>
+
+    <!-- //弹出层update表单 -->
+    <div class="ui form" id="updatefoodbook" style="display:none;">
+        <div class="required field">
+            <div class="ui left labeled input">
+                <div class="ui selection compact teal basic dropdown label">
+                    <input type="hidden" value="高血压食谱" name="type" id="type">
+                    <i class="dropdown icon"></i>
+                    <div class="text">高血压食谱</div>
+                    <div class="menu">
+                        <div class="item" data-value="高血压食谱">高血压食谱</div>
+                        <div class="item" data-value="高血脂食谱">高血脂食谱</div>
+                        <div class="item" data-value="减肥食谱">减肥食谱</div>
+                    </div>
+                </div>
+                <input type="text" id="foodMenu" name="foodMenu" placeholder="食谱名称">
+            </div>
+        </div>
+        <span>食谱说明</span>
+        <div class="required field">
+            <textarea name="description" id="description" placeholder="食谱说明..." maxlength="200"></textarea>
+        </div>
+        <span>食谱材料</span>
+        <div class="required field">
+            <textarea name="formula" id="formula" placeholder="食谱材料..." maxlength="200"></textarea>
+        </div>
+        <span>食谱做法</span>
+        <div class="required field">
+            <textarea name="usage" id="usage" placeholder="食谱做法..." maxlength="200"></textarea>
+        </div>
+
+        <div class="two fields">
+            <div class="ui right aligned container">
+                <button type="button" id="update-btn" class="ui teal button">确认修改</button>
+            </div>
+        </div>
+    </div>
+
+    <table class="layui-hide" id="foodbooklist" lay-filter="foodbooklist"></table>
+
+    <script src="../../static/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layui/layui.js" charset="utf-8"></script>
+    <script src="../../static/lib/editormd/editormd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+
+    <!-- 显示用户信息 -->
+    <script>
+        console.log(localStorage.getItem("user"))
+        var a = JSON.parse(localStorage.getItem("user"));
+        console.log(a.userName)
+        document.getElementById("dear_user").innerHTML = a.userName
+        // $("#user").val(localStorage.getItem)
+
+        // 文章类型列表
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+        });
+
+        $.ajax({
+            url: "http://localhost:8080/admin/showinfotype",//获取食物文章类型列表
+            dataType: "json",
+            type: "post",
+            success: function (msg) {
+                // <div class="item" data-value="高血脂">高血脂</div>
+                console.log(msg.data[2].name)
+                let a = ''
+                for (let i = 0; i < msg.data.length; i++) {
+                    a += '<div class="item" data-value='
+                        + msg.data[i].name
+                        + '>'
+                        + msg.data[i].name
+                        + '</div>'
+                }
+                $("#infotype").html(a);
+            }
+        })
+    </script>
+
+    <!-- //markdown编辑器 -->
+    <script>
+        var contentEditor;
+        $(function () {
+            contentEditor = editormd("md-content", {
+                width: "100%",
+                height: 5400,
+                syncScrolling: "single",
+                path: "../../static/lib/editormd/lib/"
+            });
+        });
+    </script>
+
+    <!-- //编辑删除按钮 -->
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+    <!-- //layui工具 -->
+    <script>
+        layui.use('table', function () {
+            var table = layui.table;
+            var b = table.render({
+                elem: '#foodbooklist'
+                , url: 'http://localhost:8080/admin/allfoodbook'
+                , height: 612
+                , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                    title: '提示'
+                    , layEvent: 'LAYTABLE_TIPS'
+                    , icon: 'layui-icon-tips'
+                }]
+                , title: '用户数据表'
+                , cols: [[
+                    { field: 'id', width: 90, title: 'ID', sort: true }
+                    , { field: 'foodMenu', width: 130, title: '食谱名称' }
+                    , { field: 'description', width: 90, title: '食谱描述' }
+                    , { field: 'formula', width: 250, title: '食谱材料', sort: true }
+                    , { field: 'usagew', width: 250, title: '食谱做法' }
+                    , { field: 'creationtime', width: 130, title: '创建时间' }
+                    , { field: 'typew', title: '类型', minWidth: 10, width: 90 } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                    , { field: 'author', title: '作者', width: 90 }
+                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
+                ]]
+                , page: true
+            });
+
+            //监听行工具事件
+            table.on('tool(foodbooklist)', function (obj) {
+                var data = obj.data;
+                console.log(obj)
+                if (obj.event === 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del();
+                        layer.close(index);
+                        $.ajax({
+                            url: "http://localhost:8080/admin/deletefoodbook",
+                            type: "post",
+                            dataType: "json",
+                            data: { id: data.id },
+                        })
+                    });
+                } else if (obj.event === 'edit') {
+                    $("#foodMenu").val(data.foodMenu)
+                    $("#description").val(data.description)
+                    $("#formula").val(data.formula)
+                    $("#usage").val(data.usagew)
+                    $("#type").val(data.typew)
+                    layer.open({
+                        //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                        type: 1,
+                        title: "修改食谱信息",
+                        area: ['1000px', '500px'],
+                        content: $("#updatefoodbook")//引用的弹出层的页面层的方式加载修改界面表单
+                    });
+                    console.log("hahahaha")
+                    $('#update-btn').on('click', function () {
+                        console.log("success up")
+                        $.ajax({
+                            url: "http://localhost:8080/admin/updatefoodbook",
+                            type: "post",
+                            dataType: "json",
+                            data: {
+                                id: data.id,
+                                foodMenu: $("#foodMenu").val(),
+                                description: $("#description").val(),
+                                formula: $("#formula").val(),
+                                usagew: $("#usage").val()
+                            },
+                            success: function (msg) {
+                                if (msg.code == 200) {
+                                    console.log("修改成功")
+                                    layer.closeAll();
+                                    // window.location.reload();
+                                    table.reload('foodbooklist', {})
+                                }
+                            }
+                        })
+                    })
+                }
+            });
+        });
+
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+        });
+    </script>
+
+</body>
+
+</html>

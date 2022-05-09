@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <title></title>
+    <!-- Meta-Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- style CSS -->
+    <link rel="stylesheet" href="../../static/css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="../assets/css/style-starter.css">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<!-- //Head -->
+
+<!-- Body -->
+
+<body onload="user()">
+    <section class="main">
+        <div class="logo text-center">
+            <h1 class="text">个人信息</h1>
+        </div>
+        <div class="content-w3ls text-center">
+            <div class="wthree-field">
+                <input name="userName" id="userName" type="text" placeholder="Username" required>
+            </div>
+            <div class="wthree-field">
+                <input name="tel" id="tel" placeholder="tel" required>
+            </div>
+            <div class="wthree-field">
+                <button type="button" id="update" class="btn">修改</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../static/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+    <script>
+        //获取用户姓名
+        var a = JSON.parse(localStorage.getItem("user"));
+    </script>
+
+    <script>
+        function user() {
+            // document.getElementById("userName").value="a"
+            $("#userName").val(a.userName)
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                url: "http://localhost:8080/queryuserbyusername",
+                data: {
+                    userName: a.userName
+                },
+                success: function (msg) {
+                    if (msg.code == 200) {
+                        $("#tel").val(msg.data.tel)
+                    }
+                }
+            })
+        }
+
+        function func() {
+            //验证用户是否已经注册过
+            var userName = $("#userName").val();//获取表单元素值
+            var pwd = $("#pwd").val();
+            // var userName = document.getElementById('userName').value;
+            if (userName == "") {
+                alert("昵称不能为空！");
+                return false;
+            }
+            return true;
+        }
+
+        $("#update").on("click", function () {
+            // if (!func()) {
+            //     return false;
+            // }
+            console.log(a.userName)
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                url: "http://localhost:8080/queryuserbyusername",
+                data: {
+                    userName: a.userName
+                },
+                success: function (msg) {
+                    if (msg.code == 200) {
+                        console.log(a.userName)
+                        console.log(msg.data.userId)
+                        console.log(msg.data.tel)
+                        console.log($("#userName").val())
+                        console.log(msg.data.userId)
+                        console.log($("#tel").val())
+                        var data = {
+                            userName: $("#userName").val(),
+                            userId: msg.data.userId,
+                            tel: $("#tel").val(),
+                        }
+                        $.ajax({
+                            type: "POST",
+                            dataType: 'json',
+                            url: "http://localhost:8080/updateuser",
+                            data: data,
+                            success: function (msg2) {
+                                console.log("chengle")
+                                console.log(msg2.code)
+                                if (msg2.code == 200) {
+                                    $("#userName").val(msg2.data.userName)
+                                    $("#tel").val(msg2.data.tel)
+                                    alert("修改成功");
+                                    localStorage.setItem('userName', msg2.data.userName)
+                                    localStorage.setItem('tel', msg2.data.tel)
+                                }
+                            }
+                        })
+                    }
+                }
+            })
+            var userName = $("#userName").val();//获取表单元素值
+            var tel = $("#tel").val();
+            var data = {
+                adname: userName,
+                tel: tel
+            };
+        });
+    </script>
+</body>
+<!-- //Body -->
+
+</html>

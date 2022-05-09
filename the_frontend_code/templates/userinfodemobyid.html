@@ -38,16 +38,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item @@active">
-                            <a class="nav-link" href="adminHome.html">Home </a>
+                            <a class="nav-link" href="userHome.html">Home </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="adminFoodinfoList.html">食物说</a>
+                            <a class="nav-link" href="userFoodinfoList.html">食物说</a>
                         </li>
                         <li class="nav-item @@active">
-                            <a class="nav-link" href="adminDietAndNutrition.html">食谱与营养</a>
+                            <a class="nav-link" href="userDietAndNutrition.html">食谱与营养</a>
                         </li>
                         <li class="nav-item @@active">
-                            <a class="nav-link" href="adminpro/laydemopro.html">管理员 </a>
+                            <a class="nav-link" href="admin/laydemo.html">用户管理 </a>
                         </li>
                     </ul>
                 </div>
@@ -167,6 +167,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -225,21 +226,15 @@
         }
         //使用获取参数方法
         var id = GetUrlParam("id");
-        var pageNum = GetUrlParam("pageNum");
-        var pageSize = GetUrlParam("pageSize");
         console.log("id:" + id + "  name:" + name);
-        console.log("pageNum:" + pageNum + "  name:" + name);
-        console.log("pageSize:" + pageSize + "  name:" + name);
 
         //文章详情
         $.ajax({
-            url: "http://localhost:8080/infodetail",
+            url: "http://localhost:8080/infobyid",
             dataType: "json",
             type: "post",
             data: {
-                id: id,
-                pageNum: pageNum,
-                pageSize: pageSize
+                id: id
             },
             success: function (msg) {
                 console.log("that is my json code: " + msg.code);
@@ -255,13 +250,11 @@
 
         //展示评论
         $.ajax({
-            url: "http://localhost:8080/infocomment",
+            url: "http://localhost:8080/infocommentbyid",
             dataType: "json",
             type: "post",
             data: {
                 id: id,
-                pageNum: pageNum,
-                pageSize: pageSize
             },
             success: function (msg) {
                 console.log(msg.data.length)
@@ -293,31 +286,27 @@
             var commentArea = document.getElementById("text");
             console.log("评论内容" + commentContent)
             $.ajax({
-                url: "http://localhost:8080/comment/addcomment",
+                url: "http://localhost:8080/addinfocommentbyid",
                 dataType: "json",
                 type: "post",
                 data: {
-                    id: id,
-                    pageNum: pageNum,
-                    pageSize: pageSize,
+                    foodinfoId: id,
                     commentContent: commentContent,
-                    commentAuthor: a.adname
+                    commentAuthor: a.userName
                 },
                 success: function () {
                     commentArea.value = "";
+                    //展示评论
                     $.ajax({
-                        url: "http://localhost:8080/infocomment",
+                        url: "http://localhost:8080/infocommentbyid",
                         dataType: "json",
                         type: "post",
                         data: {
                             id: id,
-                            pageNum: pageNum,
-                            pageSize: pageSize
                         },
                         success: function (msg) {
                             console.log(msg.data.length)
                             if (msg.code == 200) {
-                                console.log("like success")
                                 let comment = ''
                                 for (let i = 0; i < msg.data.length; i++) {
                                     comment += '<div class="comment">' +
@@ -360,6 +349,24 @@
             });
         }
     </script>
+
 </body>
+
+
+
+<!-- <script type="text/javascript">
+    $(window.onload=function () {
+        console.log("111111111")
+        let textEditor;
+        textEditor = editormd.markdownToHtml("content", {
+            htmlDecode: "style,script,iframe",
+            emoji: true,
+            taskList: true,
+            tex: true, //默认不解析
+            flowChart: true, //默认不解析
+            sequenceDiagram: true //默认不解析
+        })
+    })
+</script> -->
 
 </html>

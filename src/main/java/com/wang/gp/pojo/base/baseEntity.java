@@ -52,7 +52,7 @@ public class baseEntity<T> implements Serializable {
 
 
     public static <T> baseEntity<T> failed(String error) {
-        return failed(66, error);
+        return failed(500, error);
     }
 
     public static <T> baseEntity<T> failed(int code, String error) {

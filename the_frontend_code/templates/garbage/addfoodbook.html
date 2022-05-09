@@ -5,12 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新增食谱</title>
-    <link href="../../static/images/admin.png" th:href="@{/images/admin.png}" rel="icon" type="image/x-ico">
+    <link href="../../static/images/admin.png" rel="icon" type="image/x-ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css"
-        th:href="@{/lib/editormd/css/editormd.min.css}">
-    <link rel="stylesheet" href="../../static/css/me.css" th:href="@{/css/me.css}">
-
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="../assets/css/style-starter.css">
@@ -21,15 +19,12 @@
     <nav class="ui inverted gird-header">
         <div class="ui container">
             <div class="ui inverted secondary stackable menu">
-                <h2 class="ui olive header item" style="font-family: STSong">管理员后台</h2>
-                <a href="adminfoodinfo.html" class=" m-item item m-mobile-hide"><i class="home icon"></i>文章管理</a>
-                <a href="adminfoodtype.html" class=" m-item item m-mobile-hide"><i
-                        class="clone outline icon"></i>文章分类管理</a>
-                <a href="adminfoodbook.html" class=" active m-item item m-mobile-hide"><i
+                <h2 class="ui olive header item" style="font-family: STSong">管理后台</h2>
+                <a href="foodinfo.html" class=" m-item item m-mobile-hide"><i class="home icon"></i>文章管理</a>
+                <!-- <a href="foodtype.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>分类管理</a> -->
+                <a href="foodbook.html" class=" active m-item item m-mobile-hide"><i
                         class="clone outline icon"></i>食谱管理</a>
-                <a href="adminfoodbooktype.html" class=" m-item item m-mobile-hide"><i
-                        class="clone outline icon"></i>食谱分类管理</a>
-                <a href="../adminHome.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>返回主页</a>
+                <a href="../userHome.html" class=" m-item item m-mobile-hide"><i class="clone outline icon"></i>返回主页</a>
                 <div class="right m-item m-mobile-hide menu">
                     <div class="ui dropdown item">
                         <div class="text">
@@ -108,24 +103,34 @@
     <script>
         //获取用户姓名
         var a = JSON.parse(localStorage.getItem("user"));
-        document.getElementById("dear_user").innerHTML = a
+        document.getElementById("dear_user").innerHTML = a.userName
+    </script>
+
+    <!-- 判断输入不为空 -->
+    <script>
+        function nul() {
+            console.log("nul" + "方法")
+            if ($("#foodMenu").val() == "") {
+                alert("请填写食谱名称");
+                return false;
+            }
+            if ($("#description").val() == "") {
+                alert("请填写食谱描述");
+                return false;
+            }
+            if ($("#formula").val() == "") {
+                alert("请填写食谱材料");
+                return false;
+            }
+            if ($("#usage").val() == "") {
+                alert("请填写做法");
+                return false;
+            }
+            return true;
+        }
     </script>
 
     <script>
-        //初始化Markdown编辑器
-        // var contentEditor;
-        // $(function () {
-        //     contentEditor = editormd("md-content", {
-        //         width: "100%",
-        //         height: 640,
-        //         syncScrolling: "single",
-        //         path: "../../static/lib/editormd/lib/"
-        //     });
-        // });
-        // $('.menu.toggle').click(function () {
-        //     $('.m-item').toggleClass('m-mobile-hide');
-        // });
-
         $('.ui.dropdown').dropdown({
             on: 'hover'
         });
@@ -149,8 +154,12 @@
             }
         })
 
-        $('#publish-btn').click(function () {
+        // 发布食谱
+        $("#publish-btn").on("click", function () {
             console.log("foodinfo")
+            if (!nul()) {
+                return false
+            }
             var data = {
                 foodMenu: $("#foodMenu").val(),
                 description: $("#description").val(),

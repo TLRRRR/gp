@@ -88,8 +88,7 @@
                     console.log("进success了");
                     console.log(msg)
                     if ("200" == msg.code) {
-                        localStorage.setItem("user", JSON.stringify(msg.data))
-                        console.log("success" + msg);
+                        localStorage.setItem("user", JSON.stringify(data))
                         alert("handsome")
                         window.location.href = "adminHome.html";
                     } else if ("11" == msg.data) {

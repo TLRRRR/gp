@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章管理</title>
+    <link rel="stylesheet" href="../../static/js/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/css/semantic.min.css">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="../assets/css/style-starter.css">
+</head>
+
+<body>
+
+    <div class="ui form">
+        <div class="required field">
+            <div class="ui left labeled input">
+                <div class="ui selection compact teal basic dropdown label" style="width: 130px;">
+                    <input type="hidden" value="高血压食谱" name="type" id="type">
+                    <i class="dropdown icon"></i>
+                    <div class="text">高血压食谱</div>
+                    <div class="menu" id="foodbooktype">
+                        <!-- <div class="item" data-value="高血压食谱">高血压食谱</div>
+                        <div class="item" data-value="高血脂食谱">高血脂食谱</div>
+                        <div class="item" data-value="减肥食谱">减肥食谱</div> -->
+                    </div>
+                </div>
+                <input type="text" id="foodMenu" name="foodMenu" placeholder="食谱名称">
+            </div>
+        </div>
+        <span class="text">食谱说明</span>
+        <div class="required field">
+            <textarea name="description" id="description" placeholder="食谱说明..." maxlength="200"></textarea>
+        </div>
+        <span class="text">食谱材料</span>
+        <div class="required field">
+            <textarea name="formula" id="formula" placeholder="食谱材料..." maxlength="200"></textarea>
+        </div>
+        <span class="text">食谱做法</span>
+        <div class="required field">
+            <textarea name="usage" id="usage" placeholder="食谱做法..." maxlength="200"></textarea>
+        </div>
+
+        <div class="two fields">
+            <div class="ui right aligned container">
+                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                <button type="button" id="publish-btn" class="ui teal button">发布</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../../static/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layui/layui.js" charset="utf-8"></script>
+    <script src="../../static/lib/editormd/editormd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+
+    <!-- 显示用户信息 -->
+    <script>
+        var a = JSON.parse(localStorage.getItem("user"));
+        // $("#user").val(localStorage.getItem)
+
+        // 文章类型列表
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+        });
+
+        function nul() {
+            console.log("nul" + "方法")
+            if ($("#foodMenu").val() == "") {
+                alert("请填写食谱名称");
+                return false;
+            }
+            if ($("#description").val() == "") {
+                alert("请填写食谱描述");
+                return false;
+            }
+            if ($("#formula").val() == "") {
+                alert("请填写食谱材料");
+                return false;
+            }
+            if ($("#usage").val() == "") {
+                alert("请填写做法");
+                return false;
+            }
+            return true;
+        }
+
+        $.ajax({
+            url: "http://localhost:8080/admin/showfoodbooktype",//获取食物文章类型列表
+            dataType: "json",
+            type: "post",
+            success: function (msg) {
+                // <div class="item" data-value="高血脂">高血脂</div>
+                console.log(msg.data[2].name)
+                let a = ''
+                for (let i = 0; i < msg.data.length; i++) {
+                    a += '<div class="item" data-value='
+                        + msg.data[i].name
+                        + '>'
+                        + msg.data[i].name
+                        + '</div>'
+                }
+                $("#foodbooktype").html(a);
+            }
+        })
+
+        // 发布食谱
+        $("#publish-btn").on("click", function () {
+            console.log("foodinfo")
+            if (!nul()) {
+                return false
+            }
+            var data = {
+                foodMenu: $("#foodMenu").val(),
+                description: $("#description").val(),
+                formula: $("#formula").val(),
+                usagew: $("#usage").val(),
+                typew: $("#type").val(),
+                author: a.adname
+            }
+            var menuArea = document.getElementById("foodMenu");
+            var descriArea = document.getElementById("description");
+            var formulaArea = document.getElementById("formula");
+            var usagewArea = document.getElementById("usage");
+            $.ajax({
+                type: "post",
+                url: "http://localhost:8080/admin/addfoodbook",
+                data: data,
+                dataType: "json",
+                success: function (msg) {
+                    console.log(msg)
+                    if (msg.code == "200") {
+                        // window.location.href = "foodbook.html";
+                        alert("添加成功")
+                        menuArea.value = "";
+                        descriArea.value = "";
+                        formulaArea.value = "";
+                        usagewArea.value = "";
+                    }
+                }
+            })
+        });
+    </script>
+
+</body>
+
+</html>

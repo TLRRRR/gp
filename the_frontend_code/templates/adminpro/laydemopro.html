@@ -4,14 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>用户后台</title>
+    <title>管理员后台</title>
     <link rel="stylesheet" href="../../static/js/layui/css/layui.css">
 </head>
 
 <body>
     <div class="layui-layout layui-layout-admin">
         <div class="layui-header">
-            <div class="layui-logo layui-hide-xs layui-bg-black">创作中心</div>
+            <div class="layui-logo layui-hide-xs layui-bg-black">管理员</div>
             <!-- 头部区域（可配合layui 已有的水平导航） -->
             <ul class="layui-nav layui-layout-left">
                 <!-- 移动端显示 -->
@@ -19,7 +19,7 @@
                     <i class="layui-icon layui-icon-spread-left"></i>
                 </li>
 
-                <li class="layui-nav-item layui-hide-xs"><a href="../userHome.html">home</a></li>
+                <li class="layui-nav-item layui-hide-xs"><a href="../adminHome.html">home</a></li>
                 <!-- <li class="layui-nav-item layui-hide-xs"><a href="">nav 2</a></li>
                 <li class="layui-nav-item layui-hide-xs"><a href="">nav 3</a></li>
                 <li class="layui-nav-item">
@@ -38,12 +38,8 @@
                         <span id="dear_user"></span>
                     </a>
                     <dl class="layui-nav-child">
-                        <dd>
-                            <a href="#" data-url="user.html" data-title="个人信息" data-id="111" class="site-demo-active"
-                                data-type="tabAdd">
-                                个人信息
-                            </a>
-                        </dd>
+                        <dd><a href="snapDelete.html">Your Profile</a></dd>
+                        <dd><a href="">Settings</a></dd>
                         <dd><a href="">Sign out</a></dd>
                     </dl>
                 </li>
@@ -63,13 +59,13 @@
                         <a class="" href="javascript:;">文章管理</a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="#" data-url="infodemo.html" data-title="个人文章" data-id="44"
+                                <a href="#" data-url="zadmininfo.html" data-title="全部文章" data-id="44"
                                     class="site-demo-active" data-type="tabAdd">
-                                    个人文章
+                                    全部文章
                                 </a>
                             </dd>
                             <dd>
-                                <a href="#" data-url="addinfodemo.html" data-title="添加文章" data-id="55"
+                                <a href="#" data-url="zadminaddinfo.html" data-title="添加文章" data-id="55"
                                     class="site-demo-active" data-type="tabAdd">
                                     添加文章
                                 </a>
@@ -80,15 +76,49 @@
                         <a href="javascript:;">食谱管理</a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="#" data-url="bookdemo.html" data-title="个人食谱" data-id="66"
+                                <a href="#" data-url="zadminbook.html" data-title="全部食谱" data-id="66"
                                     class="site-demo-active" data-type="tabAdd">
-                                    个人食谱
+                                    全部食谱
                                 </a>
                             </dd>
                             <dd>
-                                <a href="#" data-url="addbookdemo.html" data-title="添加食谱" data-id="77"
+                                <a href="#" data-url="zadminaddbook.html" data-title="添加食谱" data-id="77"
                                     class="site-demo-active" data-type="tabAdd">
                                     添加食谱
+                                </a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">文章类型管理</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="#" data-url="zadmininfotype.html" data-title="全部文章类别" data-id="88"
+                                    class="site-demo-active" data-type="tabAdd">
+                                    全部文章类别
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="#" data-url="zadminaddinfotype.html" data-title="添加文章类别" data-id="99"
+                                    class="site-demo-active" data-type="tabAdd">
+                                    添加文章类别
+                                </a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">食谱类型管理</a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="#" data-url="zadminbooktype.html" data-title="全部食谱类别" data-id="00"
+                                    class="site-demo-active" data-type="tabAdd">
+                                    全部食谱类别
+                                </a>
+                            </dd>
+                            <dd>
+                                <a href="#" data-url="zadminaddbooktype.html" data-title="添加食谱类别" data-id="11"
+                                    class="site-demo-active" data-type="tabAdd">
+                                    添加食谱类别
                                 </a>
                             </dd>
                         </dl>
@@ -130,7 +160,7 @@
     <script>
         //获取用户姓名
         var a = JSON.parse(localStorage.getItem("user"));
-        document.getElementById("dear_user").innerHTML = a.userName
+        document.getElementById("dear_user").innerHTML = a.adname
     </script>
     <script>
         //JS 
@@ -139,7 +169,6 @@
                 layer = layui.layer,
                 util = layui.util,
                 $ = layui.$;
-
 
             //触发事件
             var active = {

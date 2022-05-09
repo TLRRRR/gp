@@ -1,7 +1,9 @@
 package com.wang.gp.controller.admin;
 
 import com.wang.gp.dao.FoodInfoDao;
+import com.wang.gp.dao.FoodTypeDao;
 import com.wang.gp.pojo.FoodInfo;
+import com.wang.gp.pojo.FoodType;
 import com.wang.gp.pojo.base.baseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,9 @@ public class FoodInfoController {
 
     @Autowired
     FoodInfoDao foodInfoDao;
+
+    @Autowired
+    FoodTypeDao foodTypeDao;
 
     //显示所有食物信息
     @ResponseBody
@@ -40,8 +45,9 @@ public class FoodInfoController {
     @RequestMapping("/addinfo")
     public Map<String, String> addInfo(String title, String content, Date date, String flag, String typew, String description, String author) {
         System.out.println("foodinfo :" + title + "  " + content);
-        System.out.println("dame long   " + typew);
-        int i = foodInfoDao.addFoodInfo(title, content, new Date(), flag, typew, description, author);
+        //根据type名称查询type信息
+        long id = foodTypeDao.queryFoodTypeByName(typew).getId();
+        int i = foodInfoDao.addFoodInfo(title, content, new Date(), flag, id, typew, description, author);
         HashMap<String, String> map = new HashMap<String, String>();
         map.put("code", "11");
         System.out.println(map);

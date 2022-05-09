@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wang.gp.dao.HypertensionDao">
+<mapper namespace="com.wang.gp.dao.QueryFoodbookDao">
 
     <!--    开启驼峰映射可代替-->
     <!--    <resultMap id="hyper" type="Foodbook">-->
@@ -11,11 +11,11 @@
     <!--        <result property="description" column="description"/>-->
     <!--    </resultMap>-->
 
-    <!--高血压食谱-->
-    <select id="queryAllHypertensionByFood" resultType="Foodbook">
+    <!--食谱查询-->
+    <select id="queryFoodbookBynameAndType" resultType="Foodbook">
         SELECT *
         FROM foodbook
-        WHERE food_menu like "%"#{foodmenu}"%" and typew = "hypertension"
+        WHERE food_menu like "%"#{foodmenu}"%" and typew = #{typew}
     </select>
 
 </mapper>

@@ -21,4 +21,7 @@ public interface FoodTypeDao {
     public int deleteFoodInfoById(Long id);
 
     public int updateFoodType(Long id, String name);
+
+    //根据
+    public Long queryTypeidByTypew(String name);
 }

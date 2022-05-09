@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章管理</title>
+    <link rel="stylesheet" href="../../static/js/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/css/semantic.min.css">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="../assets/css/style-starter.css">
+</head>
+
+<body>
+    <div class="ui form">
+        <div class="required field">
+            <div class="ui left labeled input">
+                <!-- 标签列表 -->
+                <div class="ui selection compact teal basic dropdown label">
+                    <input type="hidden" value="原创" name="flag" id="flag">
+                    <i class="dropdown icon"></i>
+                    <div class="text">原创</div>
+                    <div class="menu">
+                        <div class="item" data-value="原创">原创</div>
+                        <div class="item" data-value="转载">转载</div>
+                        <div class="item" data-value="翻译">翻译</div>
+                    </div>
+                </div>
+                <!-- 文章分类列表 -->
+                <div class="ui left labeled action input" style="width: 250px;">
+                    <label class="ui compact teal basic label">分类</label>
+                    <div class="ui fluid selection dropdown">
+                        <input type="hidden" name="type" id="type">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">分类</div>
+                        <div class="menu" id="infotype">
+                            <div class="item" data-value="高血压吗">高血压</div>
+                            <div class="item" data-value="高血脂">高血脂</div>
+                        </div>
+                    </div>
+                </div>
+                <input type="text" id="title" name="title" placeholder="标题">
+            </div>
+        </div>
+
+        <div class="required field">
+            <div class="" id="md-content" style="z-index: 1 !important;">
+                <textarea class="editormd-markdown-textarea" placeholder="博客内容" id="content" name="content"
+                    style="display: none"></textarea>
+            </div>
+        </div>
+
+        <div class="required field">
+            <textarea name="description" id="description" placeholder="博客描述..." maxlength="200"></textarea>
+        </div>
+
+        <div class="two fields">
+            <div class="ui right aligned container">
+                <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                <button type="button" id="publish-btn" class="ui teal button">发布</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../static/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layui/layui.js" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="../../static/lib/editormd/editormd.min.js"></script>
+
+    <!-- 显示用户信息 -->
+    <script>
+        console.log(localStorage.getItem("user"))
+        var a = JSON.parse(localStorage.getItem("user"));
+        console.log(a.userName)
+        document.getElementById("dear_user").innerHTML = a.userName
+        // $("#user").val(localStorage.getItem)
+    </script>
+
+    <!-- //markdown编辑器添加文章 -->
+    <script>
+        var contentEditor;
+        $(function () {
+            contentEditor = editormd("md-content", {
+                width: "100%",
+                height: 540,
+                syncScrolling: "single",
+                path: "../../static/lib/editormd/lib/"
+            });
+        });
+
+        // 文章类型列表
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-hide');
+        });
+
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+        });
+
+        $('#publish-btn').click(function () {
+            // $('#blog-form').submit();
+            // window.location.href = "foodinfo.html";
+            console.log("foodinfo")
+            var data = {
+                title: $("#title").val(),
+                content: $("#content").val(),
+                typew: $("#type").val(),
+                description: $("#description").val(),
+                author: a.adname
+            }
+            var titleArea = document.getElementById("title");
+            var contentArea = document.getElementById("content");
+            var descriptionArea = document.getElementById("description");
+            $.ajax({
+                type: "post",
+                url: "http://localhost:8080/admin/addinfo",
+                data: data,
+                dataType: "json",
+                success: function (msg) {
+                    console.log(msg)
+                    if (msg.code == "11") {
+                        // window.location.href = "foodinfo.html";
+                        alert("添加成功");
+                        titleArea.value = "";
+                        contentArea.value = "";
+                        descriptionArea.value = "";
+                    }
+                }
+            })
+        });
+
+        $.ajax({
+            url: "http://localhost:8080/admin/showinfotype",//获取食物文章类型列表
+            dataType: "json",
+            type: "post",
+            success: function (msg) {
+                // <div class="item" data-value="高血脂">高血脂</div>
+                console.log(msg.data[2].name)
+                let a = ''
+                for (let i = 0; i < msg.data.length; i++) {
+                    a += '<div class="item" data-value='
+                        + msg.data[i].name
+                        + '>'
+                        + msg.data[i].name
+                        + '</div>'
+                }
+                $("#infotype").html(a);
+            }
+        })
+    </script>
+
+
+
+</body>
+
+</html>

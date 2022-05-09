@@ -23,7 +23,7 @@
   <header id="site-header" class="fixed-top">
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light stroke">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand">
           <span> 食物</span>
           <span> 与健康</span>
         </a>
@@ -154,14 +154,27 @@
         <div class="row">
           <div class="col-lg-6">
             <span class="text">食物与健康</span>
-            <div class="col-lg-6 mt-lg-0 mt-5">
-              <div class="position-relative">
-                <img src="assets/images/about.jpg" alt="" class="radius-image img-fluid">
-              </div>
+            <!-- <h3 class="title-big"><span>Build your brand</span> and grow your business</h3>
+            <p class="mt-4">I can give your business a new creative start right away! You can download my resume
+              in order to learn the details of my professional life as a designer and photographer. </p>
+            <ul class="service-list mt-md-5 mt-4">
+              <li class="service-link"><a href="#">UI/UX Design and Development</a></li>
+              <li class="service-link"><a href="#">Branding Design and Identity</a></li>
+              <li class="service-link"><a href="#">Mobile App Design</a></li>
+              <li class="service-link"><a href="#">Art, Logo, SVG & Illustration</a></li>
+              <li class="service-link"><a href="#">3D Modeling & Motion</a></li>
+              <li class="service-link"><a href="#">PSD Design, Photoshop</a></li>
+            </ul>
+            <a href="#url" class="btn btn-style btn-empty p-0">View my all services <span></span></a> -->
+          </div>
+          <div class="col-lg-6 mt-lg-0 mt-5">
+            <div class="position-relative">
+              <img src="assets/images/about.jpg" alt="" class="radius-image img-fluid">
             </div>
           </div>
         </div>
       </div>
+    </div>
   </section>
   <!-- //home page about section -->
 
@@ -249,6 +262,8 @@
           console.log(msg)
           if ("200" == msg.code) {
             localStorage.setItem("user", JSON.stringify(msg.data))
+            localStorage.setItem("userName", msg.data.userName)
+            // localStorage.setItem("userName", "aaa")
             console.log("success" + msg);
             alert("handsome")
             window.location.href = "userHome.html";
@@ -333,6 +348,7 @@
           if ("00" == msg.errorCode) {
             console.log("success");
             alert("注册成功！！！")
+            localStorage.setItem("user", JSON.stringify(data))
             window.location.href = "userHome.html";
           } else if ("11" == msg.errorCode) {
             alert("该用户已经存在！");

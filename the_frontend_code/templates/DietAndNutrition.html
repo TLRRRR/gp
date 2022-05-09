@@ -11,6 +11,7 @@
   <link href="//fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../static/css/semantic.min.css">
+  <link rel="stylesheet" href="../static/css/me.css">
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style-starter.css">
   <!-- 登录css -->
@@ -81,8 +82,8 @@
     </div>
   </header>
   <!--/header-->
-  <div class="header-gap">
 
+  <div class="header-gap">
   </div>
 
   <!-- 侧登录模块 -->
@@ -149,107 +150,62 @@
     </div>
   </div>
 
-  <!-- 高血压 -->
+  <!-- 食谱查询 -->
   <section class="w3l-homeblock1" id="about">
     <div class="midd-w3 py-5">
       <div class="container py-lg-5 py-md-3">
         <div class="row">
           <div class="col-lg-6">
-            <span class="text">高血压食谱</span>
-            <!-- 搜索框 -->
+            <span class="text">食谱查询</span>
             <div class="right m-item item m-mobile-hide">
-              <!-- <form name="search" action="#" method="post" target="_self"> -->
-              <div class="ui icon transparent input m-margin-tb-tiny" style="color: rgb(0, 0, 0)" target="_self">
-                <input style="color: rgb(9, 7, 7)" type="text" name="query" id="HypertensionQuery"
-                  placeholder="Search....">
+              <!-- 食谱分类列表 -->
+              <div class="ui selection compact teal basic dropdown label" style="width: 130px;">
+                <input type="hidden" value="高血压食谱" name="type" id="type">
+                <i class="dropdown icon"></i>
+                <div class="text">高血压食谱</div>
+                <div class="menu" id="foodbooktype">
+                </div>
+              </div>
+              <!-- 搜索框 -->
+              <div class="ui icon transparent input m-margin-tb-tiny" style="color: rgb(0, 0, 0);margin-left: 90px;"
+                target="_self">
+                <input style="color: rgb(9, 7, 7)" type="text" name="query" id="foodbook" placeholder="Search....">
                 <svg t="1650259061253" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                  xmlns="http://www.w3.org/2000/svg" p-id="2574" id="queryhighblood" width="20" height="20">
+                  xmlns="http://www.w3.org/2000/svg" p-id="2574" id="FoodbookQuery" width="20" height="20">
                   <path
                     d="M712.704 220.672c-135.68-135.68-355.84-135.68-491.52 0s-135.68 355.84 0 491.52 355.84 135.68 491.52 0 135.68-355.84 0-491.52zM145.92 787.456C-31.744 610.304-31.744 322.56 145.92 144.896c177.664-177.152 464.896-177.152 642.56 0 177.664 177.664 177.664 464.896 0 642.56s-465.408 177.664-642.56 0z m848.896 206.336c-24.064 24.064-63.488 24.064-87.552 0L819.2 906.24c-24.064-24.064-24.064-63.488 0-87.552 24.064-24.064 63.488-24.064 87.552 0l87.552 87.552c24.576 24.064 24.576 63.488 0.512 87.552z"
                     p-id="2575"></path>
                 </svg>
               </div>
             </div>
+            <br>
+            <br>
+            <br>
+            <br>
           </div>
           <div class="col-lg-6 mt-lg-0 mt-5">
             <div class="position-relative">
-              <img src="assets/images/about.jpg" alt="" class="radius-image img-fluid">
+              <img src="../static/images/health.jpeg" alt="" class="radius-image img-fluid">
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- 高血压 -->
 
-  <!-- 高血脂 -->
-  <section class="w3l-homeblock2" id="skills">
-    <div class="midd-w3 py-5">
-      <div class="container py-lg-5 py-md-3">
-        <div class="row">
-          <div class="col-lg-6 align-self">
-            <div class="position-relative px-lg-5 mx-lg-0 mx-md-5 image-padding">
-              <div class="position-absolute-images">
-                <img src="../static/images/elfmaker.png" alt="" class="radius-image img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 mt-lg-0 mt-md-5 mt-4">
-            <span class="text">高血脂食谱</span>
-            <!-- 搜索框 -->
-            <div class="right m-item item m-mobile-hide">
-              <div class="ui icon transparent input m-margin-tb-tiny" style="color: rgb(0, 0, 0)" target="_self">
-                <input style="color: rgb(9, 7, 7)" type="text" name="query" id="HyperlipidemiaQuery"
-                  placeholder="Search....">
-                <svg t="1650259061253" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                  xmlns="http://www.w3.org/2000/svg" p-id="2574" id="Hyperlipidemia" width="20" height="20">
-                  <path
-                    d="M712.704 220.672c-135.68-135.68-355.84-135.68-491.52 0s-135.68 355.84 0 491.52 355.84 135.68 491.52 0 135.68-355.84 0-491.52zM145.92 787.456C-31.744 610.304-31.744 322.56 145.92 144.896c177.664-177.152 464.896-177.152 642.56 0 177.664 177.664 177.664 464.896 0 642.56s-465.408 177.664-642.56 0z m848.896 206.336c-24.064 24.064-63.488 24.064-87.552 0L819.2 906.24c-24.064-24.064-24.064-63.488 0-87.552 24.064-24.064 63.488-24.064 87.552 0l87.552 87.552c24.576 24.064 24.576 63.488 0.512 87.552z"
-                    p-id="2575"></path>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
-  <!-- 高血脂 -->
-
-  <!-- 减肥 -->
-  <section class="w3l-homeblock3" id="awards">
-    <div class="midd-w3 py-5">
-      <div class="container py-lg-5 py-md-3">
-        <div class="row">
-          <div class="col-lg-6">
-            <span class="text">减肥食谱</span>
-            <!-- 搜索框 -->
-            <div class="right m-item item m-mobile-hide">
-              <div class="ui icon transparent input m-margin-tb-tiny" style="color: rgb(0, 0, 0)" target="_self">
-                <input style="color: rgb(9, 7, 7)" type="text" name="query" id="LoseweightQuery"
-                  placeholder="Search....">
-                <svg t="1650259061253" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                  xmlns="http://www.w3.org/2000/svg" p-id="2574" id="Loseweight" width="20" height="20">
-                  <path
-                    d="M712.704 220.672c-135.68-135.68-355.84-135.68-491.52 0s-135.68 355.84 0 491.52 355.84 135.68 491.52 0 135.68-355.84 0-491.52zM145.92 787.456C-31.744 610.304-31.744 322.56 145.92 144.896c177.664-177.152 464.896-177.152 642.56 0 177.664 177.664 177.664 464.896 0 642.56s-465.408 177.664-642.56 0z m848.896 206.336c-24.064 24.064-63.488 24.064-87.552 0L819.2 906.24c-24.064-24.064-24.064-63.488 0-87.552 24.064-24.064 63.488-24.064 87.552 0l87.552 87.552c24.576 24.064 24.576 63.488 0.512 87.552z"
-                    p-id="2575"></path>
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 align-self mt-lg-0 mt-md-5 mt-4">
-            <div class="position-relative px-lg-5 mx-lg-0 mx-md-5 image-padding">
-              <div class="position-absolute-images">
-                <img src="../static/images/elf.png" alt="" class="radius-image img-fluid">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- 减肥 -->
+  <!-- 食谱展示 -->
+  <div id="conten" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
+    style="display:none;">
+    <h3 class="ui dividing header" id="foodMenuHT" style="margin-top: 10px;"></h3>
+    <p class="text">食谱描述：<span class="text" id="descriptionHT">msg.data</span></p>
+    <p class="text">食谱材料：<span class="text" id="formulaHT">msg.data</span></p>
+    <p class="text">食谱做法：<span class="text" id="usageHT">msg.data</span></p>
+  </div>
+  <!-- 未查询到数据页面 -->
+  <div id="null" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
+    style="display:none;">
+    <p class="text">暂无相关数据<span class="text" id="descriptionHT"></span></p>
+  </div>
 
   <div class="copyright py-sm-5 py-4 text-center">
     <div class="container">
@@ -283,141 +239,89 @@
 
   <!-- jQuery and Bootstrap JS -->
   <script src="assets/js/jquery-3.3.1.min.js"></script>
-
   <script src="../static/js/jquery/jquery-3.6.0.min.js"></script>
-
   <script src="assets/js/theme-change.js"></script><!-- theme switch js (light and dark)-->
   <script src="../../static/js/layui/layui.js" charset="utf-8"></script>
-  <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
 
-  <!-- 高血压食谱展示 -->
-  <div id="conten" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
-    style="display:none;">
-    <h3 class="ui dividing header" id="foodMenuHT" style="margin-top: 10px;"></h3>
-    <p class="text">食谱描述：<span class="text" id="descriptionHT">msg.data</span></p>
-    <p class="text">食谱材料：<span class="text" id="formulaHT">msg.data</span></p>
-    <p class="text">食谱做法：<span class="text" id="usageHT">msg.data</span></p>
-  </div>
- 
-  <!-- 高血脂食谱展示 -->
-  <div id="hyperlipidemia" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
-    style="display:none;">
-    <h3 class="ui dividing header" id="foodMenuHL" style="margin-top: 10px;"></h3>
-    <p class="text">食谱描述：<span class="text" id="descriptionHL">msg.data</span></p>
-    <p class="text">食谱材料：<span class="text" id="formulaHL">msg.data</span></p>
-    <p class="text">食谱做法：<span class="text" id="usageHL">msg.data</span></p>
-  </div>
-
-  <!-- 减肥食谱展示 -->
-  <div id="loseweight" class="typo typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
-    style="display:none;">
-    <h3 class="ui dividing header" id="foodMenuLW" style="margin-top: 10px;"></h3>
-    <p class="text">食谱描述：<span class="text" id="effectLW">msg.data</span><br></p>
-    <p class="text">食谱材料：<span class="text" id="formulaLW">msg.data</span><br></p>
-    <p class="text">食谱做法：<span class="text" id="usageLW">msg.data</span><br></p>
-  </div>
-
-  <!-- 查询高血压食谱 -->
-  <script type="text/javascript">
-    $("#queryhighblood").on("click", function () {
-      let HypertensionQueryArea = document.getElementById("HypertensionQuery")
+  <!-- 查询食谱 -->
+  <script>
+    $("#FoodbookQuery").on("click", function () {
+      let FoodbookQueryArea = document.getElementById("foodbook")
+      console.log($("#foodbook").val() + "======" + $("#type").val())
       $.ajax({
         type: "post",
         dataType: "json",
-        url: "http://localhost:8080/query/hypertension",
+        url: "http://localhost:8080/query/foodbookquery",
         data: {
-          foodmenu: $("#HypertensionQuery").val()
+          foodmenu: $("#foodbook").val(),
+          typew: $("#type").val()
         },
         success: function (msg) {
-          console.log("success")
-          HypertensionQueryArea.value = ''
-          document.getElementById("foodMenuHT").innerHTML = msg.data.foodMenu
-          document.getElementById("descriptionHT").innerHTML = msg.data.description
-          document.getElementById("formulaHT").innerHTML = msg.data.formula
-          document.getElementById("usageHT").innerHTML = msg.data.usagew
-          layui.use('layer', function () {
-            var $ = layui.jquery, layer = layui.layer;
-            layer.open({
-              //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-              type: 1,
-              title: "高血压食谱",
-              area: ['1200px', '700px'],
-              content: $("#conten")//引用的弹出层的页面层的方式加载修改界面表单
-            });
-          })
+          if (msg.code == 200) {
+            console.log("success")
+            FoodbookQueryArea.value = ''
+            document.getElementById("foodMenuHT").innerHTML = msg.data.foodMenu
+            document.getElementById("descriptionHT").innerHTML = msg.data.description
+            document.getElementById("formulaHT").innerHTML = msg.data.formula
+            document.getElementById("usageHT").innerHTML = msg.data.usagew
+            layui.use('layer', function () {
+              var $ = layui.jquery, layer = layui.layer;
+              layer.open({
+                //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                type: 1,
+                title: $("#type").val(),
+                area: ['1200px', '700px'],
+                content: $("#conten")//引用的弹出层的页面层的方式加载修改界面表单
+              });
+            })
+          } else if (msg.code == 500) {
+            layui.use('layer', function () {
+              var $ = layui.jquery, layer = layui.layer;
+              layer.open({
+                //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                type: 1,
+                title: $("#type").val(),
+                area: ['1200px', '700px'],
+                content: $("#null")//引用的弹出层的页面层的方式加载修改界面表单
+              });
+            })
+          }
         }
       })
     })
   </script>
   <!-- 查询高血压食谱 -->
 
-  <!-- 查询高血脂食谱 -->
-  <script type="text/javascript">
-    $("#Hyperlipidemia").on("click", function () {
-      let HyperlipidemiaQueryArea = document.getElementById("HyperlipidemiaQuery")
-      $.ajax({
-        type: "post",
-        dataType: "json",
-        url: "http://localhost:8080/query/hyperlipidemia",
-        data: {
-          foodmenu: $("#HyperlipidemiaQuery").val()
-        },
-        success: function (msg) {
-          HyperlipidemiaQueryArea.value = ''
-          console.log("success")
-          document.getElementById("foodMenuHL").innerHTML = msg.data.foodMenu
-          document.getElementById("descriptionHL").innerHTML = msg.data.description
-          document.getElementById("formulaHL").innerHTML = msg.data.formula
-          document.getElementById("usageHL").innerHTML = msg.data.usagew
-          layui.use('layer', function () {
-            var $ = layui.jquery, layer = layui.layer;
-            layer.open({
-              //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-              type: 1,
-              title: "高血脂食谱",
-              area: ['1200px', '700px'],
-              content: $("#hyperlipidemia")//引用的弹出层的页面层的方式加载修改界面表单
-            });
-          })
-        }
-      })
-    })
-  </script>
-  <!-- 查询高血脂食谱 -->
+  <!-- // 文章类型列表 -->
+  <script>
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
 
-  <!-- 查询减肥食谱 -->
-  <script type="text/javascript">
-    $("#Loseweight").on("click", function () {
-      let LoseweightQueryArea = document.getElementById("LoseweightQuery")
-      $.ajax({
-        type: "post",
-        dataType: "json",
-        url: "http://localhost:8080/query/loseweight",
-        data: {
-          foodmenu: $("#LoseweightQuery").val()
-        },
-        success: function (msg) {
-          LoseweightQueryArea.value = ''
-          console.log("success")
-          document.getElementById("foodMenuLW").innerHTML = msg.data.foodMenu
-          document.getElementById("effectLW").innerHTML = msg.data.description
-          document.getElementById("formulaLW").innerHTML = msg.data.formula
-          document.getElementById("usageLW").innerHTML = msg.data.usagew
-          layui.use('layer', function () {
-            var $ = layui.jquery, layer = layui.layer;
-            layer.open({
-              //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-              type: 1,
-              title: "高血脂食谱",
-              area: ['1200px', '700px'],
-              content: $("#loseweight")//引用的弹出层的页面层的方式加载修改界面表单
-            });
-          })
+    $('.ui.dropdown').dropdown({
+      on: 'hover'
+    });
+
+    $.ajax({
+      url: "http://localhost:8080/admin/showfoodbooktype",//获取食物文章类型列表
+      dataType: "json",
+      type: "post",
+      success: function (msg) {
+        // <div class="item" data-value="高血脂">高血脂</div>
+        console.log(msg.data[2].name)
+        let a = ''
+        for (let i = 0; i < msg.data.length; i++) {
+          a += '<div class="item" data-value='
+            + msg.data[i].name
+            + '>'
+            + msg.data[i].name
+            + '</div>'
         }
-      })
+        $("#foodbooktype").html(a);
+      }
     })
   </script>
-  <!-- 查询减肥食谱 -->
 
   <!-- 登录 -->
   <script>
@@ -549,6 +453,7 @@
         success: function (msg) {
           if ("00" == msg.errorCode) {
             console.log("success");
+            localStorage.setItem("user", JSON.stringify(data))
             alert("注册成功！！！")
             window.location.href = "userHome.html";
           } else if ("11" == msg.errorCode) {

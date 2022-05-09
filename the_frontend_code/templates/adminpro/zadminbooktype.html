@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章管理</title>
+    <link rel="stylesheet" href="../../static/js/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/css/semantic.min.css">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="../assets/css/style-starter.css">
+</head>
+
+<body>
+
+
+    <table class="layui-hide" id="test" lay-filter="test"></table>
+
+
+    <script src="../../static/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layui/layui.js" charset="utf-8"></script>
+    <script src="../../static/lib/editormd/editormd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+    <script>
+        layui.use('table', function () {
+            var table = layui.table;
+
+            table.render({
+                elem: '#test'
+                , url: 'http://localhost:8080/admin/queryallfoodbooktype'/*tpa=https://www.layuiweb.com/test/table/demo1.json*/
+                // , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+                , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                    title: '提示'
+                    , layEvent: 'LAYTABLE_TIPS'
+                    , icon: 'layui-icon-tips'
+                }]
+                , title: '用户数据表'
+                , cols: [[
+                    { field: 'id', width: 153, title: 'ID', sort: true }
+                    , { field: 'name', width: 337, title: '名称' }
+                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 613 }
+                ]]
+                , page: true
+            });
+
+            //头工具栏事件
+            table.on('toolbar(test)', function (obj) {
+                var checkStatus = table.checkStatus(obj.config.id);
+                switch (obj.event) {
+                    case 'getCheckData':
+                        var data = checkStatus.data;
+                        layer.alert(JSON.stringify(data));
+                        break;
+                    case 'getCheckLength':
+                        var data = checkStatus.data;
+                        layer.msg('选中了：' + data.length + ' 个');
+                        break;
+                    case 'isAll':
+                        layer.msg(checkStatus.isAll ? '全选' : '未全选');
+                        break;
+
+                    //自定义头工具栏右侧图标 - 提示
+                    case 'LAYTABLE_TIPS':
+                        layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                        break;
+                };
+            });
+
+            //监听行工具事件
+            table.on('tool(test)', function (obj) {
+                var data = obj.data;
+                console.log(obj)
+                if (obj.event === 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del();
+                        $.ajax({
+                            url: "http://localhost:8080/admin/deletefoodbooktypebyid",
+                            type: "post",
+                            dataType: "json",
+                            data: { id: data.id },
+                        })
+                        layer.close(index);
+                    });
+                } else if (obj.event === 'edit') {
+                    layer.prompt({
+                        formType: 2
+                        , value: data.name
+                    }, function (value, index) {
+                        obj.update({
+                            name: value
+                        });
+                        console.log(value)
+                        $.ajax({
+                            url: "http://localhost:8080/admin/updatefoodbooktype",
+                            type: "post",
+                            dataType: "json",
+                            data: {
+                                id: data.id,
+                                name: value
+                            },
+                        })
+                        layer.close(index);
+                    });
+                    // layer.open({
+                    //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                    // type: 1,
+                    // title: "修改食物类型",
+                    // area: ['420px', '330px'],
+                    // <input >
+                    // content: $("#popUpdateTest")//引用的弹出层的页面层的方式加载修改界面表单
+                    // });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

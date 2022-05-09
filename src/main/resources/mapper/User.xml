@@ -44,4 +44,19 @@
         SET pwd=#{pwd}
         WHERE tel = #{tel}
     </update>
+
+    <!--    根据用户名查询手机号-->
+    <select id="queryUserByUsername" resultType="User">
+        SELECT *
+        FROM User
+        WHERE userName = #{userName}
+    </select>
+
+    <!-- 修改用户信息 -->
+    <update id="updateUser">
+        UPDATE user
+        SET userName=#{userName},
+            tel=#{tel}
+        WHERE userId = #{userId}
+    </update>
 </mapper>

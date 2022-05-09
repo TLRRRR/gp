@@ -2,6 +2,7 @@ package com.wang.gp.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.wang.gp.dao.FoodInfoDao;
 import com.wang.gp.pojo.Comment;
 import com.wang.gp.pojo.FoodInfo;
 import com.wang.gp.pojo.base.baseEntity;
@@ -23,6 +24,9 @@ public class CommentController {
     FoodInfoService foodInfoService;
 
     @Autowired
+    FoodInfoDao foodInfoDao;
+
+    @Autowired
     CommentService commentService;
 
     //添加评论
@@ -30,7 +34,8 @@ public class CommentController {
     public baseEntity addComment(Long id, int pageNum, int pageSize, String commentContent, String commentAuthor) {
         System.out.println(id + "=====" + pageNum + "=====" + pageSize + "=====" + commentContent + "===" + commentAuthor);
         PageHelper.startPage(pageNum, pageSize);
-        ArrayList<FoodInfo> list = foodInfoService.queryFoodInfo();//分页后的信息
+//        ArrayList<FoodInfo> list = foodInfoService.queryFoodInfo();//分页后的信息
+        ArrayList<FoodInfo> list = foodInfoDao.queryFoodInfoByDateDesc();
         PageInfo<FoodInfo> foodInfoPageInfo = new PageInfo<>(list);
         //添加评论到相应的文章下
         long foodinfoId = list.get(Math.toIntExact(id)).getId();

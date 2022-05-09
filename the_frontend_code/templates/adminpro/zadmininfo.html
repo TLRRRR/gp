@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章管理</title>
+    <link rel="stylesheet" href="../../static/js/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/css/semantic.min.css">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
+</head>
+
+<body>
+    <!-- //弹出层update表单 -->
+    <div class="ui container" id="updateinfo" style="display:none;">
+        <div class="ui form">
+            <div class="required field">
+                <div class="ui left labeled input">
+                    <!-- 标签列表 -->
+                    <div class="ui selection compact teal basic dropdown label">
+                        <input type="hidden" value="原创" name="flag" id="flag">
+                        <i class="dropdown icon"></i>
+                        <div class="text">原创</div>
+                        <div class="menu">
+                            <div class="item" data-value="原创">原创</div>
+                            <div class="item" data-value="转载">转载</div>
+                            <div class="item" data-value="翻译">翻译</div>
+                        </div>
+                    </div>
+                    <!-- 文章分类列表 -->
+                    <div class="ui left labeled action input" style="width: 250px;">
+                        <label class="ui compact teal basic label">分类</label>
+                        <div class="ui fluid selection dropdown">
+                            <input type="hidden" name="type" id="type">
+                            <i class="dropdown icon"></i>
+                            <div class="text">高血压</div>
+                            <div class="menu" id="infotype">
+                                <div class="item" data-value="高血压吗">高血压</div>
+                                <div class="item" data-value="高血脂">高血脂</div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="text" id="title" name="title" placeholder="标题">
+                </div>
+            </div>
+
+            <div class="required field">
+                <div class="" id="md-content" style="z-index: 1 !important;">
+                    <textarea class="editormd-markdown-textarea" placeholder="博客内容" id="content" name="content"
+                       ></textarea>
+                </div>
+            </div>
+
+            <div class="required field">
+                <textarea name="description" id="description" placeholder="博客描述..." maxlength="200"></textarea>
+            </div>
+
+            <div class="two fields">
+                <div class="ui right aligned container">
+                    <button type="button" class="ui button" onclick="window.history.go(-1)">返回</button>
+                    <button type="button" id="publish-btn" class="ui teal button">发布</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="layui-hide" id="test" lay-filter="test"></table>
+
+    <script src="../../static/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layui/layui.js" charset="utf-8"></script>
+    <script src="../../static/lib/editormd/editormd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+
+    <!-- 显示用户信息 -->
+    <script>
+        console.log(localStorage.getItem("user"))
+        var a = JSON.parse(localStorage.getItem("user"));
+        console.log(a.userName)
+        document.getElementById("dear_user").innerHTML = a.userName
+        // $("#user").val(localStorage.getItem)
+
+
+    </script>
+
+    <!-- //markdown编辑器 -->
+    <script>
+        var contentEditor;
+        $(function () {
+            contentEditor = editormd("md-content", {
+                width: "100%",
+                height: 5400,
+                syncScrolling: "single",
+                path: "../../static/lib/editormd/lib/"
+            });
+        });
+    </script>
+
+    <!-- //编辑删除按钮 -->
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+    <!-- //layui工具 -->
+    <script>
+        layui.use('table', function () {
+            var table = layui.table;
+            table.render({
+                elem: '#test'
+                , url: 'http://localhost:8080/admin/allfoodinfo'
+                , height: 634
+                , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                    title: '提示'
+                    , layEvent: 'LAYTABLE_TIPS'
+                    , icon: 'layui-icon-tips'
+                }]
+                , title: '用户数据表'
+                , cols: [[
+                    { field: 'id', width: 90, title: 'ID', sort: true }
+                    , { field: 'title', width: 130, title: '标题' }
+                    , { field: 'author', width: 90, title: '作者' }
+                    , { field: 'description', width: 250, title: '描述', sort: true }
+                    , { field: 'date', width: 250, title: '日期' }
+                    , { field: 'typew', width: 130, title: '类型' }
+                    , { field: 'flag', title: '签名', minWidth: 10, width: 90 } //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                    , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150 }
+                ]]
+                , page: true
+            });
+
+            //头工具栏事件
+            table.on('toolbar(test)', function (obj) {
+                var checkStatus = table.checkStatus(obj.config.id);
+                switch (obj.event) {
+                    case 'getCheckData':
+                        var data = checkStatus.data;
+                        layer.alert(JSON.stringify(data));
+                        break;
+                    case 'getCheckLength':
+                        var data = checkStatus.data;
+                        layer.msg('选中了：' + data.length + ' 个');
+                        break;
+                    case 'isAll':
+                        layer.msg(checkStatus.isAll ? '全选' : '未全选');
+                        break;
+                    //自定义头工具栏右侧图标 - 提示
+                    case 'LAYTABLE_TIPS':
+                        layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                        break;
+                };
+            });
+
+            //监听行工具事件
+            table.on('tool(test)', function (obj) {
+                var data = obj.data;
+                //console.log(obj)
+                if (obj.event === 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del();
+                        layer.close(index);
+                        $.ajax({
+                            url: "http://localhost:8080/admin/deleteinfo",
+                            type: "post",
+                            dataType: "json",
+                            data: { id: data.id },
+                        })
+                    });
+                } else if (obj.event === 'edit') {
+                    $("#title").val(data.title)
+                    // document.getElementById(title).innerText = data.title
+                    $("#content").val(data.content)
+                    $("#description").val(data.description)
+                    document.getElementById
+                    layer.open({
+                        //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                        type: 1,
+                        title: "修改文章信息",
+                        area: ['1200px', '500px'],
+                        content: $("#updateinfo")//引用的弹出层的页面层的方式加载修改界面表单
+                    });
+                    console.log("hahahaha")
+                    $('#updateinfo-btn').on('click', function () {
+                        console.log("success up")
+                        $.ajax({
+                            url: "http://localhost:8080/admin/updateinfo",
+                            type: "post",
+                            dataType: "json",
+                            data: {
+                                id: data.id,
+                                title: $("#title").val()
+                                //  content:
+                                //  flag:
+                                //  typeid:
+                            },
+                            success: function (msg) {
+                            }
+                        })
+                    })
+                }
+            });
+
+            // 文章类型列表
+            $('.menu.toggle').click(function () {
+                $('.m-item').toggleClass('m-mobile-hide');
+            });
+
+            $('.ui.dropdown').dropdown({
+                on: 'hover'
+            });
+
+            $.ajax({
+                url: "http://localhost:8080/admin/showinfotype",//获取食物文章类型列表
+                dataType: "json",
+                type: "post",
+                success: function (msg) {
+                    // <div class="item" data-value="高血脂">高血脂</div>
+                    console.log(msg.data[2].name)
+                    let a = ''
+                    for (let i = 0; i < msg.data.length; i++) {
+                        a += '<div class="item" data-value='
+                            + msg.data[i].name
+                            + '>'
+                            + msg.data[i].name
+                            + '</div>'
+                    }
+                    $("#infotype").html(a);
+                }
+            })
+        });
+    </script>
+
+</body>
+
+</html>

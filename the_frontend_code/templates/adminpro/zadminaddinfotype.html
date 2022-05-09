@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章管理</title>
+    <link rel="stylesheet" href="../../static/js/layui/css/layui.css">
+    <link rel="stylesheet" href="../../static/css/semantic.min.css">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css">
+    <link rel="stylesheet" href="../../static/css/me.css">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="../assets/css/style-starter.css">
+</head>
+
+<body>
+
+    <div class="m-container-small m-padded-tb-massive">
+        <div class="ui container">
+            <input type="hidden" name="id" id="id">
+            <div class=" field">
+                <div class="ui left labeled input">
+                    <label class="ui teal basic label">名称</label>
+                    <input type="text" name="name" id="name" placeholder="分类名称">
+                </div>
+            </div>
+            <div class="ui mini negative message">提示：不能添加重复的分类</div>
+            <div class="ui right aligned container">
+                <button class="ui teal submit button" id="submit">提交</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../static/js/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../../static/js/layui/layui.js" charset="utf-8"></script>
+    <script src="../../static/lib/editormd/editormd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+
+    <!-- 显示用户信息 -->
+    <script>
+        $("#submit").on("click", function () {
+            var id = $("#id").val()
+            var name = $("#name").val()
+            console.log("show me something")
+            $.ajax({
+                url: "http://localhost:8080/admin/addtype",
+                type: "post",
+                dataType: "json",
+                // data: type,
+                contentType: "application/json;charset=UTF-8",
+                data: JSON.stringify({
+                    id: id,
+                    name: name
+                }),
+                success: function (msg) {
+                    console.log("have me success    something in here????")
+                    if (msg.code == "200") {
+                        console.log(msg)
+                        alert("添加成功")
+                    } else if (msg.code == "11") {
+                        console.log("bagala")
+                        alert("该类型存在")
+                    }
+                }
+            })
+        })
+    </script>
+
+</body>
+
+</html>

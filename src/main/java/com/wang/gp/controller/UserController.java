@@ -1,5 +1,6 @@
 package com.wang.gp.controller;
 
+import com.wang.gp.dao.UserDao;
 import com.wang.gp.pojo.User;
 import com.wang.gp.pojo.base.baseEntity;
 import com.wang.gp.service.LoginService;
@@ -19,6 +20,9 @@ public class UserController {
 
     @Autowired
     private LoginService loginService;
+
+    @Autowired
+    UserDao userDao;
 
     //注册验证
     @ResponseBody
@@ -61,6 +65,32 @@ public class UserController {
             return baseEntity.success1(Integer.parseInt(login));
         }
     }
+
+    //根据用户名查询手机号
+    @ResponseBody
+    @RequestMapping("/queryuserbyusername")
+    public baseEntity queryUserByUsername(String userName) {
+        System.out.println(userName+"根据昵称查询用户");
+//        String s = userDao.queryTelByUsername(userName);
+        User user = userDao.queryUserByUsername(userName);
+        return baseEntity.success(user);
+    }
+
+    //修改个人信息
+    @ResponseBody
+    @RequestMapping("/updateuser")
+    public baseEntity updateUser(String userName, int userId, String tel) {
+        System.out.println(userId + userName + tel);
+        int i = userDao.updateUser(userName, userId, tel);
+        System.out.println(i);
+        if (i == 1) {
+            User user = userDao.queryUserByUsername(userName);
+            return baseEntity.success(user);
+        }
+        return baseEntity.failed("更改失败");
+    }
+
+
 //    @ResponseBody
 //    @RequestMapping("/login")
 //    public String login(@RequestParam(value = "userName") String userName, @RequestParam(value = "pwd") String pwd,
@@ -78,26 +108,6 @@ public class UserController {
 //            return login;
 //        }
 //    }
-
-    //找回密码
-    @ResponseBody
-    @RequestMapping("/findback")
-    public String findBack(String tel, String pwd, String pwd2) {
-        User user = userService.queryUserByTel(tel);
-        return userService.findback(user);
-    }
-
-    //找回密码2
-    @ResponseBody
-    @RequestMapping("/findback2")
-    public String findBack2(String userName, String pwd, String pwd2) {
-
-        if (pwd == pwd2) {
-            return "{\"errorCode\":\"00\",\"errorMessage\":\"密码重置成功\"}";
-        } else {
-            return "{\"errorCode\":\"11\",\"errorMessage\":\"密码重置失败\"}";
-        }
-    }
 
     //登录验证
 //    @ResponseBody

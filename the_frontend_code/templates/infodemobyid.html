@@ -4,24 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>食物与健康</title>
+    <title></title>
+    <link href="../static/images/me.jpg" th:href="@{/images/me.jpg}" rel="icon" type="image/x-ico">
 
-    <link href="../static/images/me.jpg" rel="icon" type="image/x-ico">
-    <link rel="stylesheet" href="../static/css/semantic.min.css">
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
     <link rel="stylesheet" href="../static/css/me.css">
-    <link rel="stylesheet" href="../static/js/layui/css/layui.css">
+    <link rel="stylesheet" href="../static/lib/editormd/css/editormd.preview.min.css" />
+
+    <!-- Template CSS -->
     <link rel="stylesheet" href="assets/css/style-starter.css">
     <!-- 登录css -->
     <link rel="stylesheet" href="../static/css/style.css" type="text/css" media="all">
-
 </head>
 
-<body>
-    <!--header-->
+<body onload="mk()">
+    <!--导航-->
     <header id="site-header" class="fixed-top">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light stroke">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand">
                     <span> 食物</span>
                     <span> 与健康</span>
                 </a>
@@ -56,7 +59,6 @@
                                         p-id="2568"></path>
                                 </svg>
                             </div>
-
                         </a>
                     </div>
                 </div>
@@ -75,7 +77,6 @@
                         </div>
                     </nav>
                 </div>
-
             </nav>
         </div>
     </header>
@@ -146,33 +147,148 @@
             </div>
         </div>
     </div>
+    <!--顶部图片-->
+    <div class="m-bg-type_outer" style="width: 100%;height: 50%">
+        <img src="../static/images/bg.jpg" alt="" class="ui m-bg image" style="width: 100%;height: 100%">
+        <div class="m-bg-class_cover">
+            <div class="ui container" style="position: relative ;bottom: -540px;">
+
+                <h2 class="m-font-size-title-large" align="center" id="title"></h2>
+                <div class="ui container" align="center">
+                    <div class="ui horizontal link list" align="center">
+                        <!-- <div class="item">
+                            <div class="ui orange basic label" style="font-size: 7px">原创</div>
+                        </div> -->
+                        <div class="item">
+                            <!-- <i class="user outline outline icon m-font-size-text-mini"></i> -->
+                            <span style="color: #ffffff;font-size: 18px"> 作者: </span>
+                            <span style="color: #ffffff;font-size: 18px" id="author"></span>
+                        </div>
+                        <!-- <div class="item">
+                            <i class="calendar icon m-font-size-text-mini"></i>
+                            <span class="m-font-size-text-mini">2020-01-01</span>
+                        </div> -->
+                        <!-- <div class="item">
+                            <i class="clone icon m-font-size-text-mini"></i>
+                            <a href="#" target="_blank" style="color: #ffffff;font-size: 16px">我的故事</a>
+                        </div> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!--中间内容-->
-    <section class="w3l-homeblock1" id="about">
-        <div class="ui container" style="margin-top:90px">
-            <div class="ui segment m-padded-tb-large m-opacity">
-                <div class="uiucontainer" align="center">
-                    <!-- <div class="ui labeled button m-margin-tb-tiny">
-                        <a href="#" class="ui basic  button">好文</a>
-                        <div class="ui basic  left pointing label">24</div>
-                    </div> -->
+    <div id="waypoint" class="m-margin- animated fadeIn">
+        <div class="ui container m-opacity box-shadow-max">
+            <!--内容-->
+            <div class="ui attached padded segment">
+                <br>
+                <br>
+                <!--中间主要内容部分-->
+                <div id="cont" style="display:none;">22222</div>
+                <div id="content" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large">
+                    <br>
+                    <textarea id="mkcontent"></textarea>
+                    <br>
+                    <br>
+                </div>
+                <div class="ui horizontal divider">end</div>
+            </div>
+
+            <!-- 评论区域 -->
+            <div class="ui bottom attached segment">
+                <!--评论区域列表-->
+                <div id="comment-container" class="ui teal segment">
+                    <div>
+                        <div class="ui threaded comments" style="max-width: 100%;">
+                            <h3 class="ui dividing header">评论</h3>
+                            <div class="comment">
+                                <!-- <a class="avatar">
+                                    <img src="../static/images/avatar.png">
+                                </a> -->
+                                <div class="content" id="txt">
+                                    <span class="author">
+                                        <!-- <span th:text="${comment.username}">Matt</span> -->
+                                        <span id="infoauthor">夏洛</span>
+                                        <!-- <div class="ui mini basic teal left pointing label m-padded-mini">栈主</div> -->
+                                    </span>
+                                    <!-- <div class="metadata">
+                                        <span class="date">Today at 5:42PM</span>
+                                    </div> -->
+                                    <div class="text">
+                                        How artistic!
+                                    </div>
+                                    <!-- <div class="actions">
+                                        <a class="reply" data-commentid="1" data-commentnickname="Matt"
+                                            onclick="reply(this)">回复</a>
+                                    </div> -->
+                                </div>
+                                <!--子集评论-->
+                                <!-- <div class="comments">
+                                    <div class="comment">
+                                        <a class="avatar">
+                                            <img src="../static/images/avatar.png">
+                                        </a>
+                                        <div class="content">
+                                            <a class="author">
+                                                <span>小红</span>
+                                                <div class="ui mini basic teal left pointing label m-padded-mini">栈主
+                                                </div>
+                                                &nbsp;<span class="m-teal">@ 小白</span>
+                                            </a>
+                                            <div class="metadata">
+                                                <span class="date">Today at 5:42PM</span>
+                                            </div>
+                                            <div class="text">
+                                                How artistic!
+                                            </div>
+                                            <div class="actions">
+                                                <a class="reply" data-commentid="1" data-commentnickname="Matt"
+                                                    onclick="reply(this)">回复</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 评论人信息页面 -->
+                <div id="comment-form" class="ui form">
+                    <input type="hidden" name="blogId">
+                    <input type="hidden" name="parentComment.id" value="-1">
+                    <div class="field">
+                        <textarea name="content" id="text" placeholder="请输入评论信息..."></textarea>
+                    </div>
+                    <div class="fields">
+                        <div class="field  m-margin-bottom-small m-mobile-wide">
+                            <button id="commentpost-btn" type="button" class="ui teal button m-mobile-wide"><i
+                                    class="edit icon"></i>发布</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="ui-vertical-segment">
-            </div>
-            <div id="demo7"></div>
         </div>
-    </section>
+    </div>
 
-    <br>
-    <br>
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
-    <script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+    <script src="assets/js/theme-change.js"></script><!-- theme switch js (light and dark)-->
+
     <script src="../static/js/jquery/jquery-3.3.1.min.js"></script>
-    <script src="../static/js/layui/layui.js" charset="utf-8"></script>
-    <script src="assets/js/theme-change.js"></script>
+
+    <script src="../static/lib/editormd/lib/marked.min.js"></script>
+    <script src="../static/lib/editormd/lib/prettify.min.js"></script>
+    <script src="../static/lib/editormd/lib/raphael.min.js"></script>
+    <script src="../static/lib/editormd/lib/underscore.min.js"></script>
+    <script src="../static/lib/editormd/lib/sequence-diagram.min.js"></script>
+    <script src="../static/lib/editormd/lib/jquery.flowchart.min.js"></script>
+    <script src="../static/lib/editormd/lib/flowchart.min.js"></script>
+    <script src="../static/lib/editormd/editormd.min.js"></script>
+
+
 
     <!-- MENU-JS -->
     <script>
@@ -202,6 +318,9 @@
         });
     </script>
     <!-- //MENU-JS -->
+
+    <!-- bootstrap 侧模块展示-->
+    <script src="assets/js/bootstrap.min.js"></script>
 
     <!-- 登录 -->
     <script>
@@ -252,7 +371,9 @@
                         localStorage.setItem("user", JSON.stringify(msg.data))
                         console.log("success" + msg);
                         alert("handsome")
-                        window.location.href = "userFoodinfolist.html";
+                        let url = window.location.search;//获取当前页面的确认
+                        let userinfodemo = "userinfodemo.html" + url
+                        window.location.href = userinfodemo;//用户发评论
                     } else if ("11" == msg.data) {
                         alert("该用户不存在！");
                         console.log("该用户不存在！");
@@ -333,9 +454,8 @@
                 success: function (msg) {
                     if ("00" == msg.errorCode) {
                         console.log("success");
-                        localStorage.setItem("user", JSON.stringify(data))
                         alert("注册成功！！！")
-                        window.location.href = "userFoodinfoList.html";
+                        window.location.href = "userHome.html";
                     } else if ("11" == msg.errorCode) {
                         alert("该用户已经存在！");
                         console.log("该用户已经存在！");
@@ -351,200 +471,100 @@
     </script>
     <!-- /注册 -->
 
+    <!-- 显示文章详情 -->
     <script>
-        $(function () {
-            $('.navbar-toggler').click(function () {
-                $('body').toggleClass('noscroll');
-            })
-        });
-    </script>
-
-    <!-- 文章类别 -->
-    <script>
-        $.ajax({
-            url: "http://localhost:8080/infotypes",
-            dataType: "json",
-            type: "post",
-            success: function (msg) {
-                if (msg.code == 200) {
-                    console.log(msg.data.length)
-                    let types = '';
-                    for (let t = 0; t < msg.data.length; t++) {
-                        types += '<div class="ui labeled button m-margin-tb-tiny">' +
-                            '<butten class="ui basic  button" onclick="typew()" id="' + msg.data[t].typeid + '">' + msg.data[t].typew + '</butten>' +
-                            '<div class="ui basic  left pointing label">' + msg.data[t].cou + '</div>' +
-                            '</div>'
-                    }
-                    $(".uiucontainer").html(types);
-                }
-            }
-        });
-        function typew() {
-            console.log(event.currentTarget.innerHTML) //获取事件绑定元素的内容
-            $.ajax({
-                url: "http://localhost:8080/atypewinfo",
-                dataType: "json",
-                type: "post",
-                data: {
-                    typew: event.currentTarget.innerHTML
-                },
-                success: function (msg) {
-                    console.log("同一类别文章展示")
-                    if (msg.code == 200) {
-                        let a = '';
-                        for (let i = 0; i < msg.data.length; i++) {
-                            a += '<div class="ui padded segment m-padded-tb-large m-opacity">' +
-                                '<div class="ui large aligned mobile reversed stackable grid">' +
-                                '<div class="eleven wide column ">' +
-                                '<a href="infodemobyid.html?id=' + msg.data[i].id + ' " class="ui header" align="center" id="' + msg.data[i].id + '">' +
-                                msg.data[i].title +
-                                '</a>' +
-                                '<p class="m-text m-margin-top-max">' +
-                                msg.data[i].description +
-                                '</p>' +
-
-                                '<div class="ui grid">' +
-
-                                '<div class="eleven wide column">' +
-                                '<div class="ui mini horizontal link list">' +
-                                '<div class="item">' +
-                                '<div class="content"><span class="header">' + msg.data[i].author + '</span></div>' +
-                                '</div>' +
-                                '<div class="item">' +
-                                '<i class="calendar icon"></i><span>' + msg.data[i].date + '</span>' +
-                                '</div>' +
-                                '' +
-                                '' +
-                                '</div>' +
-                                '</div>' +
-
-                                '<div class="right aligned five wide column">' +
-                                '<span class="ui teal basic label m-padded-tiny m-text-thin">' + msg.data[i].typew + '</span>' +
-                                '</div>' +
-                                '</div>' +
-
-                                '</div>' +
-                                '</div>' +
-                                '</div>';
-                        }
-                        $(".ui-vertical-segment").html(a);
-                    }
-                }
-            })
+        //获取参数方法
+        function GetUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
         }
+        //使用获取参数方法
+        var id = GetUrlParam("id");
+        console.log("id:" + id + "  name:" + name);
 
-        // function typewinfodetail() {
-        //     console.log(event.currentTarget.innerHTML) //获取事件绑定元素的内容
-        //     console.log(event.currentTarget.id)　//获取事件绑定元素id
-        //     $.ajax({
-        //         url: "http://localhost:8080/infobyid",
-        //         dataType: "json",
-        //         type: "post",
-        //         data: {
-        //             id: event.currentTarget.id
-        //         },
-        //         success: function () {
-
-        //         }
-        //     })
-        // }
-
-        // $(".uiucontainer").on("click", function () {
-        //     console.log("点击了uiucon")
-        //     $.ajax({
-        //         url: "http://localhost:8080/atypewinfo",
-        //         dataType: "json",
-        //         type: "post",
-        //         data: {
-        //             typew:
-        //         }
-        //     })
-        // })
-    </script>
-
-    <!-- 食物文章标题列表 -->
-    <script>
+        //文章详情
         $.ajax({
-            url: "http://localhost:8080/allinfo",//获取食物博客条数
+            url: "http://localhost:8080/infobyid",
             dataType: "json",
             type: "post",
+            data: {
+                id: id
+            },
             success: function (msg) {
+                console.log("that is my json code: " + msg.code);
+                console.log("that is my json data: " + msg.data.content);
                 if (msg.code == 200) {
-                    //列表分页
-                    layui.use(['laypage', 'layer'], function () {
-                        var laypage = layui.laypage
-                            , layer = layui.layer;
-                        laypage.render({
-                            elem: 'demo7',
-                            count: msg.data,
-                            layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
-                            limit: 5,
-                            limits: [5, 7, 9, 11],
-                            jump: function (obj, first) {
-                                $.ajax({
-                                    url: "http://localhost:8080/gapinfo",
-                                    dataType: "json",
-                                    type: "post",
-                                    data: {
-                                        pageNum: obj.curr,
-                                        pageSize: obj.limit
-                                    },
-                                    success: function (msg) {
-                                        console.log("for循环长度" + msg.data.length)
-                                        if (msg.code == 200) {
-                                            let a = '';
-                                            for (let i = 0; i < msg.data.length; i++) {
-                                                a += '<div class="ui padded segment m-padded-tb-large m-opacity">' +
-                                                    '<div class="ui large aligned mobile reversed stackable grid">' +
-                                                    '<div class="eleven wide column ">' +
-                                                    '<a href="infodemo.html?id=' + i + '&pageNum=' + obj.curr + '&pageSize=' + obj.limit + '" class="ui header" id=' + i + ' align="center">' +
-                                                    msg.data[i].title +
-                                                    '</a>' +
-                                                    '<p class="m-text m-margin-top-max">' +
-                                                    msg.data[i].description +
-                                                    '</p>' +
-
-                                                    '<div class="ui grid">' +
-
-                                                    '<div class="eleven wide column">' +
-                                                    '<div class="ui mini horizontal link list">' +
-                                                    '<div class="item">' +
-                                                    '<div class="content"><span class="header">' + msg.data[i].author + '</span></div>' +
-                                                    '</div>' +
-                                                    '<div class="item">' +
-                                                    '<i class="calendar icon"></i><span>' + msg.data[i].date + '</span>' +
-                                                    '</div>' +
-                                                    '' +
-                                                    '' +
-                                                    '</div>' +
-                                                    '</div>' +
-
-                                                    '<div class="right aligned five wide column">' +
-                                                    '<span class="ui teal basic label m-padded-tiny m-text-thin">' + msg.data[i].typew + '</span>' +
-                                                    '</div>' +
-                                                    '</div>' +
-
-                                                    '</div>' +
-                                                    '</div>' +
-                                                    '</div>';
-                                            }
-                                            $(".ui-vertical-segment").html(a);
-                                        }
-                                    }
-                                })
-                            }
-                        })
-                    })
+                    console.log("like success")
+                    document.getElementById("title").innerHTML = msg.data.title;
+                    document.getElementById("cont").innerHTML = msg.data.content;
+                    document.getElementById("author").innerHTML = msg.data.author;
                 }
             }
         })
-        $('.menu.toggle').click(function () {
-            $('.m-item').toggleClass('m-mobile-show');
-        });
+
+        //展示评论
+        $.ajax({
+            url: "http://localhost:8080/infocommentbyid",
+            dataType: "json",
+            type: "post",
+            data: {
+                id: id,
+            },
+            success: function (msg) {
+                console.log(msg.data.length)
+                if (msg.code == 200) {
+                    let comment = ''
+                    for (let i = 0; i < msg.data.length; i++) {
+                        comment += '<div class="comment">' +
+                            '<div class="content" id="txt">' +
+                            '<span class="author">' +
+                            msg.data[i].username +
+                            '</span>' +
+                            '<div class="text">' +
+                            msg.data[i].content +
+                            '</div>' +
+                            '</div>' +
+                            '</div>'
+                    }
+                    $(".ui.threaded.comments").html(comment);
+                }
+            }
+        })
+
+        // console.log(commentContent)
+        $("#commentpost-btn").on("click", function () {
+            alert("登录后可评论！")
+            var commentArea = document.getElementById("text");
+            commentArea.value = "";
+        })
+        $("#text").on("click", function () {
+            alert("登录后可评论！")
+            let url = window.location.search;//获取当前页面的确认
+            console.log(url)
+        })
     </script>
 
-    <!-- bootstrap -->
-    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- mkdown转HTML -->
+    <script>
+        function mk() {
+            console.log("mkmkmkmkmkmkmkmkmkmk")
+            //先对容器初始化
+            $("#content").html(' <textarea id="mkcontent"></textarea>');
+
+            var a = document.getElementById("content").innerHTML
+            $("#mkcontent").val(document.getElementById("cont").innerHTML)
+            //转换开始,第一个参数是上面的div的id
+            editormd.markdownToHTML("content", {
+                htmlDecode: "style,script,iframe", //可以过滤标签解码
+                emoji: true,
+                taskList: true,
+                tex: true,                // 默认不解析
+                flowChart: true,          // 默认不解析
+                sequenceDiagram: true,    // 默认不解析
+            });
+        }
+    </script>
 </body>
 
 </html>
